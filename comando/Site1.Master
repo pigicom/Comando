@@ -1,0 +1,583 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="WebApp.Site1" %>
+
+<!DOCTYPE html>
+
+<link href="../Styles/Stile.css" rel="stylesheet" />
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../Scripts/jquery-1.10.2.js"></script>
+    <script src="../Scripts/jquery-ui-1.10.0.js"></script>
+    <script src="../Scripts/jquery.jqGrid.min.js"></script>
+    <script src="../Scripts/jquery.maskedinput.js"></script>
+    <script src="../Scripts/jquery.timeMask.min.js"></script>
+    <script src="../menu/script.js"></script>
+    <script src="../Scripts/moment.min.js"></script>
+    <link href="../Styles/ui.jqgrid.css" rel="stylesheet" />
+    <script src="../Scripts/fine-uploader/fine-uploader.js"></script>
+    <link href="../Comando/Scripts/fine-uploader/fine-uploader-gallery.css" rel="stylesheet" />
+    <script>
+        moment().format();
+     </script>
+
+    <link href="../Styles/jquery-ui.css" rel="stylesheet" />
+    <link href="~/menu/styles.css" rel="stylesheet" />
+
+    <title>Compilazione Verbali</title>
+    </head>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+<script>
+   function ShowVerbali()
+    { 
+          $('#divVerbali').toggle();
+          $('#divVerbali').draggable();
+          $('#divVerbali').css({top:'200px',left:'30%',margin:'-'+($('#myDiv').height() / 2)+'px 0 0 -'+($('#myDiv').width() / 2)+'px'});
+    //    $('#divVerbali').dialog({ position: ['center',100] ,modal:true,title: 'Modelli di Verbale '});
+    }
+   </script>
+<body style="display:none;background-image:url('/Comando/images/polizialocale_bn2.png')">
+    <form id="form1" runat="server">
+        <table style="width:100%; align-items:center; margin-left: 0px ; background-color:#3498db; border:2px solid #e1e1e1">
+            <tr>
+                <td style="vertical-align: top">
+                    <div class="voce"><a href="/Comando/Pages/Domicilio.aspx?cat=1" style="text-decoration: none; color: white;">Elezione Domicilio Stranieri</a></div>
+                </td>
+                <td style="vertical-align: top">
+                    <div class="voce"><a href="/Comando/Pages/Ebbrezza.aspx?cat=2" style="text-decoration: none; color: white;">Guida In Stato Di Ebbrezza</a></div>
+                </td>
+                <td style="vertical-align: top">
+                    <div class="voce"><a href="/Comando/Pages/Polizia.aspx?cat=3" style="text-decoration: none; color: white;">Polizia Giudiziaria</a></div>
+                </td>
+                <td style="vertical-align: top">
+                    <div class="voce" id="Sives"><a style="text-decoration: none; color: white;" href="#" id="link">Sives >></a></div>
+                    <div style="display: none; position: absolute; z-index: 9999999; background-color: #3498db; color: white;" id="sottomenu">
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="voce" type="sottovoce"><a style="text-decoration: none; color: white;" href="/Comando/Pages/Sives.aspx?cat=4&sotto=1">Fermo Custode</a></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="voce" type="sottovoce"><a style="text-decoration: none; color: white;" href="/Comando/Pages/Sives.aspx?cat=4&sotto=2">Fermo Proprietario</a></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="voce" type="sottovoce"><a style="text-decoration: none; color: white;" href="/Comando/Pages/Sives.aspx?cat=4&sotto=3">Sequestro Custode</a></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="voce" type="sottovoce"><a style="text-decoration: none; color: white;" href="/Comando/Pages/Sives.aspx?cat=4&sotto=4">Sequestro Proprietario</a></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+                <td style="vertical-align: top">
+                    <div class="voce"><a style="text-decoration: none; color: white;" href="/Comando/Pages/Stranieri.aspx?cat=5">Stranieri</a></div>
+                </td>
+                <td style="vertical-align: top">
+                    <div class="voce"><a style="text-decoration: none; color: white;" href="/Comando/Pages/Veicoli.aspx?cat=6">Veicoli Provenienza Furtiva</a></div>
+                </td>
+                 <td style="vertical-align: top">
+                    <div class="voce"><a style="text-decoration: none; color: white;" href="/Comando/Pages/Anagrafiche.aspx">Gestione Anagrafiche</a></div>
+                </td>
+                <td style="text-align: right">
+                    
+                </td>
+            </tr>
+        </table>
+        <div style="position:absolute ;width:99%; margin-right:15px;" >
+         <table style="width:100%">
+             <tr style="margin-right:15px">
+                <td colspan="7" style="text-align:right" >
+                 <span id="salve" style="color:#3498db"></span>
+                </td>
+            </tr>
+             <tr>
+                <td colspan="7" style="text-align:right" >
+                 <asp:LinkButton ID="LinkButton1" CssClass="" runat="server" OnClick="LinkButton1_Click">Log Off</asp:LinkButton>
+                </td>
+             </tr>
+             <tr>
+                <td colspan="7" style="text-align:right" >
+                 <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Cambio Password</asp:LinkButton>
+                </td>
+             </tr>
+        </table>
+      </div>
+        <div class="DivHeader pagina">
+            <table><tr><td>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+           </td></tr></table>
+        </div>
+        <div style="position: absolute; left: 10px; top: 75px; width: 500px">
+            <asp:Label ID="lblTitle" runat="server" Text="" CssClass="label" Style="text-align: left; left: 10px"></asp:Label>
+        </div>
+
+        <!-- pannello modelli verbali -->
+        <div class="quickmenu" style="cursor:move;margin-top:10px;margin-left:100px;position:absolute;width:610px;display:none" id='divVerbali'> 
+              <div id="divVerbaliInterno" style="cursor:default;">
+                  <table style="width:100%">
+                      <tr>
+                          <td>
+                              <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix" style="height:28px; background: rgb(52, 152, 219);">
+                              <span id="ui-id-2" class="ui-dialog-title" style="color:white">Selezione Verbali</span>
+                              </div>
+                          </td>
+                      </tr>
+                  </table>
+                  
+                  <table style="text-align: left;width:450px;border-width: thin;border-color: #0f71ba;border-style: solid;">
+                      <tr>
+                          <td colspan="2"> 
+                               <table style="text-align: left">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 370px; font-family: Verdana">Categorie</th>
+                                        <th style="font-family: Verdana">Verbali disponibili</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                          </td>
+                      </tr>
+                      <tr>
+                          
+                          <td>
+                              <table style="text-align: left;width:500px">
+                                <tr>
+                                    <td style="vertical-align: top;width:300px">
+                                        <asp:Panel ID="Panel1" runat="server" Visible="false" Width="300px">
+                                        </asp:Panel>
+                                    </td>
+                                    <td style="vertical-align: top">
+                                        <asp:Panel ID="Panel2" runat="server" Visible="false" Width="290px" Style="overflow: auto; height: 300px">
+                                        </asp:Panel>
+                                    </td>
+                                </tr>
+                           </table>
+                          </td>
+                      </tr>
+                  </table>
+                 </div>
+             <table style="width:100%">
+                 <tr>
+                     <td style="text-align:center">
+                          <div class="">
+                           <div class="ui-dialog-buttonset" style="border:none">
+                            <button type="button" onclick="$('#divVerbali').hide()" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"  role="button" aria-disabled="false">
+                                <span style="font-size:14px" class="ui-button-text">Chiudi</span>
+                            </button>
+                          </div>
+                         </div>
+                      </td>
+                      <td style="text-align:center">
+                          <div class="">
+                           <div class="ui-dialog-buttonset" style="border:none">
+                            <asp:Button runat="server"  onclientclick="$('#divVerbali').hide()" cssclass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"  Text="Crea Verbale"  role="button" aria-disabled="false" onclick="btnCrea_Click">
+                                
+                            </asp:Button>
+                          </div>
+                         </div>
+                      </td>
+                     </tr>
+                 </table>
+                         
+         </div>
+                        
+        <!-- pannello di ricerca-->
+        <div id='pnlRicerca' style="display: none; cursor: pointer;" class="quickmenu">
+            <table id="jqGridRicerca"></table>
+            <div id="jqGridPagerRicerca"></div>
+            <table style="width:100%">
+                <tr>
+                    <td style="text-align:center">
+                        <button type="button" onclick="$('.ui-dialog-titlebar-close').click()" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"  role="button" aria-disabled="false">
+                 <span style="font-size:14px" class="ui-button-text">Chiudi</span>
+              </button>
+                    </td>
+                </tr>
+            </table>
+              
+        </div>
+       
+        <!-- pannello Anagrafiche-->
+         <div id='pnlAnagrafiche' style="display: none; cursor: pointer;" class="quickmenu">
+          <div>
+            <table id="jqGridAgenti"></table>
+            <div id="jqGridPagerAgenti"></div>
+         </div>
+         </div>
+          <div id="fileDownloader" title="Download Verbali Creati"></div>
+   
+    <script type="text/template" id="qq-template-gallery">
+        <div class="qq-uploader-selector qq-uploader qq-gallery" qq-drop-area-text="Trascina qui!" id="divUpload" style="display:none;height:2200px">
+            <div class="qq-total-progress-bar-container-selector qq-total-progress-bar-container">
+                <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-total-progress-bar-selector qq-progress-bar qq-total-progress-bar"></div>
+            </div>
+            <div class="qq-upload-drop-area-selector qq-upload-drop-area" qq-hide-dropzone>
+                <span class="qq-upload-drop-area-text-selector"></span>
+            </div>
+            <div class="qq-upload-button-selector qq-upload-button" style="background-color:#3498db;font-family:Verdana">
+                <div>Aggiungi File</div>
+            </div>
+
+            <div class="" style="margin-left:300px;height:35px;font-family:Verdana;color:#3498db">Tipologia Verbale 
+                <select  runat="server"   id="Select1" style="height:35px">
+                    <option>1 ELEZIONI DI DOMICILIO STRANIERI</option>
+                    <option>2 GUIDA IN STATO DI EBBREZZA</option>
+                    <option>3 POLIZIA GIUDIZIARIA</option>
+                    <option>4 SIVES</option>
+                    <option>5 STRANIERI</option>
+                    <option>6 VEICOLI DI PROVENIENZA FURTIVA</option>
+                    <option>7 GENERICI</option>
+                </select>
+            </div>
+         
+            <span class="qq-drop-processing-selector qq-drop-processing">
+                <span>caricamento files...</span>
+                <span class="qq-drop-processing-spinner-selector qq-drop-processing-spinner"></span>
+            </span>
+            <ul class="qq-upload-list-selector qq-upload-list" role="region" aria-live="polite" aria-relevant="additions removals">
+                <li>
+                    <span role="status" class="qq-upload-status-text-selector qq-upload-status-text"></span>
+                    <div class="qq-progress-bar-container-selector qq-progress-bar-container">
+                        <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-progress-bar-selector qq-progress-bar"></div>
+                    </div>
+                    <span class="qq-upload-spinner-selector qq-upload-spinner"></span>
+                    <div class="qq-thumbnail-wrapper">
+                        <img class="qq-thumbnail-selector" qq-max-size="120" qq-server-scale>
+                    </div>
+                    <button type="button" class="qq-upload-cancel-selector qq-upload-cancel">X</button>
+                    <button type="button" class="qq-upload-retry-selector qq-upload-retry">
+                        <span class="qq-btn qq-retry-icon" aria-label="Retry"></span>
+                        Retry
+                    </button>
+
+                    <div class="qq-file-info">
+                        <div class="qq-file-name">
+                            <span class="qq-upload-file-selector qq-upload-file"></span>
+                            <span class="qq-edit-filename-icon-selector qq-edit-filename-icon" aria-label="Edit filename"></span>
+                        </div>
+                        <input class="qq-edit-filename-selector qq-edit-filename" tabindex="0" type="text">
+                        <span class="qq-upload-size-selector qq-upload-size"></span>
+                        <button type="button" class="qq-btn qq-upload-delete-selector qq-upload-delete">
+                            <span class="qq-btn qq-delete-icon" aria-label="Delete"></span>
+                        </button>
+                        <button type="button" class="qq-btn qq-upload-pause-selector qq-upload-pause">
+                            <span class="qq-btn qq-pause-icon" aria-label="Pause"></span>
+                        </button>
+                        <button type="button" class="qq-btn qq-upload-continue-selector qq-upload-continue">
+                            <span class="qq-btn qq-continue-icon" aria-label="Continue"></span>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+
+            <dialog class="qq-alert-dialog-selector">
+                <div class="qq-dialog-message-selector"></div>
+                <div class="qq-dialog-buttons">
+                    <button type="button" class="qq-cancel-button-selector">Close</button>
+                </div>
+            </dialog>
+
+            <dialog class="qq-confirm-dialog-selector">
+                <div class="qq-dialog-message-selector"></div>
+                <div class="qq-dialog-buttons">
+                    <button type="button" class="qq-cancel-button-selector">No</button>
+                    <button type="button" class="qq-ok-button-selector">Yes</button>
+                </div>
+            </dialog>
+
+            <dialog class="qq-prompt-dialog-selector">
+                <div class="qq-dialog-message-selector"></div>
+                <input type="text">
+                <div class="qq-dialog-buttons">
+                    <button type="button" class="qq-cancel-button-selector">Cancel</button>
+                    <button type="button" class="qq-ok-button-selector">Ok</button>
+                </div>
+            </dialog>
+            <div class="qq-upload-button-selector qq-upload-button" style="background-color:#3498db;font-family:Verdana;margin-left: 90%; margin-top:-45px; cursor:pointer;">
+                <div onclick="$('#divUpload').hide();">Chiudi</div>
+            </div>
+        </div>
+    </script>
+
+         </form>
+    <div id="fine-uploader-gallery"></div>
+  
+
+    <!-- Your code to create an instance of Fine Uploader and bind to the DOM/template
+    ====================================================================== -->
+    <script>
+        var galleryUploader = new qq.FineUploader({
+            element: document.getElementById("fine-uploader-gallery"),
+            template: 'qq-template-gallery',
+            request: {
+                endpoint: '../agenti.asmx/UploadFile',
+                params: {cartella:  $('#Select1').val()   }
+            },
+            thumbnails: {
+                placeholders: {
+                    waitingPath: '/comando/scripts/fine-uploader/placeholders/waiting-generic.png',
+                    notAvailablePath: '/comando/scripts/fine-uploader/placeholders/not_available-generic.png'
+                }
+            },
+            validation: {
+                allowedExtensions: ['doc', 'docx']
+            },
+            callbacks: {
+                    onSubmit: function(id, fileName) {
+                        this.setParams({ 'cartella': $('#Select1').val() , 'imageType': window.imageType, 'showDescriptionOptions': window.showDescriptionOptions });
+                    },
+                onComplete: function(id, fileName, responseJSON) {
+                    if (responseJSON.error=="{Response:Success}") {
+                        $('.qq-upload-cancel').click();
+                      
+                        $('#divUpload').append('<div id="added"><br><img src="/comando/images/ok.png" style="width:50px;height:50px alt="' + fileName + '"><i class="glyphicon glyphicon-ok"></i> ' +
+                                              'Ok File Aggiunto.' +
+                                              '“' + fileName + '”' +   '</div>');
+                      
+                        
+                        setTimeout(function(){
+                            $('#added').remove().delay(50).fadeOut(10);
+                            $('#divUpload').show().delay(50).fadeOut(10);
+                        },3000);
+
+                       //
+                       // toastr.success("Success!");
+                  } else {
+                        $('#file-' + id).removeClass('alert-info')
+                                        .addClass('alert-error')
+                                        .html('<i class="glyphicon glyphicon-exclamation-sign"></i> ' +
+                                              'Error with ' +
+                                              '“' + fileName + '”: ' +
+                                              responseJSON.error);
+                    } 
+                },
+               // onError: function (id, fileName, errorReason) {
+                 //   if(errorReason == 'XHR returned response code 0'){
+                  //      toastr.error('File Size Cannot Exceed 20 Megabytes');
+                   // }else{
+                    //    toastr.error(errorReason);
+                   // }
+                }
+        });
+    </script>
+</body>
+</html>
+<script>
+    
+    $(document).ready(function () {
+
+      
+        
+        jQuery(function($){
+            $.datepicker.regional['it'] = {
+                closeText: 'Chiudi',
+                prevText: '&#x3c;Prec',
+                nextText: 'Succ&#x3e;',
+                currentText: 'Oggi',
+                monthNames: ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno',
+                    'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'],
+                monthNamesShort: ['Gen','Feb','Mar','Apr','Mag','Giu',
+                    'Lug','Ago','Set','Ott','Nov','Dic'],
+                dayNames: ['Domenica','Luned&#236','Marted&#236','Mercoled&#236','Gioved&#236','Venerd&#236','Sabato'],
+                dayNamesShort: ['Dom','Lun','Mar','Mer','Gio','Ven','Sab'],
+                dayNamesMin: ['Do','Lu','Ma','Me','Gi','Ve','Sa'],
+                weekHeader: 'Sm',
+                dateFormat: 'dd/mm/yy',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''};
+            $.datepicker.setDefaults($.datepicker.regional['it']);
+        });
+
+
+        $('#Sives').on('mouseover', function () {
+            $('#sottomenu').show();
+        })
+         
+        $('#link').on('mouseover', function () {
+            $('#sottomenu').show();
+        })
+
+        $('#sottomenu').on('mouseleave', function () {
+            $('#sottomenu').hide();
+        })
+       
+        $('.voce').on('mouseover', function () {
+            if ((this.id != 'Sives')  && ($(this).attr('type')!='sottovoce'))
+                $('#sottomenu').hide();
+        })
+       
+        $(function() {
+            $.datepicker.setDefaults($.datepicker.regional['it']);
+            $(".data:input").datepicker({changeYear: true,changeMonth: true,yearRange: "-100:+1"});
+        });
+
+        //$('#divVerbali').hide();
+        $('body').show();
+       
+       
+          var i=<%=Request.QueryString["cat"]%>;    
+          i=i-1;
+          $('#ctl08_'+i).removeAttr('checked')
+          $('#ctl08_'+i).click();
+          
+    });
+
+</script>
+<script>
+    function VisualizzaVerbali(i,indice)
+    {
+        $.ajax({
+            type: "POST",
+            url: "Services.aspx/GetDocFile",
+            data: "{'categoria':'" + i + "'}",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (msg,stato) {
+                var lista = JSON.parse(msg.d);
+                if ($($("#Categoria" + indice).children()[0]).is(':checked'))
+                {
+                    $("#<%=Panel2.ClientID%>").append("<tr><td><span>"+  $($("#Categoria" + indice).children()[0]).val() + "</span></td></tr>");
+                    $($("#Categoria" + indice).children()[0]).val()
+                    $.each(lista, function (e, t) {
+                        $("#<%=Panel2.ClientID%>").append("<tr><td style='background-color:#F2F2F2'><span><input id='documento" + e + "' name='documento_" + t + "' type='checkbox' value='" + t + "'><label class='voceverbali' for='" + e + "'>" + t + "</label></span></td></tr>");
+                        })
+                        }
+                        else
+                       {
+                    var titoli=  $($('#Panel2').find('tr td span'));
+                            $.each(titoli, function (e, t) {
+                                if ($(t).html()==i)
+                                {
+                                    $(t).remove();
+                                }
+                            })
+                            $.each(lista, function (e, t) {
+                                $("input[type='checkbox']").filter("[value='" + t + "']").parent().parent().parent().remove();
+                            })
+                        }
+            }
+         });
+
+            }
+</script>
+<%-- Ricerca --%>  
+<script type="text/javascript">
+    function CaricaRicerca() {
+             
+        $('#pnlRicerca').dialog({position: ['center',100] ,modal:true,title: 'Ricerca Verbali : <%=lblTitle.Text.Trim()%>', width: 800}).prev(".ui-dialog-titlebar").css("background", "#3498db");
+             var i=<%=Request.QueryString["cat"]%>
+             $.ajax({
+                 type: "POST",
+                 url: "Services.aspx/GetVerbali",
+                 data: "{'categoria':'" + i + "'}",
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 success: function (source) {
+                     $("#jqGridRicerca").jqGrid({
+                         data: JSON.parse(source.d),
+                         datatype: "local",
+                         regional:'it',
+                         contentType: "application/json; charset=utf-8",
+                         colNames: ['Id', 'Data',  'Congnome Trasgressore','Nome Trasgressore', 'Agente','Ultima Modifica'],
+                         colModel: [
+                                     { label: 'id', name: 'Id', key: true, width: 75, hidden:true },
+                                     { label: 'Data', name: 'Data', width: 80, formatter: 'date' },
+                                     { label: 'Cognome', name: 'Cognome', width: 90 },
+                                     { label: 'Nome', name: 'Nome', width: 80 },
+                                     { label: 'Agente', name: 'Agente', width: 100 },
+                                     { label: 'Timestamp', name: 'Timestamp',formatter: "date",formatoptions: { srcformat: "ISO8601Long", newformat: "m/d/Y H:i A" }, width: 80 }
+                         ],
+                         width: 780,
+                         height: 350,
+                         pager: "#jqGridPagerRicerca",
+                         loadComplete: function () {
+                             var rowIds = $('#jqGridRicerca').jqGrid('getDataIDs');
+                             for (i = 0; i < rowIds.length; i++) {//iterate over each row
+                                 rowData = $('#jqGridRicerca').jqGrid('getRowData', rowIds[i]);
+                                 $('#jqGridRicerca').jqGrid('setRowData', rowIds[i], false, "normaltext");
+                             } //for
+                         },//loadComplete
+                         ondblClickRow: function (rowId) {
+                             var rowData = jQuery(this).getRowData(rowId);
+                             var Id = rowData['Id'];
+                             CaricaVerbale(Id)
+                         },
+                     });
+                     $('#lui_jqGridRicerca').remove();
+                 },
+                 error: function (xhr, error) {
+                    
+                     console.debug(xhr); console.debug(error);
+                 },
+             });
+         }
+
+         function CaricaVerbale(idVerbale)
+         {
+             if (<%=Request.QueryString["cat"]%> == 1)
+                 window.location.href = 'Domicilio.aspx?cat=1&idVerbale=' + idVerbale;
+             else if (<%=Request.QueryString["cat"]%>==2)
+                 window.location.href = 'Ebbrezza.aspx?cat=2&idVerbale=' + idVerbale;
+             else if (<%=Request.QueryString["cat"]%>==3)
+                 window.location.href = 'Polizia.aspx?cat=3&idVerbale=' + idVerbale;
+             else if (<%=Request.QueryString["cat"]%>==4)
+                 window.location.href = 'Sives.aspx?sotto=<%=Request.QueryString["sotto"]%>&cat=4&idVerbale=' + idVerbale;
+               else if (<%=Request.QueryString["cat"]%>==5)
+                   window.location.href = 'Stranieri.aspx?sotto=<%=Request.QueryString["sotto"]%>&cat=5&idVerbale=' + idVerbale;
+               else if (<%=Request.QueryString["cat"]%>==6)
+                   window.location.href = 'Veicoli.aspx?sotto=<%=Request.QueryString["sotto"]%>&cat=6&idVerbale=' + idVerbale;
+}
+
+
+          
+</script>
+<script>
+  <%--  $(document).ready(function(){
+        $('#salve').html("Utente: <%=NomeUtente%>");
+    })--%>
+</script>
+<style>
+    a {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        list-style: none;
+        line-height: 1;
+        display: block;
+        position: relative;
+        font-family: Verdana;
+        color: #3498db;
+    }
+</style>
+<style>
+        .voce {
+            /*  background-color: black; */ /*#3498db;*/
+            font-family: Calibri;
+            font-size: 16px;
+            z-index: 99999999;
+            width: 200px;
+            height: 40px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+        }
+            .voce:hover {
+                background-color: black; /*#3498db;;*/
+            }
+        body {
+            margin: 8px;
+        }
+</style>
+
+ 

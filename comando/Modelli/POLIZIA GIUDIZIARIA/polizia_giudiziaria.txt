@@ -1,0 +1,32 @@
+ Il volume nell'unit… C Š Windows8_OS
+ Numero di serie del volume: 521D-F2F0
+
+ Directory di C:\Users\pierluigi\Desktop\COMPILAZIONE\POLIZIA GIUDIZIARIA
+
+11/07/2015  10:30    <DIR>          .
+11/07/2015  10:30    <DIR>          ..
+09/11/2012  16:36           146.432 Accompagnamento per identificazione ex art. 4 T.U.L.P.S..doc
+02/05/2012  16:09           155.648 Arresto facoltativo in flagranza di reato.doc
+30/04/2012  19:07           155.136 Arresto obbligatorio in flagranza di reato.doc
+30/04/2012  19:18           130.560 Avviso ai familiari di arresto o fermo.doc
+30/04/2012  19:16           138.240 Comunicazione al difensore di arresto o fermo.doc
+17/07/2012  13:06           128.512 perquisizione art. 4 152_1975 personale e veicolo.doc
+26/06/2012  19:59           172.544 Perquisizione locale di iniziativa art. 352 cpp.doc
+26/06/2012  20:00           107.520 Perquisizione locale per ricerca di armi munizioni ed esplosivi.DOC
+26/06/2012  20:01           195.072 Perquisizione per la ricerca di sostanze stupefacenti art. 103 DPR 309.DOC
+26/06/2012  19:58           164.864 Perquisizione personale di iniziativa art. 352 cpp.doc
+30/04/2012  19:24           164.864 Perquisizione personale di iniziativa.doc
+11/07/2015  10:30                 0 polizia_giudiziaria.txt
+29/12/2012  12:21           178.176 richiesta perizia falsi documentali Milano.doc
+29/08/2012  10:26           136.704 sequestro contrassegno contraffatto.doc
+15/09/2012  19:13           200.192 Sequestro delegato generico.doc
+17/07/2012  13:08           144.896 sequestro documenti contraffatti 477_482.doc
+27/08/2012  11:02           179.712 sequestro generico di iniziativa.doc
+27/08/2012  10:21           189.952 Sequestro giudiziario preventivo di iniziativa.doc
+27/08/2012  10:19           202.752 Sequestro giudiziario preventivo disposto.DOC
+29/08/2012  09:09           165.888 sommarie informazioni della persona informata sui fatti.doc
+29/08/2012  09:10           159.744 spontanee dichiarazioni della persona indagata.doc
+30/04/2012  19:21           137.728 Traduzione e consegna di arrestato o fermato.doc
+01/06/2012  09:32           159.744 verbale di scarcerazione.doc
+              23 File      3.514.880 byte
+               2 Directory   8.542.814.208 byte disponibili

@@ -1,0 +1,781 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6B8D8B3D-334C-42A0-96A2-56689FE1B442}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>comando</RootNamespace>
+    <AssemblyName>comando</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.bootstrap">
+      <HintPath>..\packages\AspNet.ScriptManager.bootstrap.3.0.0\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery">
+      <HintPath>..\packages\AspNet.ScriptManager.jQuery.1.10.2\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.MSAjax">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="Agenti.asmx" />
+    <Content Include="ComandoModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ComandoModel.edmx</DependentUpon>
+      <LastGenOutput>ComandoModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ComandoModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ComandoModel.edmx</DependentUpon>
+      <LastGenOutput>ComandoModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Compilazione.aspx" />
+    <Content Include="Contact.aspx" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Elenco.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="index.html" />
+    <Content Include="Login.aspx" />
+    <Content Include="Modelli\ELEZIONI DI DOMICILIO STRANIERI\albanese.doc" />
+    <Content Include="Modelli\ELEZIONI DI DOMICILIO STRANIERI\arabo.doc" />
+    <Content Include="Modelli\ELEZIONI DI DOMICILIO STRANIERI\CINESE.doc" />
+    <Content Include="Modelli\ELEZIONI DI DOMICILIO STRANIERI\francese.doc" />
+    <Content Include="Modelli\ELEZIONI DI DOMICILIO STRANIERI\informativa procedimento_italiano1[1].doc" />
+    <Content Include="Modelli\ELEZIONI DI DOMICILIO STRANIERI\inglese.doc" />
+    <Content Include="Modelli\ELEZIONI DI DOMICILIO STRANIERI\olandese.doc" />
+    <Content Include="Modelli\ELEZIONI DI DOMICILIO STRANIERI\portoghese.doc" />
+    <Content Include="Modelli\ELEZIONI DI DOMICILIO STRANIERI\RUMENO.DOC" />
+    <Content Include="Modelli\ELEZIONI DI DOMICILIO STRANIERI\russo.doc" />
+    <Content Include="Modelli\ELEZIONI DI DOMICILIO STRANIERI\spagnolo.doc" />
+    <Content Include="Modelli\ELEZIONI DI DOMICILIO STRANIERI\tedesco.doc" />
+    <Content Include="Modelli\GUIDA IN STATO DI EBBREZZA\1_mod_accertamenti urgenti ex art. 354 cpp.doc" />
+    <Content Include="Modelli\GUIDA IN STATO DI EBBREZZA\2_mod_ritiro di patente.doc" />
+    <Content Include="Modelli\GUIDA IN STATO DI EBBREZZA\3_mod_consegna di veicolo.doc" />
+    <Content Include="Modelli\GUIDA IN STATO DI EBBREZZA\4_mod_Identificazione ed elezione di domicilio.DOC" />
+    <Content Include="Modelli\GUIDA IN STATO DI EBBREZZA\Consegna di veicolo ex art. 186 e 187 C.d.S..doc" />
+    <Content Include="Modelli\GUIDA IN STATO DI EBBREZZA\MODELLO 186.doc" />
+    <Content Include="Modelli\GUIDA IN STATO DI EBBREZZA\ritiro cautelare della patente di guida.doc" />
+    <Content Include="Modelli\GUIDA IN STATO DI EBBREZZA\verbaleVuoto.doc" />
+    <Content Include="Modelli\GUIDA IN STATO DI EBBREZZA\verbaleVuoto2.doc" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\Accompagnamento per identificazione ex art. 4 T.U.L.P.S..doc" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\Arresto facoltativo in flagranza di reato.doc" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\Arresto obbligatorio in flagranza di reato.doc" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\Avviso ai familiari di arresto o fermo.doc" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\Comunicazione al difensore di arresto o fermo.doc" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\perquisizione art. 4 152_1975 personale e veicolo.doc" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\Perquisizione locale di iniziativa art. 352 cpp.doc" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\Perquisizione locale per ricerca di armi munizioni ed esplosivi.DOC" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\Perquisizione per la ricerca di sostanze stupefacenti art. 103 DPR 309.DOC" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\Perquisizione personale di iniziativa art. 352 cpp.doc" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\Perquisizione personale di iniziativa.doc" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\richiesta perizia falsi documentali Milano.doc" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\sequestro contrassegno contraffatto.doc" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\Sequestro delegato generico.doc" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\sequestro documenti contraffatti 477_482.doc" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\sequestro generico di iniziativa.doc" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\Sequestro giudiziario preventivo di iniziativa.doc" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\Sequestro giudiziario preventivo disposto.DOC" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\sommarie informazioni della persona informata sui fatti.doc" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\spontanee dichiarazioni della persona indagata.doc" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\Traduzione e consegna di arrestato o fermato.doc" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\verbale di scarcerazione.doc" />
+    <Content Include="Modelli\SIVES\1._FERMO_CUSTODE\2_mod._dichiarazione sostitutiva atto notorio.doc" />
+    <Content Include="Modelli\SIVES\1._FERMO_CUSTODE\3_mod._cartello di veicolo sottoposto a fermo amministrativo.doc" />
+    <Content Include="Modelli\SIVES\1._FERMO_CUSTODE\Comunicazione al proprietario o genitore %28ciclomotore o motoveicolo%29.doc" />
+    <Content Include="Modelli\SIVES\1._FERMO_CUSTODE\fermo amministrativo custode.doc" />
+    <Content Include="Modelli\SIVES\1._FERMO_CUSTODE\moduli_condizioni generali veicolo.doc" />
+    <Content Include="Modelli\SIVES\2._FERMO_PROPRIETARIO\2_mod._dichiarazione sostitutiva atto notorio.doc" />
+    <Content Include="Modelli\SIVES\2._FERMO_PROPRIETARIO\fermo amministrativo.doc" />
+    <Content Include="Modelli\SIVES\3._SEQUESTRO_CUSTODE\1_mod._Sequestro amministrativo di veicolo-affidamento custode.doc" />
+    <Content Include="Modelli\SIVES\3._SEQUESTRO_CUSTODE\2_mod._cartello di veicolo sottoposto a sequestro amministrativo.doc" />
+    <Content Include="Modelli\SIVES\4._SEQUESTRO_PROPRIETARIO\1_mod._Sequestro amministrativo di veicolo-affidamento proprietario.doc" />
+    <Content Include="Modelli\SIVES\4._SEQUESTRO_PROPRIETARIO\2_mod._dichiarazione sostitutiva atto notorio.doc" />
+    <Content Include="Modelli\SIVES\4._SEQUESTRO_PROPRIETARIO\sequestro amministrativo.doc" />
+    <Content Include="Modelli\SIVES\appunti.doc" />
+    <Content Include="Modelli\STRANIERI\10_RELAZIONE DI INDAGINE_art. 20-ter.doc" />
+    <Content Include="Modelli\STRANIERI\11_citazione contestuale 20-ter.doc" />
+    <Content Include="Modelli\STRANIERI\12_verbale di notifica all%27imputato.doc" />
+    <Content Include="Modelli\STRANIERI\13_dichiarazione di rinunzia a partecipare all%27udienza.doc" />
+    <Content Include="Modelli\STRANIERI\14_consegna di cittadino extracomunitario trattenuto.doc" />
+    <Content Include="Modelli\STRANIERI\15_riconsegna di cittadino extracomunitario da trattenere.doc" />
+    <Content Include="Modelli\STRANIERI\16_annotazione di servizio.doc" />
+    <Content Include="Modelli\STRANIERI\17_verbale accompagnamento_art. 6.doc" />
+    <Content Include="Modelli\STRANIERI\18_verbale accompagnamento_art. 11.doc" />
+    <Content Include="Modelli\STRANIERI\19_invito a presentarsi ufficio stranieri_art_15.doc" />
+    <Content Include="Modelli\STRANIERI\1_annotazione di polizia giudiziaria.doc" />
+    <Content Include="Modelli\STRANIERI\20_cattura in esecuzione di ordinanza di custodia cautelare.DOC" />
+    <Content Include="Modelli\STRANIERI\21_cattura in esecuzione ordine di carcerazione.DOC" />
+    <Content Include="Modelli\STRANIERI\22_lettera di consegna per espulsione amministrativa.doc" />
+    <Content Include="Modelli\STRANIERI\23_ richiesta di presentazione immediata a giudizio.doc" />
+    <Content Include="Modelli\STRANIERI\24_relazione di indagine art. 11.doc" />
+    <Content Include="Modelli\STRANIERI\25_nomina interprete.doc" />
+    <Content Include="Modelli\STRANIERI\26_PRONTUARIO VIOLAZIONI PENALI.doc" />
+    <Content Include="Modelli\STRANIERI\27_circolare Procura Monza.doc" />
+    <Content Include="Modelli\STRANIERI\2_verbale accompagnamento_art. 349.doc" />
+    <Content Include="Modelli\STRANIERI\3_Identificazione ed elezione di domicilio.DOC" />
+    <Content Include="Modelli\STRANIERI\4_richiesta rilievi segnaletici.doc" />
+    <Content Include="Modelli\STRANIERI\4_richiesta rilievi segnaletici91.doc" />
+    <Content Include="Modelli\STRANIERI\5_richiesta di accertamenti sulla legittimit+á della permanenza.doc" />
+    <Content Include="Modelli\STRANIERI\5_richiesta di accertamenti sulla legittimit+á della permanenza91.doc" />
+    <Content Include="Modelli\STRANIERI\6_richiesta accertamento cittadino straniero.doc" />
+    <Content Include="Modelli\STRANIERI\6_richiesta accertamento cittadino straniero91.doc" />
+    <Content Include="Modelli\STRANIERI\7_richiesta comparazione questura.doc" />
+    <Content Include="Modelli\STRANIERI\8_richiesta di rettifica transazione afis.doc" />
+    <Content Include="Modelli\STRANIERI\9_RELAZIONE DI INDAGINE_art. 20-bis.doc" />
+    <Content Include="Modelli\STRANIERI\ESEMPI\7_RICHIESTA COMPARAZIONE\7_richiesta comparazione questura_acunia.doc" />
+    <Content Include="Modelli\STRANIERI\ORIGINE_DATI_STRANIERI.xlsx" />
+    <Content Include="Modelli\STRANIERI\scheda.pratica.su.allontanamento.dal.territorio.dello.stato.dello.straniero.extracomunitario.in.gene.pdf" />
+    <Content Include="Modelli\VEICOLI DI PROVENIENZA FURTIVA\1_rinvenimento e contestuale restituzione.doc" />
+    <Content Include="Modelli\VEICOLI DI PROVENIENZA FURTIVA\2_Sequestro penale di veicolo.doc" />
+    <Content Include="Modelli\VEICOLI DI PROVENIENZA FURTIVA\comunicazione telefonica al denunciante.doc" />
+    <Content Include="Modelli\VEICOLI DI PROVENIENZA FURTIVA\Origine Dati Veicoli Provenienza Furtiva.xlsx" />
+    <Content Include="Modelli\VEICOLI DI PROVENIENZA FURTIVA\ricognizione veicolo.doc" />
+    <Content Include="Modelli\VERBALI AMMINISTRATIVI\verbale di ritiro patente deteriorata.doc" />
+    <Content Include="obj\Debug\build.force" />
+    <Content Include="obj\Debug\comando.csproj.CoreCompileInputs.cache" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="App.config" />
+    <EntityDeploy Include="ComandoModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ComandoModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="ComandoModel.edmx.diagram">
+      <DependentUpon>ComandoModel.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="images\avvocato.jpg" />
+    <Content Include="images\bg-black.gif" />
+    <Content Include="images\bg-black2.gif" />
+    <Content Include="images\brown-man-icon.png" />
+    <Content Include="images\carro-attrezzi-con-auto.jpg" />
+    <Content Include="images\Cartella.png" />
+    <Content Include="images\cerca.png" />
+    <Content Include="images\div.gif" />
+    <Content Include="images\document_save.png" />
+    <Content Include="images\download.png" />
+    <Content Include="images\drop-arrow.gif" />
+    <Content Include="images\elmetto.jpg" />
+    <Content Include="images\logoComunale.gif" />
+    <Content Include="images\modelli.png" />
+    <Content Include="images\nuovo.png" />
+    <Content Include="images\patente.jpg" />
+    <Content Include="images\polizia-locale-vigili-300x224.jpg" />
+    <Content Include="images\polizialocale.png" />
+    <Content Include="images\PopupModelli.png" />
+    <Content Include="images\print.png" />
+    <Content Include="images\right-arrow.gif" />
+    <Content Include="images\salva.png" />
+    <Content Include="images\search.png" />
+    <Content Include="images\sfondogrigio.jpeg" />
+    <Content Include="images\stampa.png" />
+    <Content Include="images\stemma.png" />
+    <Content Include="images\sub.gif" />
+    <Content Include="images\ui-bg_flat_75_aaaaaa_40x100.png" />
+    <Content Include="images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="images\ui-icons_444444_256x240.png" />
+    <Content Include="images\ui-icons_555555_256x240.png" />
+    <Content Include="images\ui-icons_777620_256x240.png" />
+    <Content Include="images\ui-icons_777777_256x240.png" />
+    <Content Include="images\ui-icons_cc0000_256x240.png" />
+    <Content Include="images\ui-icons_ffffff_256x240.png" />
+    <Content Include="images\uomo.png" />
+    <Content Include="images\veicolo.png" />
+    <Content Include="images\vigile.jpg" />
+    <Content Include="images\word_icon.jpg" />
+    <Content Include="menu\images\bg.png" />
+    <Content Include="menu\script.js" />
+    <Content Include="menu\styles.css" />
+    <Content Include="Modelli\GUIDA IN STATO DI EBBREZZA\ebrezza.txt" />
+    <Content Include="Modelli\POLIZIA GIUDIZIARIA\polizia_giudiziaria.txt" />
+    <Content Include="Modelli\STRANIERI\stranieri.txt" />
+    <Content Include="Pages\Anagrafiche.aspx" />
+    <Content Include="Pages\CambioPassword.aspx" />
+    <Content Include="Pages\Domicilio.aspx" />
+    <Content Include="Pages\Ebbrezza.aspx" />
+    <Content Include="Pages\Polizia.aspx" />
+    <Content Include="Pages\Registrati.aspx" />
+    <Content Include="Pages\Services.aspx" />
+    <Content Include="Pages\Sives.aspx" />
+    <Content Include="Pages\Stranieri.aspx" />
+    <Content Include="Pages\Veicoli.aspx" />
+    <Content Include="Pages\Verbali.aspx" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Site.Master" />
+    <Content Include="Styles\bootstrap.css" />
+    <Content Include="Styles\images\avvocato.jpg" />
+    <Content Include="Styles\images\bg-black.gif" />
+    <Content Include="Styles\images\bg-black2.gif" />
+    <Content Include="Styles\images\brown-man-icon.png" />
+    <Content Include="Styles\images\carro-attrezzi-con-auto.jpg" />
+    <Content Include="Styles\images\cerca.png" />
+    <Content Include="Styles\images\div.gif" />
+    <Content Include="Styles\images\document_save.png" />
+    <Content Include="Styles\images\download.png" />
+    <Content Include="Styles\images\drop-arrow.gif" />
+    <Content Include="Styles\images\nuovo.png" />
+    <Content Include="Styles\images\patente.jpg" />
+    <Content Include="Styles\images\print.png" />
+    <Content Include="Styles\images\right-arrow.gif" />
+    <Content Include="Styles\images\salva.png" />
+    <Content Include="Styles\images\search.png" />
+    <Content Include="Styles\images\sfondogrigio.jpeg" />
+    <Content Include="Styles\images\stampa.png" />
+    <Content Include="Styles\images\stemma.png" />
+    <Content Include="Styles\images\sub.gif" />
+    <Content Include="Styles\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Styles\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Styles\images\ui-bg_glass_65_ffffff_1x400 - Copia.png" />
+    <Content Include="Styles\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Styles\images\ui-bg_glass_75_dadada_1x400 - Copia.png" />
+    <Content Include="Styles\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Styles\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Styles\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Styles\images\ui-icons_222222_256x240.png" />
+    <Content Include="Styles\images\ui-icons_454545_256x240.png" />
+    <Content Include="Styles\images\ui-icons_888888_256x240.png" />
+    <Content Include="Styles\images\uomo.png" />
+    <Content Include="Styles\images\veicolo.png" />
+    <Content Include="Styles\images\vigile.jpg" />
+    <Content Include="Styles\jquery-ui.css" />
+    <Content Include="Styles\Stile.css" />
+    <Content Include="Styles\ui.jqgrid-bootstrap-ui.css" />
+    <Content Include="Styles\ui.jqgrid-bootstrap.css" />
+    <Content Include="Styles\ui.jqgrid.css" />
+    <Content Include="UserControl\ControlAgente.ascx" />
+    <Content Include="UserControl\ControlAttore.ascx" />
+    <Content Include="UserControl\ControlAvvocato.ascx" />
+    <Content Include="UserControl\ControlCustode.ascx" />
+    <Content Include="UserControl\ControlPatente.ascx" />
+    <Content Include="UserControl\ControlProprietario.ascx" />
+    <Content Include="UserControl\ControlTrasgressore.ascx" />
+    <Content Include="UserControl\ControlVeicolo.ascx" />
+    <Content Include="UserControl\Menu.ascx" />
+    <Content Include="UserControl\Ricerca.ascx" />
+    <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Bundle.config" />
+    <Content Include="Site.Mobile.Master" />
+    <Content Include="Views\Agente\Create.cshtml" />
+    <Content Include="Views\Agente\Delete.cshtml" />
+    <Content Include="Views\Agente\Details.cshtml" />
+    <Content Include="Views\Agente\Edit.cshtml" />
+    <Content Include="Views\Agente\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Site1.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Agente.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Applications.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="aspnet_Applications.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Membership.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Paths.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_PersonalizationAllUsers.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_PersonalizationPerUser.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Profile.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Roles.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_SchemaVersions.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Users.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_WebEvent_Events.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Attore.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Avvocato.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaseVerbale.cs" />
+    <Compile Include="CategoriaVerbale.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComandoModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ComandoModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComandoModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComandoModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ComandoModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ComandoPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comuni.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Custode.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="documenti_categorie.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Documento.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentoCollegato.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentoWord.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Helper.cs" />
+    <Compile Include="ListaComuni.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Memberships.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Pages\Anagrafiche.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CambioPassword.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Domicilio.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Ebbrezza.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Polizia.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Regitstrati.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Services.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Patente.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proprietario.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Province.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Regioni.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Roles.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.designer.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Site1.master.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Stati.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipologiaAnagrafica.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoVeicolo.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Trasgressore.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\ControlAgente.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\ControlAttore.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\ControlAvvocato.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\ControlCustode.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\ControlPatente.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\ControlProprietario.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\ControlTrasgressore.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\ControlVeicolo.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\Menu.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\Ricerca.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UsersOpenAuthAccounts.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UsersOpenAuthData.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Utente.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Veicolo.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Verbale.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VerbaleElezioneDomicilio.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Violazione.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="bin\" />
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>2</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>22419</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/Comando</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

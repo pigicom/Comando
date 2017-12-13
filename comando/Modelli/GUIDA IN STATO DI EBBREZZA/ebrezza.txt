@@ -1,0 +1,19 @@
+ Il volume nell'unit… C Š Windows8_OS
+ Numero di serie del volume: 521D-F2F0
+
+ Directory di C:\Users\pierluigi\Desktop\COMPILAZIONE\GUIDA IN STATO DI EBBREZZA
+
+11/07/2015  10:20    <DIR>          .
+11/07/2015  10:20    <DIR>          ..
+07/02/2014  16:54           178.176 1_mod_accertamenti urgenti ex art. 354 cpp.doc
+07/02/2014  19:34           145.920 2_mod_ritiro di patente.doc
+07/02/2014  19:35           151.040 3_mod_consegna di veicolo.doc
+20/09/2014  13:27           162.816 4_mod_Identificazione ed elezione di domicilio.DOC
+04/07/2015  15:06           159.744 Consegna di veicolo ex art. 186 e 187 C.d.S..doc
+11/07/2015  10:20                 0 ebrezza.txt
+04/07/2015  15:05           169.984 MODELLO 186.doc
+04/07/2015  15:07           143.872 ritiro cautelare della patente di guida.doc
+07/02/2014  16:54           178.176 verbaleVuoto.doc
+10/07/2015  09:13           172.032 verbaleVuoto2.doc
+              10 File      1.461.760 byte
+               2 Directory   8.543.911.936 byte disponibili

@@ -1,0 +1,43 @@
+ Il volume nell'unit… C Š Windows8_OS
+ Numero di serie del volume: 521D-F2F0
+
+ Directory di C:\Users\pierluigi\Desktop\COMPILAZIONE\STRANIERI
+
+11/07/2015  10:38    <DIR>          .
+11/07/2015  10:38    <DIR>          ..
+27/04/2012  17:14           147.968 10_RELAZIONE DI INDAGINE_art. 20-ter.doc
+27/04/2012  17:17            39.936 11_citazione contestuale 20-ter.doc
+27/04/2012  17:17           133.120 12_verbale di notifica all'imputato.doc
+27/04/2012  17:17           125.440 13_dichiarazione di rinunzia a partecipare all'udienza.doc
+27/04/2012  17:17           135.168 14_consegna di cittadino extracomunitario trattenuto.doc
+27/04/2012  17:18           137.728 15_riconsegna di cittadino extracomunitario da trattenere.doc
+27/04/2012  20:20           123.392 16_annotazione di servizio.doc
+31/12/2012  08:41           153.600 17_verbale accompagnamento_art. 6.doc
+27/04/2012  20:21           147.968 18_verbale accompagnamento_art. 11.doc
+27/04/2012  20:22           161.280 19_invito a presentarsi ufficio stranieri_art_15.doc
+29/12/2012  14:16           139.776 1_annotazione di polizia giudiziaria.doc
+18/07/2012  10:35           148.992 20_cattura in esecuzione di ordinanza di custodia cautelare.DOC
+27/04/2012  20:22           148.992 21_cattura in esecuzione ordine di carcerazione.DOC
+21/03/2014  11:55           139.264 22_lettera di consegna per espulsione amministrativa.doc
+19/09/2012  15:03           168.448 23_ richiesta di presentazione immediata a giudizio.doc
+19/09/2012  15:05           181.760 24_relazione di indagine art. 11.doc
+29/12/2012  14:17           140.288 25_nomina interprete.doc
+17/10/2012  19:16            39.424 26_PRONTUARIO VIOLAZIONI PENALI.doc
+12/11/2009  14:08            64.512 27_circolare Procura Monza.doc
+29/12/2012  14:27           169.472 2_verbale accompagnamento_art. 349.doc
+03/01/2013  19:52           158.208 3_Identificazione ed elezione di domicilio.DOC
+29/12/2012  14:19           137.216 4_richiesta rilievi segnaletici.doc
+21/03/2015  14:23           138.752 4_richiesta rilievi segnaletici91.doc
+29/12/2012  14:21           132.608 5_richiesta di accertamenti sulla legittimit… della permanenza.doc
+21/03/2015  14:23           133.120 5_richiesta di accertamenti sulla legittimit… della permanenza91.doc
+29/12/2012  14:23           130.048 6_richiesta accertamento cittadino straniero.doc
+21/03/2015  14:24           133.120 6_richiesta accertamento cittadino straniero91.doc
+29/12/2012  14:20           136.192 7_richiesta comparazione questura.doc
+27/04/2012  16:57           130.560 8_richiesta di rettifica transazione afis.doc
+27/04/2012  17:14           142.336 9_RELAZIONE DI INDAGINE_art. 20-bis.doc
+04/07/2015  14:45    <DIR>          ESEMPI
+04/07/2015  16:07             5.402 ORIGINE_DATI_STRANIERI.xlsx
+03/10/2012  19:53           346.911 scheda.pratica.su.allontanamento.dal.territorio.dello.stato.dello.straniero.extracomunitario.in.gene.pdf
+11/07/2015  10:38                 0 stranieri.txt
+              33 File      4.371.001 byte
+               3 Directory   8.543.379.456 byte disponibili

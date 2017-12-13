@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="416bf626a8a14e05b9479a99a85c3950" Name="Diagram1">
+        <EntityTypeShape EntityType="ComandoModel.Agente" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.Applications" Width="1.5" PointX="12.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.aspnet_Applications" Width="1.5" PointX="5.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.aspnet_Membership" Width="1.5" PointX="11" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.aspnet_Paths" Width="1.5" PointX="8" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.aspnet_PersonalizationAllUsers" Width="1.5" PointX="10.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.aspnet_PersonalizationPerUser" Width="1.5" PointX="10.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.aspnet_Profile" Width="1.5" PointX="15.5" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.aspnet_Roles" Width="1.5" PointX="8" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.aspnet_SchemaVersions" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.aspnet_Users" Width="1.5" PointX="13.25" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.aspnet_WebEvent_Events" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.Attore" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.CategoriaVerbale" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.Comuni" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.documenti_categorie" Width="1.5" PointX="6.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.Documento" Width="1.5" PointX="13.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.DocumentoCollegato" Width="1.5" PointX="20" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.DocumentoWord" Width="1.5" PointX="20" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.ListaComuni" Width="1.5" PointX="7.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.Memberships" Width="1.5" PointX="15" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.Patente" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.Profiles" Width="1.5" PointX="19.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.Proprietario" Width="1.5" PointX="17.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.Province" Width="1.5" PointX="2.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.Regioni" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.Roles" Width="1.5" PointX="15" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.Stati" Width="1.5" PointX="4.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.sysdiagrams" Width="1.5" PointX="6.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.TipologiaAnagrafica" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.TipoVeicolo" Width="1.5" PointX="17.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.Users" Width="1.5" PointX="17.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.UsersOpenAuthAccounts" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.UsersOpenAuthData" Width="1.5" PointX="7.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.Utente" Width="1.5" PointX="0.75" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.Verbale" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.VerbaleElezioneDomicilio" Width="1.5" PointX="17.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.Violazione" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <AssociationConnector Association="ComandoModel.FK_Verbale_Agente" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK_Verbale_Agente1" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK_MembershipEntity_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK_RoleEntity_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK_User_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK__aspnet_Me__Appli__37FA4C37" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK__aspnet_Pa__Appli__6991A7CB" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK__aspnet_Ro__Appli__567ED357" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK__aspnet_Us__Appli__27C3E46E" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK__aspnet_Me__UserI__38EE7070" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK__aspnet_Pe__PathI__6F4A8121" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK__aspnet_Pe__PathI__731B1205" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK__aspnet_Pe__UserI__740F363E" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK__aspnet_Pr__UserI__4CF5691D" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK_Verbale_CategoriaVerbale" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK_DocumentoCollegato_VerbaleElezioneDomicilio" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK_VerbaleElezioneDomicilioDocumentoWord" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK_MembershipEntity_User" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK_ProfileEntity_User" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK_TipologiaAnagrafica_TipologiaAnagrafica" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK_OpenAuthUserData_Accounts" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK_Verbale_Utente" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.FK_VerbaleViolazione" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.aspnet_UsersInRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.UsersInRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="ComandoModel.VerbaleAgente" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ComandoModel.Avvocato" Width="1.5" PointX="20.375" PointY="18" />
+        <AssociationConnector Association="ComandoModel.FK_Verbale_Avvocato" />
+        <EntityTypeShape EntityType="ComandoModel.Custode" Width="1.5" PointX="3.125" PointY="22" />
+        <EntityTypeShape EntityType="ComandoModel.Veicolo" Width="1.5" PointX="23" PointY="12" />
+        <AssociationConnector Association="ComandoModel.FK_Veicolo_Custode" />
+        <AssociationConnector Association="ComandoModel.FK_VeicoloProprietario" />
+        <AssociationConnector Association="ComandoModel.FK_Veicolo_TipoVeicolo" />
+        <AssociationConnector Association="ComandoModel.FK_Verbale_Veicolo" />
+        <EntityTypeShape EntityType="ComandoModel.Trasgressore" Width="1.5" PointX="0.75" PointY="8.25" />
+        <AssociationConnector Association="ComandoModel.FK_Patente_Trasgressore" />
+        <AssociationConnector Association="ComandoModel.FK_Verbale_Trasgressore" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
