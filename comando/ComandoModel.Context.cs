@@ -39,7 +39,6 @@ namespace comando
         public virtual DbSet<aspnet_WebEvent_Events> aspnet_WebEvent_Events { get; set; }
         public virtual DbSet<Attore> Attore { get; set; }
         public virtual DbSet<CategoriaVerbale> CategoriaVerbale { get; set; }
-        public virtual DbSet<Comuni> Comuni { get; set; }
         public virtual DbSet<documenti_categorie> documenti_categorie { get; set; }
         public virtual DbSet<Documento> Documento { get; set; }
         public virtual DbSet<DocumentoCollegato> DocumentoCollegato { get; set; }
@@ -53,7 +52,6 @@ namespace comando
         public virtual DbSet<Regioni> Regioni { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Stati> Stati { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TipologiaAnagrafica> TipologiaAnagrafica { get; set; }
         public virtual DbSet<TipoVeicolo> TipoVeicolo { get; set; }
         public virtual DbSet<Users> Users { get; set; }
@@ -67,5 +65,6 @@ namespace comando
         public virtual DbSet<Custode> Custode { get; set; }
         public virtual DbSet<Veicolo> Veicolo { get; set; }
         public virtual DbSet<Trasgressore> Trasgressore { get; set; }
+        public virtual DbSet<Comuni> Comuni { get; set; }
     }
 }

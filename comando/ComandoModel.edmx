@@ -359,16 +359,6 @@
           <Property Name="NomeOriginale" Type="nchar" MaxLength="100" />
           <Property Name="Sigla" Type="nvarchar" MaxLength="5" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="TipologiaAnagrafica">
           <Key>
             <PropertyRef Name="ID" />
@@ -1012,7 +1002,6 @@
           <EntitySet Name="Regioni" EntityType="Self.Regioni" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stati" EntityType="Self.Stati" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipologiaAnagrafica" EntityType="Self.TipologiaAnagrafica" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoVeicolo" EntityType="Self.TipoVeicolo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Trasgressore" EntityType="Self.Trasgressore" Schema="dbo" store:Type="Tables" />
@@ -1372,16 +1361,6 @@
           <Property Name="Pagina" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Verbale" Relationship="Self.FK_Verbale_CategoriaVerbale" FromRole="CategoriaVerbale" ToRole="Verbale" />
         </EntityType>
-        <EntityType Name="Comuni">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="nome" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="idprovincia" Type="Int32" Nullable="false" />
-          <Property Name="idregione" Type="Int32" Nullable="false" />
-          <Property Name="catasto" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="documenti_categorie">
           <Key>
             <PropertyRef Name="Id" />
@@ -1529,16 +1508,6 @@
           <Property Name="Nome" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="NomeOriginale" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
           <Property Name="Sigla" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="TipologiaAnagrafica">
           <Key>
@@ -1991,7 +1960,6 @@
           <EntitySet Name="aspnet_WebEvent_Events" EntityType="Self.aspnet_WebEvent_Events" />
           <EntitySet Name="Attore" EntityType="Self.Attore" />
           <EntitySet Name="CategoriaVerbale" EntityType="Self.CategoriaVerbale" />
-          <EntitySet Name="Comuni" EntityType="Self.Comuni" />
           <EntitySet Name="documenti_categorie" EntityType="Self.documenti_categorie" />
           <EntitySet Name="Documento" EntityType="Self.Documento" />
           <EntitySet Name="DocumentoCollegato" EntityType="Self.DocumentoCollegato" />
@@ -2005,7 +1973,6 @@
           <EntitySet Name="Regioni" EntityType="Self.Regioni" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="Stati" EntityType="Self.Stati" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TipologiaAnagrafica" EntityType="Self.TipologiaAnagrafica" />
           <EntitySet Name="TipoVeicolo" EntityType="Self.TipoVeicolo" />
           <EntitySet Name="Users" EntityType="Self.Users" />
@@ -2151,6 +2118,7 @@
             <End Role="Trasgressore" EntitySet="Trasgressore" />
             <End Role="Verbale" EntitySet="Verbale" />
           </AssociationSet>
+          <EntitySet Name="Comuni" EntityType="ComandoModel.Comuni" />
         </EntityContainer>
         <EntityType Name="Avvocato">
           <Key>
@@ -2308,6 +2276,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Comuni">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="200" FixedLength="true" Unicode="true" />
+          <Property Name="idprovincia" Type="Int32" Nullable="false" />
+          <Property Name="idregione" Type="Int32" Nullable="false" />
+          <Property Name="catasto" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2497,17 +2475,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Comuni">
-            <EntityTypeMapping TypeName="ComandoModel.Comuni">
-              <MappingFragment StoreEntitySet="Comuni">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
-                <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
-                <ScalarProperty Name="idregione" ColumnName="idregione" />
-                <ScalarProperty Name="catasto" ColumnName="catasto" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="documenti_categorie">
             <EntityTypeMapping TypeName="ComandoModel.documenti_categorie">
               <MappingFragment StoreEntitySet="documenti_categorie">
@@ -2657,17 +2624,6 @@
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="NomeOriginale" ColumnName="NomeOriginale" />
                 <ScalarProperty Name="Sigla" ColumnName="Sigla" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="ComandoModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2887,6 +2843,17 @@
                 <ScalarProperty Name="DataNascita" ColumnName="DataNascita" />
                 <ScalarProperty Name="Cognome" ColumnName="Cognome" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comuni">
+            <EntityTypeMapping TypeName="ComandoModel.Comuni">
+              <MappingFragment StoreEntitySet="Comuni">
+                <ScalarProperty Name="catasto" ColumnName="catasto" />
+                <ScalarProperty Name="idregione" ColumnName="idregione" />
+                <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

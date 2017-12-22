@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="416bf626a8a14e05b9479a99a85c3950" Name="Diagram1">
+      <Diagram DiagramId="416bf626a8a14e05b9479a99a85c3950" Name="Diagram1" ZoomLevel="64">
         <EntityTypeShape EntityType="ComandoModel.Agente" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="ComandoModel.Applications" Width="1.5" PointX="12.75" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ComandoModel.aspnet_Applications" Width="1.5" PointX="5.75" PointY="13.875" IsExpanded="true" />
@@ -19,7 +19,6 @@
         <EntityTypeShape EntityType="ComandoModel.aspnet_WebEvent_Events" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ComandoModel.Attore" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ComandoModel.CategoriaVerbale" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="ComandoModel.Comuni" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ComandoModel.documenti_categorie" Width="1.5" PointX="6.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ComandoModel.Documento" Width="1.5" PointX="13.75" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ComandoModel.DocumentoCollegato" Width="1.5" PointX="20" PointY="11.625" IsExpanded="true" />
@@ -33,7 +32,6 @@
         <EntityTypeShape EntityType="ComandoModel.Regioni" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ComandoModel.Roles" Width="1.5" PointX="15" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ComandoModel.Stati" Width="1.5" PointX="4.75" PointY="18.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ComandoModel.sysdiagrams" Width="1.5" PointX="6.75" PointY="18.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ComandoModel.TipologiaAnagrafica" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ComandoModel.TipoVeicolo" Width="1.5" PointX="17.75" PointY="17.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ComandoModel.Users" Width="1.5" PointX="17.25" PointY="7" IsExpanded="true" />
@@ -80,6 +78,7 @@
         <EntityTypeShape EntityType="ComandoModel.Trasgressore" Width="1.5" PointX="0.75" PointY="8.25" />
         <AssociationConnector Association="ComandoModel.FK_Patente_Trasgressore" />
         <AssociationConnector Association="ComandoModel.FK_Verbale_Trasgressore" />
+        <EntityTypeShape EntityType="ComandoModel.Comuni" Width="1.5" PointX="20.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

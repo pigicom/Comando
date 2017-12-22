@@ -12,7 +12,7 @@ namespace comando
     using System;
     using System.Collections.Generic;
     
-    public partial class Proprietario:Trasgressore
+    public partial class Proprietario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Proprietario()

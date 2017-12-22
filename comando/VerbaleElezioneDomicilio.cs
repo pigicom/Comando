@@ -11,8 +11,8 @@ namespace comando
 {
     using System;
     using System.Collections.Generic;
-    using WebApp;
-    public partial class VerbaleElezioneDomicilio:BaseVerbale
+    
+    public partial class VerbaleElezioneDomicilio
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public VerbaleElezioneDomicilio()
@@ -20,8 +20,7 @@ namespace comando
             this.DocumentoCollegato = new HashSet<DocumentoCollegato>();
             this.DocumentoWord = new HashSet<DocumentoWord>();
         }
-
-       
+    
         public long Id { get; set; }
         public string Titolo { get; set; }
         public string Giorno { get; set; }
