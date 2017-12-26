@@ -1,18 +1,18 @@
-﻿namespace Comando
-{
-    using Microsoft.Office.Interop.Word;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Linq.Expressions;
-    using System.Reflection;
-    using System.Runtime.InteropServices;
-    using System.Web.Services;
-    using Comando.UserControl;
-    using Comando;
-    using System.Configuration;
+﻿using Microsoft.Office.Interop.Word;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Web.Services;
+using Comando.UserControl;
+using Comando;
+using System.Configuration;
 
-    public class Domicilio : ComandoPage
+namespace comando.NewPages
+{
+    public partial class Domicilio : Comando.ComandoPage
     {
         private Agente agente1 = new Agente();
         private Agente agente2 = new Agente();
@@ -145,7 +145,7 @@
                     }
                 }
             }
-            ((ComandoPage)this.Parent).Title = Helper.GetCategoryDescription(int.Parse(this.ViewState["categoriaverbale"].ToString()));
+            ((ComandoPage)this).Title = Helper.GetCategoryDescription(int.Parse(this.ViewState["categoriaverbale"].ToString()));
             base.BindPossibiliVerbali(1);
             this.Menu.New += new EventHandler(this.New);
             this.Menu.Create += new EventHandler(this.Create);
@@ -174,4 +174,3 @@
         }
     }
 }
-

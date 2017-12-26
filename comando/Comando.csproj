@@ -264,6 +264,7 @@
     <Content Include="Modelli\VEICOLI DI PROVENIENZA FURTIVA\Origine Dati Veicoli Provenienza Furtiva.xlsx" />
     <Content Include="Modelli\VEICOLI DI PROVENIENZA FURTIVA\ricognizione veicolo.doc" />
     <Content Include="Modelli\VERBALI AMMINISTRATIVI\verbale di ritiro patente deteriorata.doc" />
+    <Content Include="NewPages\Domicilio.aspx" />
     <Content Include="obj\Debug\build.force" />
     <Content Include="obj\Debug\comando.csproj.CoreCompileInputs.cache" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
@@ -324,12 +325,10 @@
     <Content Include="Modelli\STRANIERI\stranieri.txt" />
     <Content Include="Pages\Anagrafiche.aspx" />
     <Content Include="Pages\CambioPassword.aspx" />
-    <Content Include="Pages\Domicilio.aspx" />
-    <Content Include="Pages\Domicilio_.aspx" />
     <Content Include="Pages\Ebbrezza.aspx" />
     <Content Include="Pages\Polizia.aspx" />
     <Content Include="Pages\Registrati.aspx" />
-    <Content Include="Pages\Services.aspx" />
+    <Content Include="NewPages\Services.aspx" />
     <Content Include="Pages\Sives.aspx" />
     <Content Include="Pages\Stranieri.aspx" />
     <Content Include="Pages\Veicoli.aspx" />
@@ -545,6 +544,16 @@
       <DependentUpon>ComandoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelCustomization\VerbaleElezioneDomicilio.cs" />
+    <Compile Include="NewPages\Domicilio.aspx.cs">
+      <DependentUpon>Domicilio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewPages\Domicilio.aspx.designer.cs">
+      <DependentUpon>Domicilio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewPages\Services.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
@@ -552,13 +561,6 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\CambioPassword.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\Domicilio.aspx.cs">
-      <DependentUpon>Domicilio.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\Domicilio_.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\Ebbrezza.cs">

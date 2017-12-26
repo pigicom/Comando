@@ -29,7 +29,7 @@
                 if (utente != null)
                 {
                     this.Session["currentUser"] = utente;
-                    base.Response.Redirect("Pages/Domicilio.aspx?cat=1");
+                    base.Response.Redirect("NewPages/Domicilio.aspx?cat=1");
                 }
                 else
                 {

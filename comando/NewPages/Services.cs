@@ -1,5 +1,4 @@
-﻿namespace Comando.Pages
-
+﻿namespace Comando.NewPages
 {
     using Newtonsoft.Json;
     using System;

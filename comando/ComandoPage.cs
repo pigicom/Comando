@@ -33,10 +33,10 @@
                     child.Items[index].Attributes.Add("onchange", string.Concat(objArray1));
                     index++;
                 }
-              //  (Comando.SiteMaster).checklist = child;
-                ((ComandoPage)this.Parent).FindControl("Panel1").Visible = true;
-                ((ComandoPage)this.Parent).FindControl("Panel2").Visible = ((ComandoPage)this.Parent).FindControl("Panel1").Visible;
-                ((ComandoPage)this.Parent).FindControl("Panel1").Controls.Add(child);
+                //  (Comando.SiteMaster).checklist = child;
+                this.Controls[0].FindControl("Panel1").Visible = true;
+                this.Controls[0].FindControl("Panel2").Visible = this.Controls[0].FindControl("Panel1").Visible;
+                this.Controls[0].FindControl("Panel1").Controls.Add(child);
             }
         }
 

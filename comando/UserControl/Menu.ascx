@@ -140,7 +140,7 @@
         </tr>
         <tr>
             <td style="width: 25%" class="auto-style1">
-                <asp:ImageButton ID="ImageButton2" runat="server" class="button" CausesValidation="false" src="../images/nuovoverbale.png" OnClientClick="$('#divUpload').show();$('#divUpload').attr('style','margin-top:-300px;width:75%;margin-left:200px'); $(window).scrollTop(1000);return false;" />
+                <asp:ImageButton ID="ImageButton2" runat="server" class="button" CausesValidation="false" src="../images/nuovo.png" OnClientClick="$('#divUpload').show();$('#divUpload').attr('style','margin-top:-300px;width:75%;margin-left:200px'); $(window).scrollTop(1000);return false;" />
             </td>
         </tr>
     </table>
