@@ -1,4 +1,4 @@
-﻿namespace WebApp.UserControl
+﻿namespace Comando.UserControl
 {
     using System;
     using System.Linq;
@@ -6,8 +6,8 @@
     using System.Reflection;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    using WebApp;
-    using comando;
+    
+    using Comando;
 
     public class ControlCustode : UserControl
     {
@@ -19,7 +19,7 @@
 
         public void LoadData(Veicolo veicolo)
         {
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
 
 
@@ -44,7 +44,7 @@
 
         public void SaveData(long idveicolo)
         {
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
                 new Veicolo();
                 object[] keyValues = new object[] { idveicolo };

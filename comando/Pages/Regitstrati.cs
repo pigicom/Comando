@@ -1,4 +1,4 @@
-﻿namespace WebApp.Pages
+﻿namespace Comando.Pages
 {
     using System;
     using System.Linq;
@@ -8,7 +8,7 @@
     using System.Web.UI;
     using System.Web.UI.HtmlControls;
     using System.Web.UI.WebControls;
-    using comando;
+    using Comando;
 
     public class Regitstrati : Page
     {
@@ -42,7 +42,7 @@
         {
             try
             {
-                using (ComandoEntities2 entities = new ComandoEntities2())
+                using (ComandoEntities entities = new ComandoEntities())
                 {
                     Utente u = new Utente {
                         Login = this.username.Text,

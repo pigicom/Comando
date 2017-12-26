@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Sives.aspx.cs" Inherits="WebApp.Sives" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Sives.aspx.cs" Inherits="Comando.Sives" %>
 
 <%@ Register Src="~/UserControl/ControlTrasgressore.ascx" TagPrefix="uc1" TagName="ControlTrasgressore" %>
 <%@ Register Src="~/UserControl/ControlAvvocato.ascx"     TagPrefix="uc1" TagName="ControlAvvocato" %>

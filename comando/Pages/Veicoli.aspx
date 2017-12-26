@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Veicoli.aspx.cs" Inherits="WebApp.Veicoli" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Veicoli.aspx.cs" Inherits="Comando.Veicoli" %>
 
 <%@ Register Src="~/UserControl/ControlAgente.ascx" TagPrefix="uc1" TagName="ControlAgente" %>
 <%@ Register Src="~/UserControl/ControlProprietario.ascx" TagPrefix="uc1" TagName="ControlProprietario" %>

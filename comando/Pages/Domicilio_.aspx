@@ -1,11 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Domicilio.aspx.cs" Inherits="comando.Pages.Domicilio" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Domicilio.aspx.cs" Inherits="Comando.Domicilio" %>
 
 <%@ Register Src="~/UserControl/ControlTrasgressore.ascx" TagPrefix="uc1" TagName="ControlTrasgressore" %>
 <%@ Register Src="~/UserControl/ControlAvvocato.ascx" TagPrefix="uc1" TagName="ControlAvvocato" %>
 <%@ Register Src="~/UserControl/ControlAgente.ascx" TagPrefix="uc1" TagName="ControlAgente" %>
 <%@ Register Src="~/UserControl/Menu.ascx" TagPrefix="uc1" TagName="Menu" %>
 
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
   
     <script>
@@ -44,6 +47,4 @@
          <div id="buttons" class="buttons">
           <uc1:Menu runat="server" id="Menu" />
         </div>
-</asp:Content>
-
 </asp:Content>

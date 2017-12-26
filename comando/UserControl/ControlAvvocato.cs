@@ -1,4 +1,4 @@
-﻿namespace WebApp.UserControl
+﻿namespace Comando.UserControl
 {
     using System;
     using System.Data.Entity;
@@ -8,8 +8,8 @@
     using System.Web.UI;
     using System.Web.UI.WebControls;
     using Comando;
-    using WebApp;
-    using comando;
+    
+    using Comando;
 
     public class ControlAvvocato : UserControl
     {
@@ -63,7 +63,7 @@
 
         public void SaveData(long idverbale)
         {
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
             
                 ParameterExpression expression;

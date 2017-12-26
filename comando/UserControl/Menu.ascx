@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Menu.ascx.cs" Inherits="WebApp.UserControl.Menu" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Menu.ascx.cs" Inherits="Comando.UserControl.Menu" %>
 <%@ Register Src="Ricerca.ascx" TagName="Ricerca" TagPrefix="uc1" %>
 
 <style type="text/css">

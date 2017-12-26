@@ -1,4 +1,4 @@
-﻿namespace WebApp
+﻿namespace Comando
 {
     using Microsoft.Office.Interop.Word;
     using System;
@@ -8,8 +8,8 @@
     using System.Reflection;
     using System.Runtime.InteropServices;
     using System.Web.Services;
-    using WebApp.UserControl;
-    using comando;
+    using Comando.UserControl;
+    using Comando;
     using System.Configuration;
 
     public class Domicilio : ComandoPage
@@ -17,10 +17,10 @@
         private Agente agente1 = new Agente();
         private Agente agente2 = new Agente();
         private Avvocato avvocato = new Avvocato();
-        protected WebApp.UserControl.ControlAgente ControlAgente;
-        protected WebApp.UserControl.ControlAvvocato ControlAvvocato;
-        protected WebApp.UserControl.ControlTrasgressore ControlTrasgressore;
-        protected WebApp.UserControl.Menu Menu;
+        protected Comando.UserControl.ControlAgente ControlAgente;
+        protected Comando.UserControl.ControlAvvocato ControlAvvocato;
+        protected Comando.UserControl.ControlTrasgressore ControlTrasgressore;
+        protected Comando.UserControl.Menu Menu;
         private string pathPrefix = (ConfigurationManager.AppSettings["PathTemplates"] + @"\ELEZIONI DI DOMICILIO STRANIERI\");
         private Trasgressore trasgressore = new Trasgressore();
         private Verbale verbale = new Verbale();
@@ -31,16 +31,16 @@
         {
             BaseVerbale verbale = new BaseVerbale();
             long current = verbaleid;
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
                 this.violazione = entities.Violazione.Where(x => x.Verbale_Id == verbaleid).Select(x => x).FirstOrDefault();
                 this.trasgressore = this.verbale.Trasgressore;
                 this.avvocato = this.verbale.Avvocato;
-                if (this.verbale.Agente!=null)
+                if (this.verbale.Agente != null)
                 {
                     this.agente1 = this.verbale.Agente2.ElementAt<Agente>(1);
                 }
-                if (this.verbale.Agente2!=null)
+                if (this.verbale.Agente2 != null)
                 {
                     this.agente2 = this.verbale.Agente2.ElementAt<Agente>(2);
                 }
@@ -57,15 +57,15 @@
             {
                 int num = int.Parse(this.ViewState["idverbale"].ToString());
                 string item = string.Empty;
-                using (new ComandoEntities2())
+                using (new ComandoEntities())
                 {
                     Helper.CloseAllProcess();
-                    Application word = (Application) Activator.CreateInstance(Marshal.GetTypeFromCLSID(new Guid("000209FF-0000-0000-C000-000000000046")));
+                    Application word = (Application)Activator.CreateInstance(Marshal.GetTypeFromCLSID(new Guid("000209FF-0000-0000-C000-000000000046")));
                     using (IEnumerator<string> enumerator = list2.GetEnumerator())
                     {
                         while (enumerator.MoveNext())
                         {
-                            item = Helper.FillDocument(enumerator.Current, this.CreaDettaglio((long) num), word);
+                            item = Helper.FillDocument(enumerator.Current, this.CreaDettaglio((long)num), word);
                             file.Add(item);
                         }
                     }
@@ -79,22 +79,22 @@
         }
 
         [WebMethod]
-        public static string GetCittaDaCAP(string cap) => 
+        public static string GetCittaDaCAP(string cap) =>
             Helper.GetCittaDaCAP(cap);
 
         [WebMethod]
-        public static string GetCittaList(string testo) => 
+        public static string GetCittaList(string testo) =>
             Helper.GetCittaList(testo);
 
         [WebMethod]
-        public static string[] GetStatiList() => 
+        public static string[] GetStatiList() =>
             Helper.GetStatiList();
 
         public void Load(Verbale v)
         {
             if (v != null)
             {
-                using (ComandoEntities2 entities = new ComandoEntities2())
+                using (ComandoEntities entities = new ComandoEntities())
                 {
 
                     this.violazione = entities.Violazione.Where(x => x.Verbale_Id == v.Id).FirstOrDefault();
@@ -136,10 +136,10 @@
                 if (base.Request.QueryString["idVerbale"] != null)
                 {
                     long IdVerbale = long.Parse(base.Request.QueryString["idVerbale"]);
-                    using (ComandoEntities2 entities = new ComandoEntities2())
+                    using (ComandoEntities entities = new ComandoEntities())
                     {
-                       
-                 ;
+
+                        ;
                         Verbale v = entities.Verbale.Where(x => x.Id == IdVerbale).FirstOrDefault();
                         this.Load(v);
                     }
@@ -155,7 +155,7 @@
 
         public void Save(object sender, EventArgs e)
         {
-            using (var context = new ComandoEntities2())
+            using (var context = new ComandoEntities())
             {
                 if (this.ViewState["idverbale"] == null)
                 {

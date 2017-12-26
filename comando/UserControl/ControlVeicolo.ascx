@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ControlVeicolo.ascx.cs" Inherits="WebApp.UserControl.ControlVeicolo" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ControlVeicolo.ascx.cs" Inherits="Comando.UserControl.ControlVeicolo" %>
 
 
 <asp:Panel ID="Panel1" runat="server"  >

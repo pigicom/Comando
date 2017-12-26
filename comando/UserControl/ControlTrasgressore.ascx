@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ControlTrasgressore.ascx.cs" Inherits="WebApp.UserControl.ControlTrasgressore" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ControlTrasgressore.ascx.cs" Inherits="Comando.UserControl.ControlTrasgressore" %>
 <link href="../Styles/ui.jqgrid.css" rel="stylesheet" />
 <script src="../Scripts/i18n/grid.locale-it.js"></script>
 <script>

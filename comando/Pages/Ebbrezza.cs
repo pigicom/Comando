@@ -1,4 +1,4 @@
-﻿namespace WebApp
+﻿namespace Comando
 {
     using Microsoft.Office.Interop.Word;
     using System;
@@ -7,8 +7,8 @@
     using System.Linq.Expressions;
     using System.Reflection;
     using System.Runtime.InteropServices;
-    using WebApp.UserControl;
-    using comando;
+    using Comando.UserControl;
+    using Comando;
     using System.Configuration;
 
     public class Ebbrezza : ComandoPage
@@ -16,12 +16,12 @@
         private Agente agente1 = new Agente();
         private Agente agente2 = new Agente();
         private Avvocato avvocato = new Avvocato();
-        protected WebApp.UserControl.ControlAgente ControlAgente;
-        protected WebApp.UserControl.ControlPatente ControlPatente;
-        protected WebApp.UserControl.ControlProprietario ControlProprietario;
-        protected WebApp.UserControl.ControlTrasgressore ControlTrasgressore;
+        protected Comando.UserControl.ControlAgente ControlAgente;
+        protected Comando.UserControl.ControlPatente ControlPatente;
+        protected Comando.UserControl.ControlProprietario ControlProprietario;
+        protected Comando.UserControl.ControlTrasgressore ControlTrasgressore;
         protected ControlVeicolo ControlVeicolo1;
-        protected WebApp.UserControl.Menu Menu;
+        protected Comando.UserControl.Menu Menu;
         private string pathPrefix = (ConfigurationManager.AppSettings["PathTemplates"] + @"\GUIDA IN STATO DI EBBREZZA\");
         private Trasgressore trasgressore = new Trasgressore();
         private Veicolo veicolo = new Veicolo();
@@ -33,7 +33,7 @@
         {
             VerbaleElezioneDomicilio domicilio = new VerbaleElezioneDomicilio();
             long current = verbaleid;
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
                 this.violazione = entities.Violazione.Where(x => x.Verbale_Id == verbaleid).FirstOrDefault();
                 this.trasgressore = this.verbale.Trasgressore;
@@ -59,7 +59,7 @@
             {
                 int num = int.Parse(this.ViewState["idverbale"].ToString());
                 string item = string.Empty;
-                using (new ComandoEntities2())
+                using (new ComandoEntities())
                 {
                     Helper.CloseAllProcess();
                     Application word = (Application) Activator.CreateInstance(Marshal.GetTypeFromCLSID(new Guid("000209FF-0000-0000-C000-000000000046")));
@@ -84,7 +84,7 @@
         {
             if (v != null)
             {
-                using (ComandoEntities2 entities = new ComandoEntities2())
+                using (ComandoEntities entities = new ComandoEntities())
                 {
                     this.violazione = entities.Violazione.Where(x => x.Verbale_Id == v.Id).FirstOrDefault();
                     if (v.Agente2.Count > 0)
@@ -133,7 +133,7 @@
                 if (base.Request.QueryString["idVerbale"] != null)
                 {
                     long IdVerbale = long.Parse(base.Request.QueryString["idVerbale"]);
-                    using (ComandoEntities2 entities = new ComandoEntities2())
+                    using (ComandoEntities entities = new ComandoEntities())
                     {
                         Verbale v = entities.Verbale.Find(IdVerbale);
                         this.Load(v);
@@ -150,7 +150,7 @@
 
         public void Save(object sender, EventArgs e)
         {
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
                 if (this.ViewState["idverbale"] == null)
                 {

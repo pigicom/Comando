@@ -1,4 +1,4 @@
-﻿namespace WebApp
+﻿namespace Comando
 {
     using System;
     using System.Collections.Generic;
@@ -8,7 +8,7 @@
     using System.Runtime.CompilerServices;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    using comando;
+    using Comando;
 
     public class ComandoPage : Page
     {
@@ -16,7 +16,7 @@
 
         public void BindPossibiliVerbali(int currentid)
         {
-            using (var ctx=new ComandoEntities2())
+            using (var ctx=new ComandoEntities())
             {
                 string path = ConfigurationManager.AppSettings["PathTemplates"];
                 string[] directories = Directory.GetDirectories(path);
@@ -33,7 +33,7 @@
                     child.Items[index].Attributes.Add("onchange", string.Concat(objArray1));
                     index++;
                 }
-              //  (comando.SiteMaster).checklist = child;
+              //  (Comando.SiteMaster).checklist = child;
                 ((ComandoPage)this.Parent).FindControl("Panel1").Visible = true;
                 ((ComandoPage)this.Parent).FindControl("Panel2").Visible = ((ComandoPage)this.Parent).FindControl("Panel1").Visible;
                 ((ComandoPage)this.Parent).FindControl("Panel1").Controls.Add(child);
@@ -55,20 +55,7 @@
             }
             return source.ToList<string>();
         }
-
-        //[Serializable, CompilerGenerated]
-        //private sealed class <>c
-        //{
-        //    public static readonly ComandoPage.<>c <>9 = new ComandoPage.<>c();
-        //    public static Func<string, bool> <>9__3_0;
-        //    public static Func<string, string> <>9__3_1;
-
-        //    internal bool <VerbaliSelezionati>b__3_0(string x) => 
-        //        (x.IndexOf("documento_") >= 0);
-
-        //    internal string <VerbaliSelezionati>b__3_1(string x) => 
-        //        x;
-        //}
+             
     }
 }
 

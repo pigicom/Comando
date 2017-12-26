@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace comando
+namespace Comando
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ComandoEntities2 : DbContext
+    public partial class ComandoEntities : DbContext
     {
-        public ComandoEntities2()
-            : base("name=ComandoEntities2")
+        public ComandoEntities()
+            : base("name=ComandoEntities")
         {
         }
     
@@ -38,7 +38,10 @@ namespace comando
         public virtual DbSet<aspnet_Users> aspnet_Users { get; set; }
         public virtual DbSet<aspnet_WebEvent_Events> aspnet_WebEvent_Events { get; set; }
         public virtual DbSet<Attore> Attore { get; set; }
+        public virtual DbSet<Avvocato> Avvocato { get; set; }
         public virtual DbSet<CategoriaVerbale> CategoriaVerbale { get; set; }
+        public virtual DbSet<Comuni> Comuni { get; set; }
+        public virtual DbSet<Custode> Custode { get; set; }
         public virtual DbSet<documenti_categorie> documenti_categorie { get; set; }
         public virtual DbSet<Documento> Documento { get; set; }
         public virtual DbSet<DocumentoCollegato> DocumentoCollegato { get; set; }
@@ -54,17 +57,14 @@ namespace comando
         public virtual DbSet<Stati> Stati { get; set; }
         public virtual DbSet<TipologiaAnagrafica> TipologiaAnagrafica { get; set; }
         public virtual DbSet<TipoVeicolo> TipoVeicolo { get; set; }
+        public virtual DbSet<Trasgressore> Trasgressore { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<UsersOpenAuthAccounts> UsersOpenAuthAccounts { get; set; }
         public virtual DbSet<UsersOpenAuthData> UsersOpenAuthData { get; set; }
         public virtual DbSet<Utente> Utente { get; set; }
+        public virtual DbSet<Veicolo> Veicolo { get; set; }
         public virtual DbSet<Verbale> Verbale { get; set; }
         public virtual DbSet<VerbaleElezioneDomicilio> VerbaleElezioneDomicilio { get; set; }
         public virtual DbSet<Violazione> Violazione { get; set; }
-        public virtual DbSet<Avvocato> Avvocato { get; set; }
-        public virtual DbSet<Custode> Custode { get; set; }
-        public virtual DbSet<Veicolo> Veicolo { get; set; }
-        public virtual DbSet<Trasgressore> Trasgressore { get; set; }
-        public virtual DbSet<Comuni> Comuni { get; set; }
     }
 }

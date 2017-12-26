@@ -1,4 +1,4 @@
-﻿namespace WebApp.UserControl
+﻿namespace Comando.UserControl
 {
     using System;
     using System.Linq;
@@ -6,8 +6,8 @@
     using System.Reflection;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    using WebApp;
-    using comando;
+    
+    using Comando;
     public class ControlPatente : UserControl
     {
         protected DropDownList ddlCategoria;
@@ -19,7 +19,7 @@
 
         public void LoadData(Proprietario tra)
         {
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
 
                 this.patente = entities.Patente.Where(x => x.Trasgressore == tra).FirstOrDefault();
@@ -38,7 +38,7 @@
 
         public void LoadData(Trasgressore tra)
         {
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
 
                 this.patente = entities.Patente.Where(x => x.Trasgressore == tra).FirstOrDefault();
@@ -66,7 +66,7 @@
 
         public void SaveData(long idverbale, bool trasgressore)
         {
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
                 Trasgressore trasgressore2 = null;
                 Proprietario proprietario = null;

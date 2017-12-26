@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Ricerca.ascx.cs" Inherits="WebApp.UserControl.Ricerca" %> 
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Ricerca.ascx.cs" Inherits="Comando.UserControl.Ricerca" %> 
 
 <script src="../Scripts/jqgrid/js/jquery.jqGrid.min.js"></script>
 <div class="quickmenu">

@@ -1,4 +1,4 @@
-﻿namespace WebApp.UserControl
+﻿namespace Comando.UserControl
 {
     using System;
     using System.Linq;
@@ -6,8 +6,8 @@
     using System.Reflection;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    using WebApp;
-    using comando;
+    
+    using Comando;
 
     public class ControlTrasgressore : UserControl
     {
@@ -66,7 +66,7 @@
         {
             try
             {
-                using (ComandoEntities2 entities = new ComandoEntities2())
+                using (ComandoEntities entities = new ComandoEntities())
                 {
                     entities.Trasgressore.Add(this.trasgressore);
                     entities.SaveChanges();
@@ -81,7 +81,7 @@
 
         public Trasgressore SaveData(long idverbale)
         {
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
                 ParameterExpression expression = null;
                 ParameterExpression[] parameters = new ParameterExpression[] { expression };

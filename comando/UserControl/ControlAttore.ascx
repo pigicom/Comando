@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ControlAttore.ascx.cs" Inherits="WebApp.UserControl.ControlAttore" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ControlAttore.ascx.cs" Inherits="Comando.UserControl.ControlAttore" %>
 
 <script>
     $(document).ready(function () {

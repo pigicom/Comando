@@ -1,4 +1,4 @@
-﻿namespace WebApp.UserControl
+﻿namespace Comando.UserControl
 {
     using System;
     using System.Data.Entity;
@@ -7,7 +7,7 @@
     using System.Reflection;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    using comando;
+    using Comando;
 
     public class ControlAttore : UserControl
     {
@@ -62,7 +62,7 @@
         {
             try
             {
-                using (ComandoEntities2 entities = new ComandoEntities2())
+                using (ComandoEntities entities = new ComandoEntities())
                 {
                     entities.Trasgressore.Add((Trasgressore) this.trasgressore);
                     entities.SaveChanges();
@@ -77,7 +77,7 @@
 
         public Attore SaveData(long idverbale)
         {
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
 
 

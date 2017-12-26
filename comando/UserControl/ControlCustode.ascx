@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ControlCustode.ascx.cs" Inherits="WebApp.UserControl.ControlCustode" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ControlCustode.ascx.cs" Inherits="Comando.UserControl.ControlCustode" %>
 
 
 <style type="text/css">

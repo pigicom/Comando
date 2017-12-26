@@ -1,4 +1,4 @@
-﻿namespace WebApp
+﻿namespace Comando
 {
     using System;
     using System.Linq;
@@ -7,7 +7,7 @@
     using System.Web.UI;
     using System.Web.UI.HtmlControls;
     using System.Web.UI.WebControls;
-    using comando;
+    using Comando;
     public class Login : Page
     {
         protected HtmlForm form1;
@@ -20,12 +20,12 @@
 
         protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
         {
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
                
                 string pwd = Helper.Base64Encode(this.Login1.Password);
 
-                Utente utente = entities.Utente.Where(x => x.Login == this.Login1.UserName && this.Login1.Password == pwd).FirstOrDefault();
+                Utente utente = entities.Utente.Where(x => x.Login == this.Login1.UserName && x.Pwd == pwd).FirstOrDefault();
                 if (utente != null)
                 {
                     this.Session["currentUser"] = utente;

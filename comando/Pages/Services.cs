@@ -1,4 +1,4 @@
-﻿namespace WebApp.Pages
+﻿namespace Comando.Pages
 {
     using Newtonsoft.Json;
     using System;
@@ -13,7 +13,7 @@
     using System.Web.Services;
     using System.Web.UI;
     using System.Web.UI.HtmlControls;
-    using comando;
+    using Comando;
 
     public class Services : Page
     {
@@ -23,10 +23,8 @@
         public static void CaricaVerbale(string id)
         {
             int index = Convert.ToInt32(id);
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
-               
-
                 Verbale v = entities.Verbale.Find(id);
                 if (v.CategoriaVerbale.ID == 1L)
                 {
@@ -46,7 +44,7 @@
         [WebMethod]
         public static void DeleteAgente(long id)
         {
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
                 object[] keyValues = new object[] { id };
                 Agente entity = entities.Agente.Find(keyValues);
@@ -59,7 +57,7 @@
         //public static string GetAgenti()
         //{
         //    new JavaScriptSerializer();
-        //    //using (ComandoEntities2 entities = new ComandoEntities2())
+        //    //using (ComandoEntities entities = new ComandoEntities())
         //    //{
         //    //    ParameterExpression expression;
         //    //    entities.Configuration.LazyLoadingEnabled = false;
@@ -98,7 +96,7 @@
         //public static string GetTrasgressore()
         //{
         //    new JavaScriptSerializer();
-        //    using (ComandoEntities2 entities = new ComandoEntities2())
+        //    using (ComandoEntities entities = new ComandoEntities())
         //    {
         //        ParameterExpression expression;
         //        System.Linq.Expressions.Expression[] arguments = new System.Linq.Expressions.Expression[] { System.Linq.Expressions.Expression.Property(expression = System.Linq.Expressions.Expression.Parameter(typeof(Trasgressore), "x"), (MethodInfo) methodof(Trasgressore.get_Id)), System.Linq.Expressions.Expression.Call(System.Linq.Expressions.Expression.Property(expression, (MethodInfo) methodof(Trasgressore.get_Nome)), (MethodInfo) methodof(string.Trim), new System.Linq.Expressions.Expression[0]), System.Linq.Expressions.Expression.Call(System.Linq.Expressions.Expression.Property(expression, (MethodInfo) methodof(Trasgressore.get_Cognome)), (MethodInfo) methodof(string.Trim), new System.Linq.Expressions.Expression[0]), System.Linq.Expressions.Expression.Property(expression, (MethodInfo) methodof(Trasgressore.get_DataNascita)), System.Linq.Expressions.Expression.Call(System.Linq.Expressions.Expression.Property(expression, (MethodInfo) methodof(Trasgressore.get_CittaNascita)), (MethodInfo) methodof(string.Trim), new System.Linq.Expressions.Expression[0]) };
@@ -115,7 +113,7 @@
         //public static string GetVerbali(string categoria)
         //{
         //    new JavaScriptSerializer();
-        //    using (ComandoEntities2 entities = new ComandoEntities2())
+        //    using (ComandoEntities entities = new ComandoEntities())
         //    {
         //        <>c__DisplayClass3_0 class_;
         //        ParameterExpression expression;
@@ -163,7 +161,7 @@
         //{
         //    try
         //    {
-        //        using (ComandoEntities2 entities = new ComandoEntities2())
+        //        using (ComandoEntities entities = new ComandoEntities())
         //        {
         //            Agente entity = new Agente {
         //                Nome = Nome,
@@ -194,7 +192,7 @@
         //        string nome = agente.Nome;
         //        string cognome = agente.Cognome;
         //        string grado = agente.Grado;
-        //        using (ComandoEntities2 entities = new ComandoEntities2())
+        //        using (ComandoEntities entities = new ComandoEntities())
         //        {
         //            object[] keyValues = new object[] { id };
         //            Agente local1 = entities.Agente.Find(keyValues);

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace comando {
+namespace Comando {
     
     
     public partial class ViewSwitcher {

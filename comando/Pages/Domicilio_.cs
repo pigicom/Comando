@@ -7,52 +7,44 @@
     using System.Linq.Expressions;
     using System.Reflection;
     using System.Runtime.InteropServices;
-    using System.Web.UI.WebControls;
+    using System.Web.Services;
     using Comando.UserControl;
     using Comando;
     using System.Configuration;
 
-    public class Polizia : ComandoPage
+    public class Domicilio_ : ComandoPage
     {
         private Agente agente1 = new Agente();
         private Agente agente2 = new Agente();
         private Avvocato avvocato = new Avvocato();
         protected Comando.UserControl.ControlAgente ControlAgente;
         protected Comando.UserControl.ControlAvvocato ControlAvvocato;
-        protected Comando.UserControl.ControlPatente ControlPatente;
         protected Comando.UserControl.ControlTrasgressore ControlTrasgressore;
         protected Comando.UserControl.Menu Menu;
-        private Patente patente = new Patente();
-        private string pathPrefix = (ConfigurationManager.AppSettings["PathTemplates"] + @"\POLIZIA GIUDIZIARIA\");
+        private string pathPrefix = (ConfigurationManager.AppSettings["PathTemplates"] + @"\ELEZIONI DI DOMICILIO STRANIERI\");
         private Trasgressore trasgressore = new Trasgressore();
-        private Veicolo veicolo = new Veicolo();
         private Verbale verbale = new Verbale();
         private VerbaleElezioneDomicilio verbaledomicilio = new VerbaleElezioneDomicilio();
         private Violazione violazione = new Violazione();
 
         public BaseVerbale CreaDettaglio(long verbaleid)
         {
-            VerbaleElezioneDomicilio domicilio = new VerbaleElezioneDomicilio();
+            BaseVerbale verbale = new BaseVerbale();
             long current = verbaleid;
             using (ComandoEntities entities = new ComandoEntities())
             {
-               
-                ParameterExpression expression=null;
-                ParameterExpression[] parameters = new ParameterExpression[] { expression };
-                this.verbale = entities.Verbale.Find(verbaleid);
-                this.violazione = entities.Violazione.Find(verbale.Violazione_Id);
+                this.violazione = entities.Violazione.Where(x => x.Verbale_Id == verbaleid).Select(x => x).FirstOrDefault();
                 this.trasgressore = this.verbale.Trasgressore;
-                if (this.verbale.Agente2.Count > 0)
-                {
-                    this.agente1 = this.verbale.Agente2.ElementAt<Agente>(0);
-                }
-                if (this.verbale.Agente2.Count > 1)
-                {
-                    this.agente2 = this.verbale.Agente2.ElementAt<Agente>(1);
-                }
                 this.avvocato = this.verbale.Avvocato;
-                this.patente = this.trasgressore.Patente.FirstOrDefault<Patente>();
-                return Helper.RiempiCampi(this.verbale, this.agente1, this.agente2, this.violazione, this.trasgressore, this.patente, null, null, this.avvocato, null, null);
+                if (this.verbale.Agente!=null)
+                {
+                    this.agente1 = this.verbale.Agente2.ElementAt<Agente>(1);
+                }
+                if (this.verbale.Agente2!=null)
+                {
+                    this.agente2 = this.verbale.Agente2.ElementAt<Agente>(2);
+                }
+                return Helper.RiempiCampi(this.verbale, this.agente1, this.agente2, this.violazione, this.trasgressore, null, null, null, this.avvocato, null, null);
             }
         }
 
@@ -86,6 +78,18 @@
             this.Page.ClientScript.RegisterStartupScript(base.GetType(), "key", "<script>ShowVerbali()</script>");
         }
 
+        [WebMethod]
+        public static string GetCittaDaCAP(string cap) => 
+            Helper.GetCittaDaCAP(cap);
+
+        [WebMethod]
+        public static string GetCittaList(string testo) => 
+            Helper.GetCittaList(testo);
+
+        [WebMethod]
+        public static string[] GetStatiList() => 
+            Helper.GetStatiList();
+
         public void Load(Verbale v)
         {
             if (v != null)
@@ -93,41 +97,35 @@
                 using (ComandoEntities entities = new ComandoEntities())
                 {
 
-
-                    Verbale Verbale = entities.Verbale.Find(v.Id);
-                    this.violazione = entities.Violazione.Find(v.Violazione_Id);
-                    if (Verbale.Agente2.Count > 0)
+                    this.violazione = entities.Violazione.Where(x => x.Verbale_Id == v.Id).FirstOrDefault();
+                    if (v.Agente2.Count() > 0)
                     {
-                        this.ControlAgente.agente1 = Verbale.Agente2.ElementAt<Agente>(0);
+                        this.ControlAgente.agente1 = v.Agente2.ElementAt<Agente>(0);
                     }
-                    if (Verbale.Agente2.Count > 1)
+                    if (v.Agente2.Count() > 1)
                     {
-                        this.ControlAgente.agente2 = Verbale.Agente2.ElementAt<Agente>(1);
+                        this.ControlAgente.agente2 = v.Agente2.ElementAt<Agente>(1);
                     }
-                    this.ControlAgente.verbale = Verbale;
+                    this.ControlAgente.verbale = v;
                     this.ControlAgente.violazione = this.violazione;
-                    this.ControlAgente.LoadData(this.ControlAgente.agente1, this.ControlAgente.agente2, Verbale, this.ControlAgente.violazione);
-                    if (Verbale.Trasgressore != null)
+                    this.ControlAgente.LoadData(this.ControlAgente.agente1, this.ControlAgente.agente2, v, this.ControlAgente.violazione);
+                    if (v.Trasgressore != null)
                     {
-                        this.ControlTrasgressore.LoadData(Verbale.Trasgressore);
+                        this.ControlTrasgressore.LoadData(v.Trasgressore);
                     }
-                    this.ViewState["idverbale"] = Verbale.Id;
-                    base.idverbale.Value = Verbale.Id.ToString();
-                    if ((Verbale.Trasgressore != null) && (Verbale.Trasgressore.Patente != null))
+                    if (v.Avvocato != null)
                     {
-                        this.ControlPatente.LoadData(Verbale.Trasgressore);
+                        this.ControlAvvocato.LoadData(v.Avvocato);
                     }
-                    if (Verbale.Avvocato != null)
-                    {
-                        this.ControlAvvocato.LoadData(Verbale.Avvocato);
-                    }
+                    this.ViewState["idverbale"] = v.Id;
+                    base.idverbale.Value = v.Id.ToString();
                 }
             }
         }
 
         public void New(object sender, EventArgs e)
         {
-            base.Response.Redirect("Polizia.aspx?sotto=&cat=3");
+            base.Response.Redirect("Domicilio.aspx?sotto=&cat=1");
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -140,23 +138,24 @@
                     long IdVerbale = long.Parse(base.Request.QueryString["idVerbale"]);
                     using (ComandoEntities entities = new ComandoEntities())
                     {
-
-                        Verbale v = entities.Verbale.Find(IdVerbale);
+                       
+                 ;
+                        Verbale v = entities.Verbale.Where(x => x.Id == IdVerbale).FirstOrDefault();
                         this.Load(v);
                     }
                 }
             }
-            ((ComandoPage)this.Parent) .Title = Helper.GetCategoryDescription(int.Parse(this.ViewState["categoriaverbale"].ToString()));
-            base.BindPossibiliVerbali(3);
+            ((ComandoPage)this.Parent).Title = Helper.GetCategoryDescription(int.Parse(this.ViewState["categoriaverbale"].ToString()));
+            base.BindPossibiliVerbali(1);
+            this.Menu.New += new EventHandler(this.New);
             this.Menu.Create += new EventHandler(this.Create);
             this.Menu.Save += new EventHandler(this.Save);
             this.Menu.Search += new EventHandler(this.Search);
-            this.Menu.New += new EventHandler(this.New);
         }
 
         public void Save(object sender, EventArgs e)
         {
-            using (var context =new ComandoEntities())
+            using (var context = new ComandoEntities())
             {
                 if (this.ViewState["idverbale"] == null)
                 {
@@ -165,12 +164,8 @@
                 int num = int.Parse(this.ViewState["idverbale"].ToString());
                 this.verbale = context.Verbale.Find((long)num);
                 this.ControlAgente.SaveData((long)num);
+                this.ControlAvvocato.SaveData((long)num);
                 this.ControlTrasgressore.SaveData((long)num);
-                this.ControlPatente.SaveData((long)num, true);
-                if (!string.IsNullOrEmpty(((TextBox)this.ControlAvvocato.FindControl("txtNome")).Text) || !string.IsNullOrEmpty(((TextBox)this.ControlAvvocato.FindControl("txtCognome")).Text))
-                {
-                    this.ControlAvvocato.SaveData((long)num);
-                }
             }
         }
 

@@ -1,4 +1,4 @@
-﻿namespace WebApp.UserControl
+﻿namespace Comando.UserControl
 {
     using System;
     using System.Collections.Generic;
@@ -7,8 +7,8 @@
     using System.Reflection;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    using WebApp;
-    using comando;
+    
+    using Comando;
 
     public class Ricerca : UserControl
     {
@@ -16,7 +16,7 @@
 
         private void BindGrid()
         {
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
                 int currid = int.Parse(this.ViewState["categoriaverbale"].ToString());
                 var list = entities.Verbale.Where(x=>x.Category_Id== currid). ToList();
@@ -30,7 +30,7 @@
             if (e.CommandName == "Select")
             {
                 int index = Convert.ToInt32(e.CommandArgument);
-                using (ComandoEntities2 entities = new ComandoEntities2())
+                using (ComandoEntities entities = new ComandoEntities())
                 {
                      
                     ParameterExpression expression;

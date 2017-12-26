@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ControlProprietario.ascx.cs" Inherits="WebApp.UserControl.ControlProprietario" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ControlProprietario.ascx.cs" Inherits="Comando.UserControl.ControlProprietario" %>
     <script src="../Scripts/i18n/grid.locale-it.js"></script>
     
 <style type="text/css">

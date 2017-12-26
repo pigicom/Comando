@@ -1,4 +1,4 @@
-﻿namespace WebApp.Pages
+﻿namespace Comando.Pages
 {
     using System;
     using System.Linq;
@@ -7,8 +7,7 @@
     using System.Web.UI;
     using System.Web.UI.HtmlControls;
     using System.Web.UI.WebControls;
-    using WebApp;
-    using comando;
+    using Comando;
     public class CambioPassword : Page
     {
         protected TextBox confermapassword;
@@ -25,7 +24,7 @@
 
         protected void salva_Click(object sender, EventArgs e)
         {
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
                 Utente u = (Utente) this.Session["currentUser"];
                 string encodedPassword = Helper.Base64Encode(this.vecchiapassword.Text);

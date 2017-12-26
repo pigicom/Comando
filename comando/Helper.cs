@@ -1,6 +1,6 @@
-﻿namespace WebApp
+﻿namespace Comando
 {
-    using comando;
+    using Comando;
     using Microsoft.Office.Interop.Word;
     using Newtonsoft.Json;
     using System;
@@ -104,7 +104,7 @@
 
         public static string GetCategoryDescription(int currentid)
         {
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
                 return entities.CategoriaVerbale.Find(currentid).Descrizione;
             }
@@ -113,7 +113,7 @@
         public static string GetCittaDaCAP(string cap)
         {
             string str = string.Empty;
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
 
                 var source = entities.ListaComuni.Where(x => x.CAP == cap).Select(x => x);
@@ -130,7 +130,7 @@
             string str = string.Empty;
             if (testo.Length > 2)
             {
-                using (ComandoEntities2 entities = new ComandoEntities2())
+                using (ComandoEntities entities = new ComandoEntities())
                 {
                     str = JsonConvert.SerializeObject(entities.ListaComuni.Where(x => x.Nome.Contains(testo)).ToList());
                 }
@@ -142,7 +142,7 @@
         {
             char[] chArray3;
             string str = string.Empty;
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
 
                 str = JsonConvert.SerializeObject(entities.Stati.ToList());
@@ -164,7 +164,7 @@
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             List<Trasgressore> list = new List<Trasgressore>();
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
                 list = entities.Trasgressore.ToList<Trasgressore>();
             }
@@ -174,7 +174,7 @@
         public static BaseVerbale RiempiCampi(Verbale verbale, Agente agente1, Agente agente2, Violazione violazione, Trasgressore trasgressore, Patente patente, Documento documento, Veicolo veicolo, Avvocato avvocato, Proprietario proprietario, Custode custode)
         {
             VerbaleElezioneDomicilio domicilio = new VerbaleElezioneDomicilio();
-            using (new ComandoEntities2())
+            using (new ComandoEntities())
             {
                 domicilio.Fields.Add("protocollo", verbale.Protocollo);
                 domicilio.Fields.Add("annoverbale", verbale.Data.Value.Year.ToString());

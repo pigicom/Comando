@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registrati.aspx.cs" Inherits="WebApp.Pages.Regitstrati" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registrati.aspx.cs" Inherits="Comando.Pages.Regitstrati" %>
 
 <!DOCTYPE html>
 

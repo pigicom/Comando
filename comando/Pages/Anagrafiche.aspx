@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Anagrafiche.aspx.cs" Inherits="WebApp.Pages.Anagrafiche" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Anagrafiche.aspx.cs" Inherits="Comando.Pages.Anagrafiche" %>
 
 <!DOCTYPE html>
 

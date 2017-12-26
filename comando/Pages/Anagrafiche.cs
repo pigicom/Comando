@@ -1,4 +1,4 @@
-﻿namespace WebApp.Pages
+﻿namespace Comando.Pages
 {
     using System;
     using System.Web.UI;

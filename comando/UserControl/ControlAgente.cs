@@ -1,4 +1,4 @@
-﻿namespace WebApp.UserControl
+﻿namespace Comando.UserControl
 {
     using System;
     using System.Collections.Generic;
@@ -8,7 +8,7 @@
     using System.Reflection;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    using comando;
+    using Comando;
 
     public class ControlAgente : UserControl
     {
@@ -41,7 +41,7 @@
             Verbale verbale = new Verbale();
             Agente item = new Agente();
             Agente agente2 = new Agente();
-            using (var entities = new  ComandoEntities2())
+            using (var entities = new  ComandoEntities())
             {
 
                 item = entities.Agente.Find(this.agente1.Id);
@@ -109,7 +109,7 @@
 
         private void BindDDL()
         {
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
                
                 Dictionary<int, string> dictionary = new Dictionary<int, string>();
@@ -212,7 +212,7 @@
 
         public void SaveData(long verbaleId)
         {
-            using (ComandoEntities2 entities = new ComandoEntities2())
+            using (ComandoEntities entities = new ComandoEntities())
             {
                 this.verbale = entities.Verbale.Find(verbaleId);
                 this.agente1.Id = string.IsNullOrEmpty(this.ddlA1.SelectedValue) ? ((long) 0) : ((long) int.Parse(this.ddlA1.SelectedValue));
