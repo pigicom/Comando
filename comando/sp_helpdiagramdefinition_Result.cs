@@ -10,13 +10,10 @@
 namespace comando
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Province
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public int idprovincia { get; set; }
-        public string nomeprovincia { get; set; }
-        public int idregione { get; set; }
-        public string siglaprovincia { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

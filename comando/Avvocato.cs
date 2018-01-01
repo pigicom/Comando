@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Comando
+namespace comando
 {
     using System;
     using System.Collections.Generic;

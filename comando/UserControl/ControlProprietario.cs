@@ -6,7 +6,6 @@
     using System.Reflection;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    
     using Comando;
 
     public class ControlProprietario : UserControl

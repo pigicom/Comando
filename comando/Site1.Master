@@ -489,12 +489,12 @@
                          datatype: "local",
                          regional:'it',
                          contentType: "application/json; charset=utf-8",
-                         colNames: ['Id', 'Data',  'Congnome Trasgressore','Nome Trasgressore', 'Agente','Ultima Modifica'],
+                         colNames: ['Id', 'Data',  'Cognome','Nome', 'Agente','Ultima Modifica'],
                          colModel: [
                                      { label: 'id', name: 'Id', key: true, width: 75, hidden:true },
                                      { label: 'Data', name: 'Data', width: 80, formatter: 'date' },
-                                     { label: 'Cognome', name: 'Cognome', width: 90 },
-                                     { label: 'Nome', name: 'Nome', width: 80 },
+                                     { label: 'Cognome', name: 'Trasgressore.Cognome', width: 90 },
+                                     { label: 'Nome', name: 'Trasgressore.Nome', width: 80 },
                                      { label: 'Agente', name: 'Agente', width: 100 },
                                      { label: 'Timestamp', name: 'Timestamp',formatter: "date",formatoptions: { srcformat: "ISO8601Long", newformat: "m/d/Y H:i A" }, width: 80 }
                          ],

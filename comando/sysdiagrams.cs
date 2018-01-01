@@ -12,11 +12,12 @@ namespace comando
     using System;
     using System.Collections.Generic;
     
-    public partial class Province
+    public partial class sysdiagrams
     {
-        public int idprovincia { get; set; }
-        public string nomeprovincia { get; set; }
-        public int idregione { get; set; }
-        public string siglaprovincia { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
