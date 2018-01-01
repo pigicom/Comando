@@ -160,11 +160,11 @@
             {
                 if (this.ViewState["idverbale"] == null)
                 {
-                    this.ViewState["idverbale"] = this.ControlAgente.AddNew(context,3);
+                    this.ViewState["idverbale"] = this.ControlAgente.AddNew();
                 }
                 int num = int.Parse(this.ViewState["idverbale"].ToString());
                 this.verbale = context.Verbale.Find((long)num);
-                this.ControlAgente.SaveData(verbale);
+                this.ControlAgente.SaveData((long)num);
                 this.ControlTrasgressore.SaveData((long)num);
                 this.ControlPatente.SaveData((long)num, true);
                 if (!string.IsNullOrEmpty(((TextBox)this.ControlAvvocato.FindControl("txtNome")).Text) || !string.IsNullOrEmpty(((TextBox)this.ControlAvvocato.FindControl("txtCognome")).Text))

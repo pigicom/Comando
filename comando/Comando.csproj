@@ -415,9 +415,7 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Bundle.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Bundle.config" />
     <Content Include="Views\Agente\Create.cshtml" />
     <Content Include="Views\Agente\Delete.cshtml" />
     <Content Include="Views\Agente\Details.cshtml" />
@@ -430,6 +428,9 @@
     <Content Include="Site1.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agente.cs">
+      <DependentUpon>ComandoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Applications.cs">
       <DependentUpon>ComandoModel.tt</DependentUpon>
     </Compile>
@@ -597,16 +598,7 @@
       <DependentUpon>Site1.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>ComandoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>ComandoModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Stati.cs">
-      <DependentUpon>ComandoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
       <DependentUpon>ComandoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="TipologiaAnagrafica.cs">

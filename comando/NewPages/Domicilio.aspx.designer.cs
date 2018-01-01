@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Comando.NewPages
+namespace comando.NewPages
 {
 
 

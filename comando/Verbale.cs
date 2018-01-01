@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace comando
+namespace Comando
 {
     using System;
     using System.Collections.Generic;
@@ -18,6 +18,7 @@ namespace comando
         public Verbale()
         {
             this.Violazione = new HashSet<Violazione>();
+            this.Agente2 = new HashSet<Agente>();
         }
     
         public long Id { get; set; }
@@ -32,7 +33,7 @@ namespace comando
         public Nullable<long> Violazione_Id { get; set; }
         public Nullable<long> Doc_Id { get; set; }
         public Nullable<long> Category_Id { get; set; }
-        public System.DateTime Timestamp { get; set; }
+        public Nullable<System.DateTime> Timestamp { get; set; }
         public Nullable<long> Agente2_Id { get; set; }
         public Nullable<long> Agente1_Id { get; set; }
         public Nullable<long> Avvocato_Id { get; set; }
@@ -41,6 +42,8 @@ namespace comando
         public Nullable<long> Utente_Id { get; set; }
         public Nullable<long> Veicolo_Id { get; set; }
     
+        public virtual Agente Agente { get; set; }
+        public virtual Agente Agente1 { get; set; }
         public virtual Avvocato Avvocato { get; set; }
         public virtual CategoriaVerbale CategoriaVerbale { get; set; }
         public virtual Trasgressore Trasgressore { get; set; }
@@ -48,5 +51,7 @@ namespace comando
         public virtual Veicolo Veicolo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Violazione> Violazione { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Agente> Agente2 { get; set; }
     }
 }

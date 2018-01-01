@@ -72,17 +72,17 @@
                    <asp:TextBox ID="txtViolazioneData" runat="server" cssclass="data" Width="80px" />
                    &nbsp;
                </td>
-                  <td >Ora*</td>
+                  <td >Ora </td>
                   <td >
                       <asp:TextBox ID="txtOra" runat="server"  onblur="AggiungiMinuti(this)" Width="60px" />
                   </td>
-               <td >Articolo*&nbsp;</td>
+               <td >Articolo&nbsp;</td>
                     <td> <asp:TextBox ID="txtArticolo" runat="server" Width="60px" /></td>
-                  <td>&nbsp;Città*</td>
+                  <td>&nbsp;Città&nbsp;</td>
                   <td >
                       <asp:TextBox ID="txtCittaViolazione"  Text="Brugherio" runat="server" Width="110px"></asp:TextBox>
                   </td>
-                  <td>&nbsp;Indirizzo*</td>
+                  <td>&nbsp;Indirizzo&nbsp;</td>
                   <td>
                       <asp:TextBox ID="txtIndirizzoViolazione" runat="server" Width="225px" />
                       <asp:HiddenField ID="ViolazioneId" runat="server" />

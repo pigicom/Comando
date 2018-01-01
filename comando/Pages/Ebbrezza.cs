@@ -154,12 +154,12 @@
             {
                 if (this.ViewState["idverbale"] == null)
                 {
-                    this.ViewState["idverbale"] = this.ControlAgente.AddNew(entities,2);
+                    this.ViewState["idverbale"] = this.ControlAgente.AddNew();
                 }
                 int num = int.Parse(this.ViewState["idverbale"].ToString());
                 object[] keyValues = new object[] { num };
                 this.verbale = entities.Verbale.Find(keyValues);
-                this.ControlAgente.SaveData(verbale);
+                this.ControlAgente.SaveData((long) num);
                 this.ControlTrasgressore.SaveData((long) num);
                 this.ControlPatente.SaveData((long) num, true);
                 this.ControlVeicolo1.SaveData((long) num);

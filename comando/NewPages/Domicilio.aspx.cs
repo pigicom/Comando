@@ -10,7 +10,7 @@ using Comando.UserControl;
 using Comando;
 using System.Configuration;
 
-namespace Comando.NewPages
+namespace comando.NewPages
 {
     public partial class Domicilio : Comando.ComandoPage
     {
@@ -159,11 +159,11 @@ namespace Comando.NewPages
             {
                 if (this.ViewState["idverbale"] == null)
                 {
-                    this.ViewState["idverbale"] = this.ControlAgente.AddNew(context,1);
+                    this.ViewState["idverbale"] = this.ControlAgente.AddNew();
                 }
                 int num = int.Parse(this.ViewState["idverbale"].ToString());
                 this.verbale = context.Verbale.Find((long)num);
-                this.ControlAgente.SaveData(verbale);
+                this.ControlAgente.SaveData((long)num);
                 this.ControlAvvocato.SaveData((long)num);
                 this.ControlTrasgressore.SaveData((long)num);
             }

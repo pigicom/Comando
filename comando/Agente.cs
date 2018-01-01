@@ -12,21 +12,27 @@ namespace Comando
     using System;
     using System.Collections.Generic;
     
-    public partial class Utente
+    public partial class Agente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Utente()
+        public Agente()
         {
             this.Verbale = new HashSet<Verbale>();
+            this.Verbale1 = new HashSet<Verbale>();
+            this.Verbale2 = new HashSet<Verbale>();
         }
     
         public long Id { get; set; }
-        public string Login { get; set; }
-        public string Pwd { get; set; }
-        public Nullable<System.DateTime> UltimoAccesso { get; set; }
-        public string Descrizione { get; set; }
+        public string Nome { get; set; }
+        public string Cognome { get; set; }
+        public string Grado { get; set; }
+        public Nullable<bool> PoliziaGiudiziaria { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Verbale> Verbale { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Verbale> Verbale1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Verbale> Verbale2 { get; set; }
     }
 }

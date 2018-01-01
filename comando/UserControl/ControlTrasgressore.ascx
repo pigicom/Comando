@@ -118,7 +118,7 @@
                 </td>--%>
             </tr>
             <tr>
-                <td>Data Nascita*</td>
+                <td>Data Nascita</td>
                 <td>
                     <asp:TextBox ID="txtNascita" runat="server" CssClass="data" />
                 </td>

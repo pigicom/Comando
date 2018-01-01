@@ -15,7 +15,7 @@
     using System.Web.UI;
     using System.Web.UI.HtmlControls;
     using Comando;
-    using Comando.NewPages;
+    using comando.NewPages;
 
     public class Services : Page
     {
