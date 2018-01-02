@@ -14,8 +14,8 @@
     using System.Web.UI;
     using System.Web.UI.HtmlControls;
     using Comando;
-    using comando.NewPages;
-
+    using Comando.NewPages;
+    using comando;
     public class Services : Page
     {
         protected HtmlForm form1;

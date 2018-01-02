@@ -8,9 +8,10 @@ using System.Runtime.InteropServices;
 using System.Web.Services;
 using Comando.UserControl;
 using Comando;
+using comando;
 using System.Configuration;
 
-namespace comando.NewPages
+namespace Comando.NewPages
 {
     public partial class Domicilio : Comando.ComandoPage
     {

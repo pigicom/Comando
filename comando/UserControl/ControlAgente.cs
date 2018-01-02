@@ -8,8 +8,8 @@
     using System.Reflection;
     using System.Web.UI;
     using System.Web.UI.WebControls;
+    using comando;
     using Comando;
-
     public class ControlAgente : UserControl
     {
         public Agente agente1 = new Agente();
@@ -277,7 +277,7 @@
                     this.violazione.Citta = this.txtCittaViolazione.Text;
                     int cat = int.Parse(base.Request.QueryString["cat"].ToString());
                     this.verbale.CategoriaVerbale = entities.CategoriaVerbale.Where(x => x.ID == verbale.Category_Id).FirstOrDefault();
-                    this.verbale.Timestamp = new DateTime?(DateTime.Now);
+                    //this.verbale.Timestamp = new DateTime?(DateTime.Now);
                     entities.SaveChanges();
                 }
             }

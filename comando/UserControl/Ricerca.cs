@@ -7,9 +7,9 @@
     using System.Reflection;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    
+    using comando;
     using Comando;
-    using comando.NewPages;
+    using Comando.NewPages;
 
     public class Ricerca : UserControl
     {

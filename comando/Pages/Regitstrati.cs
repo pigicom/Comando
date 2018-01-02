@@ -9,7 +9,7 @@
     using System.Web.UI.HtmlControls;
     using System.Web.UI.WebControls;
     using Comando;
-
+    using comando;
     public class Regitstrati : Page
     {
         protected Button Button1;

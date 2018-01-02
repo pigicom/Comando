@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Comando 
+namespace comando 
 {
     [MetadataType(typeof(VerbaleElezioneDomicilio))]
     public partial class VerbaleElezioneDomicilio : Comando.BaseVerbale
@@ -12,12 +12,12 @@ namespace Comando
     }
 
     [MetadataType(typeof(Trasgressore))]
-    public partial class Trasgressore : Comando.Attore
+    public partial class Trasgressore : comando.Attore
     {
     }
 
     [MetadataType(typeof(Proprietario))]
-    public partial class Proprietario : Comando.Trasgressore
+    public partial class Proprietario : comando.Trasgressore
     {
     }
 

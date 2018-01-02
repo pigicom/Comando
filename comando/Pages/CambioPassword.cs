@@ -8,6 +8,7 @@
     using System.Web.UI.HtmlControls;
     using System.Web.UI.WebControls;
     using Comando;
+    using comando;
     public class CambioPassword : Page
     {
         protected TextBox confermapassword;

@@ -9,7 +9,7 @@
     using System.Runtime.InteropServices;
     using System.Web.UI.WebControls;
     using Comando.UserControl;
-    using Comando;
+    using comando;
     using System.Configuration;
 
     public class Polizia : ComandoPage

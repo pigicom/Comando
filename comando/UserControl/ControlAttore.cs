@@ -8,7 +8,7 @@
     using System.Web.UI;
     using System.Web.UI.WebControls;
     using Comando;
-
+    using comando;
     public class ControlAttore : UserControl
     {
         protected Panel Panel1;

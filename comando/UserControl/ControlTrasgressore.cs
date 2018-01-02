@@ -6,7 +6,7 @@
     using System.Reflection;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    
+    using comando;
     using Comando;
 
     public class ControlTrasgressore : UserControl

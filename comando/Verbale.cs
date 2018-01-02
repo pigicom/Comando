@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Comando
+namespace comando
 {
     using System;
     using System.Collections.Generic;
@@ -33,7 +33,7 @@ namespace Comando
         public Nullable<long> Violazione_Id { get; set; }
         public Nullable<long> Doc_Id { get; set; }
         public Nullable<long> Category_Id { get; set; }
-        public Nullable<System.DateTime> Timestamp { get; set; }
+        public System.DateTime Timestamp { get; set; }
         public Nullable<long> Agente2_Id { get; set; }
         public Nullable<long> Agente1_Id { get; set; }
         public Nullable<long> Avvocato_Id { get; set; }

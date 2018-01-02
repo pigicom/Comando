@@ -8,8 +8,7 @@
     using System.Web.UI;
     using System.Web.UI.WebControls;
     using Comando;
-    
-    using Comando;
+    using comando;
 
     public class ControlAvvocato : UserControl
     {

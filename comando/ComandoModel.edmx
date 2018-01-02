@@ -477,7 +477,7 @@
           <Property Name="Violazione_Id" Type="bigint" />
           <Property Name="Doc_Id" Type="bigint" />
           <Property Name="Category_Id" Type="bigint" />
-          <Property Name="Timestamp" Type="datetime" />
+          <Property Name="Timestamp" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="Agente2_Id" Type="bigint" />
           <Property Name="Agente1_Id" Type="bigint" />
           <Property Name="Avvocato_Id" Type="bigint" />
@@ -1168,10 +1168,10 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Cognome" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Grado" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int64" />
+          <Property Name="Nome" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Cognome" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Grado" MaxLength="100" FixedLength="false" Unicode="true" Type="String" />
           <Property Name="PoliziaGiudiziaria" Type="Boolean" />
           <NavigationProperty Name="Verbale" Relationship="Self.FK_Verbale_Agente" FromRole="Agente" ToRole="Verbale" />
           <NavigationProperty Name="Verbale1" Relationship="Self.FK_Verbale_Agente1" FromRole="Agente" ToRole="Verbale" />
@@ -1674,7 +1674,7 @@
           <Property Name="Violazione_Id" Type="Int64" />
           <Property Name="Doc_Id" Type="Int64" />
           <Property Name="Category_Id" Type="Int64" />
-          <Property Name="Timestamp" Type="DateTime" Precision="3" />
+          <Property Name="Timestamp" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="Agente2_Id" Type="Int64" />
           <Property Name="Agente1_Id" Type="Int64" />
           <Property Name="Avvocato_Id" Type="Int64" />
@@ -1736,8 +1736,8 @@
           <NavigationProperty Name="Verbale" Relationship="Self.FK_VerbaleViolazione" FromRole="Violazione" ToRole="Verbale" />
         </EntityType>
         <Association Name="FK_Verbale_Agente">
-          <End Role="Agente" Type="Self.Agente" Multiplicity="0..1" />
-          <End Role="Verbale" Type="Self.Verbale" Multiplicity="*" />
+          <End Type="Self.Agente" Multiplicity="0..1" Role="Agente" />
+          <End Type="Self.Verbale" Multiplicity="*" Role="Verbale" />
           <ReferentialConstraint>
             <Principal Role="Agente">
               <PropertyRef Name="Id" />
@@ -1748,8 +1748,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Verbale_Agente1">
-          <End Role="Agente" Type="Self.Agente" Multiplicity="0..1" />
-          <End Role="Verbale" Type="Self.Verbale" Multiplicity="*" />
+          <End Type="Self.Agente" Multiplicity="0..1" Role="Agente" />
+          <End Type="Self.Verbale" Multiplicity="*" Role="Verbale" />
           <ReferentialConstraint>
             <Principal Role="Agente">
               <PropertyRef Name="Id" />
@@ -2108,8 +2108,8 @@
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
         </Association>
         <Association Name="VerbaleAgente">
-          <End Role="Agente" Type="Self.Agente" Multiplicity="*" />
-          <End Role="Verbale" Type="Self.Verbale" Multiplicity="*" />
+          <End Type="Self.Agente" Multiplicity="*" Role="Agente" />
+          <End Type="Self.Verbale" Multiplicity="*" Role="Verbale" />
         </Association>
         <EntityContainer Name="ComandoEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Agente" EntityType="Self.Agente" />
@@ -2154,12 +2154,12 @@
           <EntitySet Name="VerbaleElezioneDomicilio" EntityType="Self.VerbaleElezioneDomicilio" />
           <EntitySet Name="Violazione" EntityType="Self.Violazione" />
           <AssociationSet Name="FK_Verbale_Agente" Association="Self.FK_Verbale_Agente">
-            <End Role="Agente" EntitySet="Agente" />
-            <End Role="Verbale" EntitySet="Verbale" />
+            <End EntitySet="Agente" Role="Agente" />
+            <End EntitySet="Verbale" Role="Verbale" />
           </AssociationSet>
           <AssociationSet Name="FK_Verbale_Agente1" Association="Self.FK_Verbale_Agente1">
-            <End Role="Agente" EntitySet="Agente" />
-            <End Role="Verbale" EntitySet="Verbale" />
+            <End EntitySet="Agente" Role="Agente" />
+            <End EntitySet="Verbale" Role="Verbale" />
           </AssociationSet>
           <AssociationSet Name="FK_MembershipEntity_Application" Association="Self.FK_MembershipEntity_Application">
             <End Role="Applications" EntitySet="Applications" />
@@ -2282,8 +2282,8 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
           <AssociationSet Name="VerbaleAgente" Association="Self.VerbaleAgente">
-            <End Role="Agente" EntitySet="Agente" />
-            <End Role="Verbale" EntitySet="Verbale" />
+            <End EntitySet="Agente" Role="Agente" />
+            <End EntitySet="Verbale" Role="Verbale" />
           </AssociationSet>
         </EntityContainer>
       </Schema>

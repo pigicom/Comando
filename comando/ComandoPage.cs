@@ -9,7 +9,7 @@
     using System.Web.UI;
     using System.Web.UI.WebControls;
     using Comando;
-
+    using comando;
     public class ComandoPage : Page
     {
         public HiddenField idverbale = new HiddenField();
