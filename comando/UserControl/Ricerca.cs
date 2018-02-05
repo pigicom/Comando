@@ -10,6 +10,7 @@
     using comando;
     using Comando;
     using Comando.NewPages;
+    using comando.NewPages;
 
     public class Ricerca : UserControl
     {

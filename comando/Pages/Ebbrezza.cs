@@ -155,7 +155,7 @@
             {
                 if (this.ViewState["idverbale"] == null)
                 {
-                    this.ViewState["idverbale"] = this.ControlAgente.AddNew();
+                    this.ViewState["idverbale"] = this.ControlAgente.AddNew(entities);
                 }
                 int num = int.Parse(this.ViewState["idverbale"].ToString());
                 object[] keyValues = new object[] { num };

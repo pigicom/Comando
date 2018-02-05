@@ -62,9 +62,8 @@
 
         public void SaveData(long idverbale)
         {
-            using (ComandoEntities entities = new ComandoEntities())
+             using (var entities = new ComandoEntities())
             {
-            
                 ParameterExpression expression;
                 ParameterExpression[] parameters = new ParameterExpression[] { };
                 Verbale verbale = entities.Verbale.Find(idverbale);

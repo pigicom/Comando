@@ -91,25 +91,30 @@
                 </td>
             </tr>
         </table>
-        <div style="position:absolute ;width:99%; margin-right:15px;" >
-         <table style="width:100%">
+          
+             <div style="position:absolute ;width:99%; margin-right:15px;" >
+          
+         <table style="width:100%;border-width:medium">
              <tr style="margin-right:15px">
                 <td colspan="7" style="text-align:right" >
                  <span id="salve" style="color:#3498db"></span>
                 </td>
             </tr>
-             <tr>
+           
+             <tr style="height:40px">
                 <td colspan="7" style="text-align:right" >
-                 <asp:LinkButton ID="LinkButton1" CssClass="" runat="server" OnClick="LinkButton1_Click">Log Off</asp:LinkButton>
+                 <asp:LinkButton ID="LinkButton2" runat="server" Font-Size="Large" OnClick="LinkButton2_Click">Cambio Password</asp:LinkButton>
                 </td>
              </tr>
-             <tr>
+
+               <tr style="height:40px">
                 <td colspan="7" style="text-align:right" >
-                 <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Cambio Password</asp:LinkButton>
+                 <asp:LinkButton ID="LinkButton1" CssClass=""  Font-Size="Large" runat="server" OnClick="LinkButton1_Click">Log Off</asp:LinkButton>
                 </td>
              </tr>
         </table>
       </div>
+        
         <div class="DivHeader pagina">
             <table><tr><td>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

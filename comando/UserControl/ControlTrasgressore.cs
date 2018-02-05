@@ -81,7 +81,7 @@
 
         public Trasgressore SaveData(long idverbale)
         {
-            using (ComandoEntities entities = new ComandoEntities())
+            using (var entities = new ComandoEntities())
             {
                 ParameterExpression expression = null;
                 ParameterExpression[] parameters = new ParameterExpression[] { expression };

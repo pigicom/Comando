@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Domicilio.aspx.cs" Inherits="comando.NewPages.Domicilio" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="_Domicilio.aspx.cs" Inherits="comando.NewPages.Domicilio" %>
 
 <%@ Register Src="~/UserControl/ControlTrasgressore.ascx" TagPrefix="uc1" TagName="ControlTrasgressore" %>
 <%@ Register Src="~/UserControl/ControlAvvocato.ascx" TagPrefix="uc1" TagName="ControlAvvocato" %>
@@ -40,3 +40,7 @@
               <uc1:Menu runat="server" id="Menu" />
             </div>
      </asp:Content>
+   
+      
+
+ 
