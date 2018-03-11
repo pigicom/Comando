@@ -18,7 +18,7 @@
         <EntityTypeShape EntityType="ComandoModel.aspnet_WebEvent_Events" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ComandoModel.Attore" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ComandoModel.Avvocato" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ComandoModel.CategoriaVerbale" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComandoModel.CategoriaVerbale" Width="1.625" PointX="0.625" PointY="12.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ComandoModel.Comuni" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ComandoModel.Custode" Width="1.5" PointX="1.5" PointY="30.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ComandoModel.documenti_categorie" Width="1.5" PointX="6.75" PointY="9.75" IsExpanded="true" />
@@ -45,8 +45,6 @@
         <EntityTypeShape EntityType="ComandoModel.Verbale" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ComandoModel.VerbaleElezioneDomicilio" Width="1.5" PointX="17.75" PointY="11.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ComandoModel.Violazione" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
-        <AssociationConnector ManuallyRouted="false" Association="ComandoModel.FK_Verbale_Agente" />
-        <AssociationConnector ManuallyRouted="false" Association="ComandoModel.FK_Verbale_Agente1" />
         <AssociationConnector Association="ComandoModel.FK_MembershipEntity_Application" ManuallyRouted="false" />
         <AssociationConnector Association="ComandoModel.FK_RoleEntity_Application" ManuallyRouted="false" />
         <AssociationConnector Association="ComandoModel.FK_User_Application" ManuallyRouted="false" />
@@ -77,8 +75,10 @@
         <AssociationConnector Association="ComandoModel.FK_VerbaleViolazione" ManuallyRouted="false" />
         <AssociationConnector Association="ComandoModel.aspnet_UsersInRoles" ManuallyRouted="false" />
         <AssociationConnector Association="ComandoModel.UsersInRoles" ManuallyRouted="false" />
-        <AssociationConnector ManuallyRouted="false" Association="ComandoModel.VerbaleAgente" />
-      </Diagram>
+        <EntityTypeShape EntityType="ComandoModel.Agente" Width="1.5" PointX="0.75" PointY="3.125" />
+        <AssociationConnector Association="ComandoModel.FK_Verbale_Agente1" />
+        <AssociationConnector Association="ComandoModel.FK_Verbale_Agente2" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

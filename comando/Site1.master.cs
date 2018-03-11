@@ -20,7 +20,7 @@ namespace Comando
 
         protected void btnCrea_Click(object sender, EventArgs e)
         {
-
+            ((ComandoPage)this.Page).Create(null, null);
         }
     }
 }

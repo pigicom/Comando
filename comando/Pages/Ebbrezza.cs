@@ -39,13 +39,13 @@
                 this.violazione = entities.Violazione.Where(x => x.Verbale_Id == verbaleid).FirstOrDefault();
                 this.trasgressore = this.verbale.Trasgressore;
                 this.veicolo = this.verbale.Veicolo;
-                if (this.verbale.Agente2.Count > 0)
+                if (this.verbale.Agente1!=null)
                 {
-                    this.agente1 = this.verbale.Agente2.ElementAt<Agente>(0);
+                    this.agente1 = this.verbale.Agente1;
                 }
-                if (this.verbale.Agente2.Count > 1)
+                if (this.verbale.Agente!=null)
                 {
-                    this.agente2 = this.verbale.Agente2.ElementAt<Agente>(1);
+                    this.agente2 = this.verbale.Agente;
                 }
                 return Helper.RiempiCampi(this.verbale, this.agente1, this.agente2, this.violazione, this.trasgressore, null, null, this.veicolo, this.avvocato, this.veicolo.Proprietario, null);
             }
@@ -88,13 +88,13 @@
                 using (ComandoEntities entities = new ComandoEntities())
                 {
                     this.violazione = entities.Violazione.Where(x => x.Verbale_Id == v.Id).FirstOrDefault();
-                    if (v.Agente2.Count > 0)
+                    if (v.Agente!=null)
                     {
-                        this.ControlAgente.agente1 = v.Agente2.ElementAt<Agente>(0);
+                        this.ControlAgente.agente1 = v.Agente;
                     }
-                    if (v.Agente2.Count > 1)
+                    if (v.Agente1!=null)
                     {
-                        this.ControlAgente.agente2 = v.Agente2.ElementAt<Agente>(1);
+                        this.ControlAgente.agente2 = v.Agente1;
                     }
                     this.ControlAgente.verbale = v;
                     this.ControlAgente.violazione = this.violazione;
@@ -151,22 +151,21 @@
 
         public void Save(object sender, EventArgs e)
         {
-            using (ComandoEntities entities = new ComandoEntities())
-            {
+            
                 if (this.ViewState["idverbale"] == null)
                 {
-                    this.ViewState["idverbale"] = this.ControlAgente.AddNew(entities);
+                    this.ViewState["idverbale"] = this.ControlAgente.AddNew();
                 }
                 int num = int.Parse(this.ViewState["idverbale"].ToString());
                 object[] keyValues = new object[] { num };
-                this.verbale = entities.Verbale.Find(keyValues);
+            
                 this.ControlAgente.SaveData((long) num);
                 this.ControlTrasgressore.SaveData((long) num);
                 this.ControlPatente.SaveData((long) num, true);
                 this.ControlVeicolo1.SaveData((long) num);
                 this.ControlProprietario.SaveData((long) num);
-                entities.SaveChanges();
-            }
+               
+           
         }
 
         public void Search(object sender, EventArgs e)

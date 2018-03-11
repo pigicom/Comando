@@ -29,18 +29,21 @@ namespace comando.NewPages
         {
             BaseVerbale verbale = new BaseVerbale();
             long current = verbaleid;
+           
+
             using (ComandoEntities entities = new ComandoEntities())
             {
+                this.verbale = entities.Verbale.Find(verbaleid);
                 this.violazione = entities.Violazione.Where(x => x.Verbale_Id == verbaleid).Select(x => x).FirstOrDefault();
                 this.trasgressore = this.verbale.Trasgressore;
                 this.avvocato = this.verbale.Avvocato;
                 if (this.verbale.Agente != null)
                 {
-                    this.agente1 = this.verbale.Agente2.ElementAt<Agente>(1);
+                    this.agente1 = this.verbale.Agente;
                 }
-                if (this.verbale.Agente2 != null)
+                if (this.verbale.Agente != null)
                 {
-                    this.agente2 = this.verbale.Agente2.ElementAt<Agente>(2);
+                    this.agente2 = this.verbale.Agente1;
                 }
                 return Helper.RiempiCampi(this.verbale, this.agente1, this.agente2, this.violazione, this.trasgressore, null, null, null, this.avvocato, null, null);
             }
@@ -96,13 +99,13 @@ namespace comando.NewPages
                 {
 
                     this.violazione = entities.Violazione.Where(x => x.Verbale_Id == v.Id).FirstOrDefault();
-                    if (v.Agente2.Count() > 0)
+                    if (v.Agente!=null)
                     {
-                        this.ControlAgente.agente1 = v.Agente2.ElementAt<Agente>(0);
+                        this.ControlAgente.agente1 = v.Agente1;
                     }
-                    if (v.Agente2.Count() > 1)
+                    if (v.Agente1!=null)
                     {
-                        this.ControlAgente.agente2 = v.Agente2.ElementAt<Agente>(1);
+                        this.ControlAgente.agente2 = v.Agente;
                     }
                     this.ControlAgente.verbale = v;
                     this.ControlAgente.violazione = this.violazione;
@@ -131,13 +134,11 @@ namespace comando.NewPages
             if (!base.IsPostBack)
             {
                 this.ViewState["categoriaverbale"] = base.Request.QueryString["cat"].ToString();
-                if (base.Request.QueryString["idVerbale"] != null)
+                if (!(String.IsNullOrEmpty(base.Request.QueryString["idVerbale"])))
                 {
                     long IdVerbale = long.Parse(base.Request.QueryString["idVerbale"]);
                     using (ComandoEntities entities = new ComandoEntities())
                     {
-
-                        ;
                         Verbale v = entities.Verbale.Where(x => x.Id == IdVerbale).FirstOrDefault();
                         this.Load(v);
                     }
@@ -153,17 +154,15 @@ namespace comando.NewPages
 
         public void Save(object sender, EventArgs e)
         {
-            using (var context = new ComandoEntities())
+            if (this.ViewState["idverbale"] == null)
+                this.ViewState["idverbale"] = this.ControlAgente.AddNew();
+            else
             {
-                if (this.ViewState["idverbale"] == null)
-                {
-                    this.ViewState["idverbale"] = this.ControlAgente.AddNew(context);
-                }
-            }
                 int num = int.Parse(this.ViewState["idverbale"].ToString());
                 this.ControlAgente.SaveData((long)num);
                 this.ControlAvvocato.SaveData((long)num);
                 this.ControlTrasgressore.SaveData((long)num);
+            }
         }
        
         public void Search(object sender, EventArgs e)

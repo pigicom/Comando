@@ -112,52 +112,27 @@
         //    }
         //}
 
-        //[WebMethod]
-        //public static string GetVerbali(string categoria)
-        //{
-        //    new JavaScriptSerializer();
-        //    using (ComandoEntities entities = new ComandoEntities())
-        //    {
-        //        <>c__DisplayClass3_0 class_;
-        //        ParameterExpression expression;
-        //        int currid = int.Parse(categoria);
-        //        ParameterExpression[] parameters = new ParameterExpression[] { expression };
-        //        ParameterExpression[] expressionArray2 = new ParameterExpression[] { expression };
-        //        System.Linq.Expressions.Expression[] arguments = new System.Linq.Expressions.Expression[7];
-        //        arguments[0] = System.Linq.Expressions.Expression.Property(expression = System.Linq.Expressions.Expression.Parameter(typeof(Verbale), "x"), (MethodInfo) methodof(Verbale.get_Id));
-        //        arguments[1] = System.Linq.Expressions.Expression.Property(expression, (MethodInfo) methodof(Verbale.get_Data));
-        //        arguments[2] = System.Linq.Expressions.Expression.Property(expression, (MethodInfo) methodof(Verbale.get_Protocollo));
-        //        arguments[3] = System.Linq.Expressions.Expression.Call(System.Linq.Expressions.Expression.Property(System.Linq.Expressions.Expression.Property(expression, (MethodInfo) methodof(Verbale.get_Trasgressore)), (MethodInfo) methodof(Trasgressore.get_Nome)), (MethodInfo) methodof(string.Trim), new System.Linq.Expressions.Expression[0]);
-        //        arguments[4] = System.Linq.Expressions.Expression.Call(System.Linq.Expressions.Expression.Property(System.Linq.Expressions.Expression.Property(expression, (MethodInfo) methodof(Verbale.get_Trasgressore)), (MethodInfo) methodof(Trasgressore.get_Cognome)), (MethodInfo) methodof(string.Trim), new System.Linq.Expressions.Expression[0]);
-        //        System.Linq.Expressions.Expression[] expressionArray4 = new System.Linq.Expressions.Expression[] { System.Linq.Expressions.Expression.Property(expression, (MethodInfo) methodof(Verbale.get_Agente)) };
-        //        arguments[5] = System.Linq.Expressions.Expression.Call(System.Linq.Expressions.Expression.Property(System.Linq.Expressions.Expression.Call(null, (MethodInfo) methodof(Enumerable.FirstOrDefault), expressionArray4), (MethodInfo) methodof(Agente.get_Cognome)), (MethodInfo) methodof(string.Trim), new System.Linq.Expressions.Expression[0]);
-        //        arguments[6] = System.Linq.Expressions.Expression.Property(expression, (MethodInfo) methodof(Verbale.get_Timestamp));
-        //        MemberInfo[] members = new MemberInfo[] { (MethodInfo) methodof(<>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>.get_Id, <>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>), (MethodInfo) methodof(<>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>.get_Data, <>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>), (MethodInfo) methodof(<>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>.get_Protocollo, <>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>), (MethodInfo) methodof(<>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>.get_Nome, <>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>), (MethodInfo) methodof(<>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>.get_Cognome, <>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>), (MethodInfo) methodof(<>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>.get_Agente, <>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>), (MethodInfo) methodof(<>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>.get_Timestamp, <>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>) };
-        //        ParameterExpression[] expressionArray5 = new ParameterExpression[] { expression };
-        //        var list = entities.Verbale.Where<Verbale>(System.Linq.Expressions.Expression.Lambda<Func<Verbale, bool>>(System.Linq.Expressions.Expression.Equal(System.Linq.Expressions.Expression.Property(expression = System.Linq.Expressions.Expression.Parameter(typeof(Verbale), "x"), (MethodInfo) methodof(Verbale.get_CategoriaVerbale_Id)), System.Linq.Expressions.Expression.Convert(System.Linq.Expressions.Expression.Convert(System.Linq.Expressions.Expression.Field(System.Linq.Expressions.Expression.Constant(class_, typeof(<>c__DisplayClass3_0)), fieldof(<>c__DisplayClass3_0.currid)), typeof(long)), typeof(long?))), parameters)).OrderByDescending<Verbale, long>(System.Linq.Expressions.Expression.Lambda<Func<Verbale, long>>(System.Linq.Expressions.Expression.Property(expression = System.Linq.Expressions.Expression.Parameter(typeof(Verbale), "x"), (MethodInfo) methodof(Verbale.get_Id)), expressionArray2)).Select(System.Linq.Expressions.Expression.Lambda(System.Linq.Expressions.Expression.New((ConstructorInfo) methodof(<>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>..ctor, <>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>), arguments, members), expressionArray5)).ToList();
-        //        if (currid == 6)
-        //        {
-        //            ParameterExpression[] expressionArray6 = new ParameterExpression[] { expression };
-        //            ParameterExpression[] expressionArray7 = new ParameterExpression[] { expression };
-        //            System.Linq.Expressions.Expression[] expressionArray8 = new System.Linq.Expressions.Expression[7];
-        //            expressionArray8[0] = System.Linq.Expressions.Expression.Property(expression = System.Linq.Expressions.Expression.Parameter(typeof(Verbale), "x"), (MethodInfo) methodof(Verbale.get_Id));
-        //            expressionArray8[1] = System.Linq.Expressions.Expression.Property(expression, (MethodInfo) methodof(Verbale.get_Data));
-        //            expressionArray8[2] = System.Linq.Expressions.Expression.Property(expression, (MethodInfo) methodof(Verbale.get_Protocollo));
-        //            expressionArray8[3] = System.Linq.Expressions.Expression.Call(System.Linq.Expressions.Expression.Property(System.Linq.Expressions.Expression.Property(System.Linq.Expressions.Expression.Property(expression, (MethodInfo) methodof(Verbale.get_Veicolo)), (MethodInfo) methodof(Veicolo.get_Proprietario)), (MethodInfo) methodof(Proprietario.get_Nome)), (MethodInfo) methodof(string.Trim), new System.Linq.Expressions.Expression[0]);
-        //            expressionArray8[4] = System.Linq.Expressions.Expression.Call(System.Linq.Expressions.Expression.Property(System.Linq.Expressions.Expression.Property(System.Linq.Expressions.Expression.Property(expression, (MethodInfo) methodof(Verbale.get_Veicolo)), (MethodInfo) methodof(Veicolo.get_Proprietario)), (MethodInfo) methodof(Proprietario.get_Cognome)), (MethodInfo) methodof(string.Trim), new System.Linq.Expressions.Expression[0]);
-        //            System.Linq.Expressions.Expression[] expressionArray9 = new System.Linq.Expressions.Expression[] { System.Linq.Expressions.Expression.Property(expression, (MethodInfo) methodof(Verbale.get_Agente)) };
-        //            expressionArray8[5] = System.Linq.Expressions.Expression.Call(System.Linq.Expressions.Expression.Property(System.Linq.Expressions.Expression.Call(null, (MethodInfo) methodof(Enumerable.FirstOrDefault), expressionArray9), (MethodInfo) methodof(Agente.get_Cognome)), (MethodInfo) methodof(string.Trim), new System.Linq.Expressions.Expression[0]);
-        //            expressionArray8[6] = System.Linq.Expressions.Expression.Property(expression, (MethodInfo) methodof(Verbale.get_Timestamp));
-        //            MemberInfo[] infoArray2 = new MemberInfo[] { (MethodInfo) methodof(<>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>.get_Id, <>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>), (MethodInfo) methodof(<>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>.get_Data, <>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>), (MethodInfo) methodof(<>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>.get_Protocollo, <>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>), (MethodInfo) methodof(<>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>.get_Nome, <>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>), (MethodInfo) methodof(<>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>.get_Cognome, <>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>), (MethodInfo) methodof(<>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>.get_Agente, <>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>), (MethodInfo) methodof(<>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>.get_Timestamp, <>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>) };
-        //            ParameterExpression[] expressionArray10 = new ParameterExpression[] { expression };
-        //            list = entities.Verbale.Where<Verbale>(System.Linq.Expressions.Expression.Lambda<Func<Verbale, bool>>(System.Linq.Expressions.Expression.Equal(System.Linq.Expressions.Expression.Property(expression = System.Linq.Expressions.Expression.Parameter(typeof(Verbale), "x"), (MethodInfo) methodof(Verbale.get_CategoriaVerbale_Id)), System.Linq.Expressions.Expression.Convert(System.Linq.Expressions.Expression.Convert(System.Linq.Expressions.Expression.Field(System.Linq.Expressions.Expression.Constant(class_, typeof(<>c__DisplayClass3_0)), fieldof(<>c__DisplayClass3_0.currid)), typeof(long)), typeof(long?))), expressionArray6)).OrderByDescending<Verbale, long>(System.Linq.Expressions.Expression.Lambda<Func<Verbale, long>>(System.Linq.Expressions.Expression.Property(expression = System.Linq.Expressions.Expression.Parameter(typeof(Verbale), "x"), (MethodInfo) methodof(Verbale.get_Id)), expressionArray7)).Select(System.Linq.Expressions.Expression.Lambda(System.Linq.Expressions.Expression.New((ConstructorInfo) methodof(<>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>..ctor, <>f__AnonymousType5<long, DateTime?, string, string, string, string, DateTime?>), expressionArray8, infoArray2), expressionArray10)).ToList();
-        //        }
-        //        JsonSerializerSettings settings = new JsonSerializerSettings {
-        //            PreserveReferencesHandling = PreserveReferencesHandling.Objects
-        //        };
-        //        return JsonConvert.SerializeObject(list, Formatting.None, settings);
-        //    }
-        //}
+        [WebMethod]
+        public static string GetVerbali(string categoria)
+        {
+            new JavaScriptSerializer();
+            using (ComandoEntities entities = new ComandoEntities())
+            {
+                var list = from x in entities.Verbale where x.Category_Id.ToString() == categoria select new {
+                    Id = x.Id,
+                    x.Agente1_Id,
+                    x.Agente2_Id,
+                    TrasgressoreNome = x.Trasgressore.Nome,
+                    TrasgressoreCognome = x.Trasgressore.Cognome,
+                    AgenteCognome = x.Agente1.Cognome,
+                    AgenteNome = x.Agente1.Nome,
+                    x.Indirizzo,
+                    x.Nome, x.Veicolo_Id, x.Violazione_Id, x.Data, x.DataOraApertura, x.DataOraChiusura, x.Avvocato_Id, Autore = x.Utente.Descrizione };
+               JavaScriptSerializer s = new JavaScriptSerializer();
+                return s.Serialize(list);
+              //  return JsonConvert.SerializeObject(list, Formatting.None, settings);
+            }
+        }
 
         //[WebMethod]
         //public static string InsertAgente(string Nome, string Cognome, string Grado)
@@ -221,6 +196,6 @@
         //    internal bool <GetDocFile>b__2_0(string x) => 
         //        (x.ToString().IndexOf("~$") < 0);
         //}
-     }
+    }
 }
 

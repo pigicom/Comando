@@ -10,6 +10,8 @@
     using System.Web.UI.WebControls;
     using comando;
     using Comando;
+    using System.Globalization;
+
     public class ControlAgente : UserControl
     {
         public Agente agente1 = new Agente();
@@ -35,19 +37,20 @@
         public Violazione violazione = new Violazione();
         protected HiddenField ViolazioneId;
 
-        public long AddNew(ComandoEntities entities)
+        public long AddNew()
         {
             Violazione entity = new Violazione();
             Verbale verbale = new Verbale();
             Agente item = new Agente();
-            Agente agente2 = new Agente();
-           // using (var entities = new  ComandoEntities())
+            Agente item2 = new Agente();
+            using (var entities = new  ComandoEntities())
             {
-
+                verbale.Utente_Id = ((Utente)this.Context.Session["currentUser"]).Id;
+                verbale.Category_Id = Int64.Parse(Request.QueryString["cat"].ToString());
                 item = entities.Agente.Find(this.agente1.Id);
-                agente2 = entities.Agente.Find(this.agente2.Id);
-                verbale.Agente1=item;
-                verbale.Agente2.Add(agente2);
+                item2 = entities.Agente.Find(this.agente2.Id);
+                verbale.Agente=item;
+                verbale.Agente1=item2;
                 new DateTime();
                 DateTime result = new DateTime();
                 DateTime? nullable = null;
@@ -224,34 +227,35 @@
         {
             using (var entities = new ComandoEntities())
             {
-                this.verbale = entities.Verbale.Find(verbaleId);
-                this.agente1.Id = string.IsNullOrEmpty(this.ddlA1.SelectedValue) ? ((long) 0) : ((long) int.Parse(this.ddlA1.SelectedValue));
-                this.agente2.Id = string.IsNullOrEmpty(this.ddlA2.SelectedValue) ? ((long) 0) : ((long) int.Parse(this.ddlA2.SelectedValue));
+                verbale = entities.Verbale.Find(verbaleId);
+                agente1.Id = string.IsNullOrEmpty(this.ddlA1.SelectedValue) ? ((long) 0) : ((long) int.Parse(this.ddlA1.SelectedValue));
+                agente2.Id = string.IsNullOrEmpty(this.ddlA2.SelectedValue) ? ((long) 0) : ((long) int.Parse(this.ddlA2.SelectedValue));
                 if (this.verbale != null)
                 {
-                    this.verbale.Utente = (Utente) base.Session["currentUser"];
-                    
+                    this.verbale.Utente.Id = ((Utente)base.Session["currentUser"]).Id;
                     long idv = this.verbale.Id;
-                    this.agente1 = entities.Agente.Where(x => x.Id == this.agente1.Id).FirstOrDefault();// entities.Agente.Find(this.agente1.Id);
-                    this.agente2 = entities.Agente.Where(x => x.Id == this.agente2.Id).FirstOrDefault(); //entities.Agente.Find(this.agente2.Id);
-
-                    this.verbale.CategoriaVerbale = entities.CategoriaVerbale.Where(x => x.ID == verbale.Category_Id).FirstOrDefault();
-                    if (this.verbale.Agente2.Count > 0)
-                        this.verbale.Agente2.Clear();
-
-                    this.verbale.Agente2.Add(this.agente1);
-                    this.verbale.Agente2.Add(this.agente2);
                     DateTime result = new DateTime();
-                   
-                    this.verbale.Data = new DateTime?(DateTime.TryParse(this.txtDataVerbale.Text, out result) ? result : DateTime.MinValue);
-                    this.verbale.Indirizzo = this.txtVerbaleIndirizzo.Text;
-               
-                    if (!entities.Verbale.Any(x => x.Id == verbaleId))
-                        entities.Entry<Verbale>(this.verbale).State = (this.verbale.Id == 0) ? EntityState.Added : EntityState.Modified;
-                    
-                    int cat = int.Parse(base.Request.QueryString["cat"].ToString());
-                    this.verbale.CategoriaVerbale = entities.CategoriaVerbale.Where(x => x.ID == verbale.Category_Id).FirstOrDefault();
+                    verbale.Agente1_Id = this.agente1.Id;
+                    verbale.Agente2_Id = this.agente2.Id;
+                    verbale.Data = new DateTime?(DateTime.TryParse(this.txtDataVerbale.Text, out result) ? result : DateTime.MinValue);
+                    verbale.Indirizzo = this.txtVerbaleIndirizzo.Text;
                     entities.SaveChanges();
+                }
+            }
+
+            using (var entities = new ComandoEntities())
+            {
+                if (this.verbale != null)
+                {
+                    Violazione violazione = entities.Violazione.Where(x => x.Verbale_Id == verbaleId).FirstOrDefault();
+
+
+                    if (this.violazione != null)
+                    {
+                        violazione.Data = DateTime.ParseExact(txtViolazioneData.Text + " " + txtOra.Text, "dd/MM/yyyy hh:mm", CultureInfo.CurrentCulture);
+                        violazione.Indirizzo = txtVerbaleIndirizzo.Text;
+                        entities.SaveChanges();
+                    }
                 }
             }
         }

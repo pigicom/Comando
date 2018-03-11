@@ -486,14 +486,6 @@
           <Property Name="Utente_Id" Type="bigint" />
           <Property Name="Veicolo_Id" Type="bigint" />
         </EntityType>
-        <EntityType Name="VerbaleAgente">
-          <Key>
-            <PropertyRef Name="Agente_Id" />
-            <PropertyRef Name="Verbale_Id" />
-          </Key>
-          <Property Name="Agente_Id" Type="bigint" Nullable="false" />
-          <Property Name="Verbale_Id" Type="bigint" Nullable="false" />
-        </EntityType>
         <EntityType Name="VerbaleElezioneDomicilio">
           <Key>
             <PropertyRef Name="Id" />
@@ -838,18 +830,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Verbale_Agente">
-          <End Role="Agente" Type="Self.Agente" Multiplicity="0..1" />
-          <End Role="Verbale" Type="Self.Verbale" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Agente">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Verbale">
-              <PropertyRef Name="Agente2_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Verbale_Agente1">
           <End Role="Agente" Type="Self.Agente" Multiplicity="0..1" />
           <End Role="Verbale" Type="Self.Verbale" Multiplicity="*" />
@@ -859,6 +839,18 @@
             </Principal>
             <Dependent Role="Verbale">
               <PropertyRef Name="Agente1_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Verbale_Agente2">
+          <End Role="Agente" Type="Self.Agente" Multiplicity="0..1" />
+          <End Role="Verbale" Type="Self.Verbale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Verbale">
+              <PropertyRef Name="Agente2_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -919,30 +911,6 @@
             </Principal>
             <Dependent Role="Verbale">
               <PropertyRef Name="Veicolo_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VerbaleAgente_Agente">
-          <End Role="Agente" Type="Self.Agente" Multiplicity="1" />
-          <End Role="VerbaleAgente" Type="Self.VerbaleAgente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Agente">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="VerbaleAgente">
-              <PropertyRef Name="Agente_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VerbaleAgente_Verbale">
-          <End Role="Verbale" Type="Self.Verbale" Multiplicity="1" />
-          <End Role="VerbaleAgente" Type="Self.VerbaleAgente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Verbale">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="VerbaleAgente">
-              <PropertyRef Name="Verbale_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1012,7 +980,6 @@
           <EntitySet Name="Utente" EntityType="Self.Utente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Veicolo" EntityType="Self.Veicolo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Verbale" EntityType="Self.Verbale" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="VerbaleAgente" EntityType="Self.VerbaleAgente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VerbaleElezioneDomicilio" EntityType="Self.VerbaleElezioneDomicilio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Violazione" EntityType="Self.Violazione" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__aspnet_Me__Appli__37FA4C37" Association="Self.FK__aspnet_Me__Appli__37FA4C37">
@@ -1115,11 +1082,11 @@
             <End Role="Proprietario" EntitySet="Proprietario" />
             <End Role="Veicolo" EntitySet="Veicolo" />
           </AssociationSet>
-          <AssociationSet Name="FK_Verbale_Agente" Association="Self.FK_Verbale_Agente">
+          <AssociationSet Name="FK_Verbale_Agente1" Association="Self.FK_Verbale_Agente1">
             <End Role="Agente" EntitySet="Agente" />
             <End Role="Verbale" EntitySet="Verbale" />
           </AssociationSet>
-          <AssociationSet Name="FK_Verbale_Agente1" Association="Self.FK_Verbale_Agente1">
+          <AssociationSet Name="FK_Verbale_Agente2" Association="Self.FK_Verbale_Agente2">
             <End Role="Agente" EntitySet="Agente" />
             <End Role="Verbale" EntitySet="Verbale" />
           </AssociationSet>
@@ -1143,14 +1110,6 @@
             <End Role="Veicolo" EntitySet="Veicolo" />
             <End Role="Verbale" EntitySet="Verbale" />
           </AssociationSet>
-          <AssociationSet Name="FK_VerbaleAgente_Agente" Association="Self.FK_VerbaleAgente_Agente">
-            <End Role="Agente" EntitySet="Agente" />
-            <End Role="VerbaleAgente" EntitySet="VerbaleAgente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VerbaleAgente_Verbale" Association="Self.FK_VerbaleAgente_Verbale">
-            <End Role="Verbale" EntitySet="Verbale" />
-            <End Role="VerbaleAgente" EntitySet="VerbaleAgente" />
-          </AssociationSet>
           <AssociationSet Name="FK_VerbaleElezioneDomicilioDocumentoWord" Association="Self.FK_VerbaleElezioneDomicilioDocumentoWord">
             <End Role="VerbaleElezioneDomicilio" EntitySet="VerbaleElezioneDomicilio" />
             <End Role="DocumentoWord" EntitySet="DocumentoWord" />
@@ -1164,19 +1123,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ComandoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Agente">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int64" />
-          <Property Name="Nome" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="Cognome" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="Grado" MaxLength="100" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="PoliziaGiudiziaria" Type="Boolean" />
-          <NavigationProperty Name="Verbale" Relationship="Self.FK_Verbale_Agente" FromRole="Agente" ToRole="Verbale" />
-          <NavigationProperty Name="Verbale1" Relationship="Self.FK_Verbale_Agente1" FromRole="Agente" ToRole="Verbale" />
-          <NavigationProperty Name="Verbale2" Relationship="Self.VerbaleAgente" FromRole="Agente" ToRole="Verbale" />
-        </EntityType>
         <EntityType Name="Applications">
           <Key>
             <PropertyRef Name="ApplicationId" />
@@ -1682,16 +1628,15 @@
           <Property Name="Trasgressore_Id" Type="Int64" />
           <Property Name="Utente_Id" Type="Int64" />
           <Property Name="Veicolo_Id" Type="Int64" />
-          <NavigationProperty Name="Agente" Relationship="Self.FK_Verbale_Agente" FromRole="Verbale" ToRole="Agente" />
-          <NavigationProperty Name="Agente1" Relationship="Self.FK_Verbale_Agente1" FromRole="Verbale" ToRole="Agente" />
           <NavigationProperty Name="Avvocato" Relationship="Self.FK_Verbale_Avvocato" FromRole="Verbale" ToRole="Avvocato" />
           <NavigationProperty Name="CategoriaVerbale" Relationship="Self.FK_Verbale_CategoriaVerbale" FromRole="Verbale" ToRole="CategoriaVerbale" />
           <NavigationProperty Name="Trasgressore" Relationship="Self.FK_Verbale_Trasgressore" FromRole="Verbale" ToRole="Trasgressore" />
           <NavigationProperty Name="Utente" Relationship="Self.FK_Verbale_Utente" FromRole="Verbale" ToRole="Utente" />
           <NavigationProperty Name="Veicolo" Relationship="Self.FK_Verbale_Veicolo" FromRole="Verbale" ToRole="Veicolo" />
           <NavigationProperty Name="Violazione" Relationship="Self.FK_VerbaleViolazione" FromRole="Verbale" ToRole="Violazione" />
-          <NavigationProperty Name="Agente2" Relationship="Self.VerbaleAgente" FromRole="Verbale" ToRole="Agente" />
-        </EntityType>
+          <NavigationProperty Name="Agente" Relationship="ComandoModel.FK_Verbale_Agente1" FromRole="Verbale" ToRole="Agente" />
+          <NavigationProperty Name="Agente1" Relationship="ComandoModel.FK_Verbale_Agente2" FromRole="Verbale" ToRole="Agente" />
+          </EntityType>
         <EntityType Name="VerbaleElezioneDomicilio">
           <Key>
             <PropertyRef Name="Id" />
@@ -1735,30 +1680,6 @@
           <Property Name="Verbale_Id" Type="Int64" />
           <NavigationProperty Name="Verbale" Relationship="Self.FK_VerbaleViolazione" FromRole="Violazione" ToRole="Verbale" />
         </EntityType>
-        <Association Name="FK_Verbale_Agente">
-          <End Type="Self.Agente" Multiplicity="0..1" Role="Agente" />
-          <End Type="Self.Verbale" Multiplicity="*" Role="Verbale" />
-          <ReferentialConstraint>
-            <Principal Role="Agente">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Verbale">
-              <PropertyRef Name="Agente2_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Verbale_Agente1">
-          <End Type="Self.Agente" Multiplicity="0..1" Role="Agente" />
-          <End Type="Self.Verbale" Multiplicity="*" Role="Verbale" />
-          <ReferentialConstraint>
-            <Principal Role="Agente">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Verbale">
-              <PropertyRef Name="Agente1_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_MembershipEntity_Application">
           <End Role="Applications" Type="Self.Applications" Multiplicity="1" />
           <End Role="Memberships" Type="Self.Memberships" Multiplicity="*" />
@@ -2107,12 +2028,7 @@
           <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
         </Association>
-        <Association Name="VerbaleAgente">
-          <End Type="Self.Agente" Multiplicity="*" Role="Agente" />
-          <End Type="Self.Verbale" Multiplicity="*" Role="Verbale" />
-        </Association>
         <EntityContainer Name="ComandoEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Agente" EntityType="Self.Agente" />
           <EntitySet Name="Applications" EntityType="Self.Applications" />
           <EntitySet Name="aspnet_Applications" EntityType="Self.aspnet_Applications" />
           <EntitySet Name="aspnet_Membership" EntityType="Self.aspnet_Membership" />
@@ -2153,14 +2069,6 @@
           <EntitySet Name="Verbale" EntityType="Self.Verbale" />
           <EntitySet Name="VerbaleElezioneDomicilio" EntityType="Self.VerbaleElezioneDomicilio" />
           <EntitySet Name="Violazione" EntityType="Self.Violazione" />
-          <AssociationSet Name="FK_Verbale_Agente" Association="Self.FK_Verbale_Agente">
-            <End EntitySet="Agente" Role="Agente" />
-            <End EntitySet="Verbale" Role="Verbale" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Verbale_Agente1" Association="Self.FK_Verbale_Agente1">
-            <End EntitySet="Agente" Role="Agente" />
-            <End EntitySet="Verbale" Role="Verbale" />
-          </AssociationSet>
           <AssociationSet Name="FK_MembershipEntity_Application" Association="Self.FK_MembershipEntity_Application">
             <End Role="Applications" EntitySet="Applications" />
             <End Role="Memberships" EntitySet="Memberships" />
@@ -2281,28 +2189,58 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="VerbaleAgente" Association="Self.VerbaleAgente">
-            <End EntitySet="Agente" Role="Agente" />
-            <End EntitySet="Verbale" Role="Verbale" />
+          <EntitySet Name="Agente" EntityType="ComandoModel.Agente" />
+          <AssociationSet Name="FK_Verbale_Agente1" Association="ComandoModel.FK_Verbale_Agente1">
+            <End Role="Agente" EntitySet="Agente" />
+            <End Role="Verbale" EntitySet="Verbale" />
           </AssociationSet>
-        </EntityContainer>
-      </Schema>
+          <AssociationSet Name="FK_Verbale_Agente2" Association="ComandoModel.FK_Verbale_Agente2">
+            <End Role="Agente" EntitySet="Agente" />
+            <End Role="Verbale" EntitySet="Verbale" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Agente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Cognome" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Grado" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PoliziaGiudiziaria" Type="Boolean" />
+          <NavigationProperty Name="Verbale" Relationship="ComandoModel.FK_Verbale_Agente1" FromRole="Agente" ToRole="Verbale" />
+          <NavigationProperty Name="Verbale1" Relationship="ComandoModel.FK_Verbale_Agente2" FromRole="Agente" ToRole="Verbale" />
+        </EntityType>
+        <Association Name="FK_Verbale_Agente1">
+          <End Type="ComandoModel.Agente" Role="Agente" Multiplicity="0..1" />
+          <End Type="ComandoModel.Verbale" Role="Verbale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Verbale">
+              <PropertyRef Name="Agente1_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Verbale_Agente2">
+          <End Type="ComandoModel.Agente" Role="Agente" Multiplicity="0..1" />
+          <End Type="ComandoModel.Verbale" Role="Verbale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Verbale">
+              <PropertyRef Name="Agente2_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ComandoModelStoreContainer" CdmEntityContainer="ComandoEntities">
-          <EntitySetMapping Name="Agente">
-            <EntityTypeMapping TypeName="ComandoModel.Agente">
-              <MappingFragment StoreEntitySet="Agente">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="Cognome" ColumnName="Cognome" />
-                <ScalarProperty Name="Grado" ColumnName="Grado" />
-                <ScalarProperty Name="PoliziaGiudiziaria" ColumnName="PoliziaGiudiziaria" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Applications">
             <EntityTypeMapping TypeName="ComandoModel.Applications">
               <MappingFragment StoreEntitySet="Applications">
@@ -2850,14 +2788,17 @@
               <ScalarProperty Name="UserId" ColumnName="Users_UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="VerbaleAgente" TypeName="ComandoModel.VerbaleAgente" StoreEntitySet="VerbaleAgente">
-            <EndProperty Name="Agente">
-              <ScalarProperty Name="Id" ColumnName="Agente_Id" />
-            </EndProperty>
-            <EndProperty Name="Verbale">
-              <ScalarProperty Name="Id" ColumnName="Verbale_Id" />
-            </EndProperty>
-          </AssociationSetMapping>
+          <EntitySetMapping Name="Agente">
+            <EntityTypeMapping TypeName="ComandoModel.Agente">
+              <MappingFragment StoreEntitySet="Agente">
+                <ScalarProperty Name="PoliziaGiudiziaria" ColumnName="PoliziaGiudiziaria" />
+                <ScalarProperty Name="Grado" ColumnName="Grado" />
+                <ScalarProperty Name="Cognome" ColumnName="Cognome" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

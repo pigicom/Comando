@@ -25,7 +25,6 @@ namespace comando
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Agente> Agente { get; set; }
         public virtual DbSet<Applications> Applications { get; set; }
         public virtual DbSet<aspnet_Applications> aspnet_Applications { get; set; }
         public virtual DbSet<aspnet_Membership> aspnet_Membership { get; set; }
@@ -66,5 +65,6 @@ namespace comando
         public virtual DbSet<Verbale> Verbale { get; set; }
         public virtual DbSet<VerbaleElezioneDomicilio> VerbaleElezioneDomicilio { get; set; }
         public virtual DbSet<Violazione> Violazione { get; set; }
+        public virtual DbSet<Agente> Agente { get; set; }
     }
 }

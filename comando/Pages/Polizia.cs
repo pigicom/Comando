@@ -42,13 +42,13 @@
                 this.verbale = entities.Verbale.Find(verbaleid);
                 this.violazione = entities.Violazione.Find(verbale.Violazione_Id);
                 this.trasgressore = this.verbale.Trasgressore;
-                if (this.verbale.Agente2.Count > 0)
+                if (this.verbale.Agente!=null )
                 {
-                    this.agente1 = this.verbale.Agente2.ElementAt<Agente>(0);
+                    this.agente1 = this.verbale.Agente;
                 }
-                if (this.verbale.Agente2.Count > 1)
+                if (this.verbale.Agente1!=null)
                 {
-                    this.agente2 = this.verbale.Agente2.ElementAt<Agente>(1);
+                    this.agente2 = this.verbale.Agente1;
                 }
                 this.avvocato = this.verbale.Avvocato;
                 this.patente = this.trasgressore.Patente.FirstOrDefault<Patente>();
@@ -96,13 +96,13 @@
 
                     Verbale Verbale = entities.Verbale.Find(v.Id);
                     this.violazione = entities.Violazione.Find(v.Violazione_Id);
-                    if (Verbale.Agente2.Count > 0)
+                    if (Verbale.Agente!=null)
                     {
-                        this.ControlAgente.agente1 = Verbale.Agente2.ElementAt<Agente>(0);
+                        this.ControlAgente.agente1 = Verbale.Agente;
                     }
-                    if (Verbale.Agente2.Count > 1)
+                    if (Verbale.Agente1!=null)
                     {
-                        this.ControlAgente.agente2 = Verbale.Agente2.ElementAt<Agente>(1);
+                        this.ControlAgente.agente2 = Verbale.Agente1;
                     }
                     this.ControlAgente.verbale = Verbale;
                     this.ControlAgente.violazione = this.violazione;
@@ -156,14 +156,10 @@
 
         public void Save(object sender, EventArgs e)
         {
-            using (var context =new ComandoEntities())
-            {
                 if (this.ViewState["idverbale"] == null)
-                {
-                    this.ViewState["idverbale"] = this.ControlAgente.AddNew(context);
-                }
+                 this.ViewState["idverbale"] = this.ControlAgente.AddNew();
+
                 int num = int.Parse(this.ViewState["idverbale"].ToString());
-                this.verbale = context.Verbale.Find((long)num);
                 this.ControlAgente.SaveData((long)num);
                 this.ControlTrasgressore.SaveData((long)num);
                 this.ControlPatente.SaveData((long)num, true);
@@ -171,7 +167,7 @@
                 {
                     this.ControlAvvocato.SaveData((long)num);
                 }
-            }
+             
         }
 
         public void Search(object sender, EventArgs e)

@@ -75,7 +75,8 @@
                   <td >Ora </td>
                   <td >
                       <asp:TextBox ID="txtOra" runat="server"  onblur="AggiungiMinuti(this)" Width="60px" />
-                  </td>
+                      <div style="position:absolute;font-size:10px">&nbsp;&nbsp;&nbsp;(hh:mm)</div>
+                     </td>
                <td >Articolo&nbsp;</td>
                     <td> <asp:TextBox ID="txtArticolo" runat="server" Width="60px" /></td>
                   <td>&nbsp;Città&nbsp;</td>
@@ -98,21 +99,21 @@
               <tr>
                   <td>Agente 1</td>
                   <td>
-                      <asp:HiddenField ID="Agente1ID" runat="server" />
-                  </td>
-                  <td>
                       <asp:DropDownList ID="ddlA1" runat="server" on="" onchange="leaveChange(this)" Width="100%">
                       </asp:DropDownList>
+                  </td>
+                  <td>
+                      <asp:HiddenField ID="Agente1ID" runat="server" />
                   </td>
               </tr>
               <tr>
                   <td>Agente 2</td>
                   <td>
-                      <asp:HiddenField ID="Agente2ID" runat="server" />
-                  </td>
-                  <td>
                       <asp:DropDownList ID="ddlA2" runat="server" onchange="leaveChange(this)" Width="100%">
                       </asp:DropDownList>
+                  </td>
+                  <td>
+                      <asp:HiddenField ID="Agente2ID" runat="server" />
                     </td>
               </tr>
               
