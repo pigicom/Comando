@@ -11,7 +11,7 @@
 
     public class ControlProprietario : UserControl
     {
-        public Proprietario proprietario = new Proprietario();
+        public Proprietario proprietario = null;
         protected TextBox txtCittaNascita;
         protected TextBox txtCittaResidenza;
         protected TextBox txtCognome;
@@ -48,15 +48,13 @@
                
                 ParameterExpression expression;
                 Verbale verbale = entities.Verbale.Find(idverbale);
-             
-                if (verbale.Veicolo.Proprietario != null)
-                {
-                    this.proprietario = verbale.Veicolo.Proprietario;
-                }
-                else
-                {
-                    verbale.Veicolo.Proprietario = this.proprietario;
-                }
+
+                if (verbale.Veicolo != null)
+
+                    proprietario = verbale.Veicolo.Proprietario;
+                if (proprietario == null)
+                    proprietario = new Proprietario();
+                
                 this.proprietario.Nome = this.txtNome.Text.Trim();
                 this.proprietario.CittaNascita = this.txtCittaNascita.Text.Trim();
                 this.proprietario.CittaResidenza = this.txtCittaResidenza.Text.Trim();

@@ -41,9 +41,9 @@
     <form id="form1" runat="server">
         <table style="width:100%; align-items:center; margin-left: 0px ; background-color:#3498db; border:2px solid #e1e1e1">
             <tr>
-                <td style="vertical-align: top">
+               <%-- <td style="vertical-align: top">
                     <div class="voce"><a href="/Comando/Pages/Domicilio.aspx?cat=1" style="text-decoration: none; color: white;">Elezione Domicilio Stranieri</a></div>
-                </td>
+                </td>--%>
                 <td style="vertical-align: top">
                     <div class="voce"><a href="/Comando/Pages/Ebbrezza.aspx?cat=2" style="text-decoration: none; color: white;">Guida In Stato Di Ebbrezza</a></div>
                 </td>
@@ -66,7 +66,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="voce" type="sottovoce"><a style="text-decoration: none; color: white;" href="/Comando/Pages/Sives.aspx?cat=4&sotto=3">Sequestro Custode</a></div>
+                                    <div class="voce" type="sottovoce"><a style="text-decoration: none; color: white;" href="/Comando/Pages/Sives.aspx?cat=3&sotto=3">Sequestro Custode</a></div>
                                 </td>
                             </tr>
                             <tr>
@@ -484,7 +484,7 @@
              var i=<%=Request.QueryString["cat"]%>
              $.ajax({
                  type: "POST",
-                 url: "Services.aspx/GetVerbali",
+                 url: "../NewPages/Services.aspx/GetVerbali",
                  data: "{'categoria':'" + i + "'}",
                  contentType: "application/json; charset=utf-8",
                  dataType: "json",
@@ -530,17 +530,15 @@
 
          function CaricaVerbale(idVerbale)
          {
-             if (<%=Request.QueryString["cat"]%> == 1)
-                 window.location.href = 'Domicilio.aspx?cat=1&idVerbale=' + idVerbale;
-             else if (<%=Request.QueryString["cat"]%>==2)
+            if (<%=Request.QueryString["cat"]%>==2)
                  window.location.href = 'Ebbrezza.aspx?cat=2&idVerbale=' + idVerbale;
-             else if (<%=Request.QueryString["cat"]%>==3)
+            else if (<%=Request.QueryString["cat"]%>==3)
                  window.location.href = 'Polizia.aspx?cat=3&idVerbale=' + idVerbale;
-             else if (<%=Request.QueryString["cat"]%>==4)
+            else if (<%=Request.QueryString["cat"]%>==4)
                  window.location.href = 'Sives.aspx?sotto=<%=Request.QueryString["sotto"]%>&cat=4&idVerbale=' + idVerbale;
-               else if (<%=Request.QueryString["cat"]%>==5)
+            else if (<%=Request.QueryString["cat"]%>==5)
                    window.location.href = 'Stranieri.aspx?sotto=<%=Request.QueryString["sotto"]%>&cat=5&idVerbale=' + idVerbale;
-               else if (<%=Request.QueryString["cat"]%>==6)
+            else if (<%=Request.QueryString["cat"]%>==6)
                    window.location.href = 'Veicoli.aspx?sotto=<%=Request.QueryString["sotto"]%>&cat=6&idVerbale=' + idVerbale;
 }
 

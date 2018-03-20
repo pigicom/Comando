@@ -252,6 +252,8 @@
 
                     if (this.violazione != null)
                     {
+                        if (String.IsNullOrWhiteSpace(txtOra.Text))
+                            txtOra.Text = "00:00";
                         violazione.Data = DateTime.ParseExact(txtViolazioneData.Text + " " + txtOra.Text, "dd/MM/yyyy hh:mm", CultureInfo.CurrentCulture);
                         violazione.Indirizzo = txtVerbaleIndirizzo.Text;
                         entities.SaveChanges();

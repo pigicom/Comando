@@ -10,12 +10,13 @@ namespace Comando
     {
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("../Login.aspx");
+            Session.Abandon();
         }
 
         protected void LinkButton2_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("CambioPassword.aspx");
         }
 
         protected void btnCrea_Click(object sender, EventArgs e)

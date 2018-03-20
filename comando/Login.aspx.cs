@@ -30,7 +30,7 @@
                 if (utente != null)
                 {
                     this.Session["currentUser"] = utente;
-                    base.Response.Redirect("NewPages/Domicilio.aspx?cat=1");
+                    base.Response.Redirect("Pages/Ebbrezza.aspx?cat=2");
                 }
                 else
                 {

@@ -84,8 +84,9 @@
             <tr style="height:35px">
                  <td style="width:33%">&nbsp;</td>
                  <td class="auto-style3">&nbsp;</td>
-                 <td><asp:Button ID="salva" runat="server" Width="100px" Text="Salva" OnClick="salva_Click" CssClass="btn btn-danger" /></td>
-                 <td style="width:50%">&nbsp;</td>
+                 <td><asp:Button ID="salva" runat="server" Width="100px" Text="Salva" OnClick="salva_Click" CssClass="btn btn-danger" />
+                     </td>
+                 <td style="width:50%"><asp:Button ID="Annulla" runat="server" Width="100px" Text="Annulla" OnClick="annulla_Click" CssClass="btn btn-default" /></td>
             </tr>
             <tr style="height:35px">
                  <td>&nbsp;</td>

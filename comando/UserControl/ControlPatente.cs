@@ -12,7 +12,7 @@
     {
         protected DropDownList ddlCategoria;
         protected Panel Panel1;
-        private Patente patente = new Patente();
+        private Patente patente = null;
         protected TextBox txtDataRilascio;
         protected TextBox txtNumero;
         protected TextBox txtRialsciataDa;
@@ -41,7 +41,7 @@
             using (ComandoEntities entities = new ComandoEntities())
             {
 
-                this.patente = entities.Patente.Where(x => x.Trasgressore == tra).FirstOrDefault();
+                this.patente = entities.Patente.Where(x => x.Trasgressore.Id == tra.Id).FirstOrDefault();
             }
             if (this.patente != null)
             {
@@ -70,46 +70,32 @@
             {
                 Trasgressore trasgressore2 = null;
                 Proprietario proprietario = null;
+                Trasgressore PropietarioTrasgressore = null;
+
                 if (trasgressore)
                 {
                     object[] keyValues = new object[] { idverbale };
-                    trasgressore2 = entities.Verbale.Find(keyValues).Trasgressore;
-                    if ((trasgressore2 != null) && (trasgressore2.Patente.Count<Patente>() > 0))
-                    {
-                        trasgressore2.Patente.Clear();
-                    }
+                    PropietarioTrasgressore = entities.Verbale.Find(keyValues).Trasgressore;
                 }
                 else
                 {
                     object[] objArray2 = new object[] { idverbale };
-                    proprietario = entities.Verbale.Find(objArray2).Veicolo.Proprietario;
-                    if (proprietario.Patente.Count<Patente>() > 0)
-                    {
-                        proprietario.Patente.Clear();
-                    }
+                    PropietarioTrasgressore = entities.Verbale.Find(objArray2).Veicolo.Proprietario;
                 }
-                this.patente.Categoria = this.ddlCategoria.SelectedItem.Text;
+
+                this.patente = PropietarioTrasgressore.Patente.FirstOrDefault();
+                if (this.patente == null)
+                    this.patente = new Patente();
+
+                patente.Categoria = this.ddlCategoria.SelectedItem.Text;
                 DateTime result = new DateTime();
-                this.patente.Data = null;
+                patente.Data = null;
                 if (DateTime.TryParse(this.txtDataRilascio.Text, out result))
                 {
                     this.patente.Data = new DateTime?(result);
                 }
                 this.patente.Numero = this.txtNumero.Text;
                 this.patente.RilasciataDa = this.txtRialsciataDa.Text;
-                this.patente.Trasgressore = trasgressore2;
-                entities.Patente.Add(this.patente);
-                if (trasgressore && (trasgressore2 != null))
-                {
-                    if (this.patente.Data.HasValue)
-                    {
-                        trasgressore2.Patente.Add(this.patente);
-                    }
-                }
-                else if (this.patente.Data.HasValue)
-                {
-                    proprietario.Patente.Add(this.patente);
-                }
                 try
                 {
                     entities.SaveChanges();

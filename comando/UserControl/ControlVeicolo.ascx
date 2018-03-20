@@ -15,7 +15,7 @@
                       <%--  <asp:RequiredFieldValidator  runat="server" CssClass="error" ID="reqNome" ErrorMessage="Campo Obbligatorio" ControlToValidate="txtNome" Display="Dynamic"></asp:RequiredFieldValidator></td>--%>
                           <asp:DropDownList ID="ddlTipoVeicolo" runat="server" DataSourceID="SqlDataSource1" DataTextField="Descrizione" DataValueField="Id" Width="251px">
                           </asp:DropDownList>
-                          <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ComandoConnectionString %>" SelectCommand="SELECT [Id], [Descrizione] FROM [TipoVeicolo]"></asp:SqlDataSource>
+                          <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ComandoConnectionString %>" SelectCommand="SELECT [Id], [Descrizione] FROM [TipoVeicolo]"></asp:SqlDataSource>--%>
                       <td>Marca</td>
                       <td>
                         <%--  <asp:TextBox ID="txtMarca" runat="server" Width="241px" />--%>
@@ -26,7 +26,9 @@
               </tr>
               <tr>
                   <td>&nbsp;</td>
-                  <td class="auto-style5">&nbsp;</td>
+                  <td class="auto-style5">
+                      <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ComandoConnectionString %>" SelectCommand="SELECT [Id], [Descrizione] FROM [TipoVeicolo]"></asp:SqlDataSource>
+                  </td>
                   <td>&nbsp;</td>
                   <td>&nbsp;</td>
               </tr>

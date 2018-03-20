@@ -141,7 +141,7 @@
                     }
                 }
             }
-            ((ComandoPage)this.Parent).Title = Helper.GetCategoryDescription(int.Parse(this.ViewState["categoriaverbale"].ToString()));
+            ((ComandoPage)this).Title = Helper.GetCategoryDescription(int.Parse(this.ViewState["categoriaverbale"].ToString()));
             base.BindPossibiliVerbali(2);
             this.Menu.Create += new EventHandler(this.Create);
             this.Menu.Save += new EventHandler(this.Save);

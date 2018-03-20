@@ -27,12 +27,12 @@
         {
             using (ComandoEntities entities = new ComandoEntities())
             {
-                Utente u = (Utente) this.Session["currentUser"];
+                Utente u = (Utente)this.Session["currentUser"];
                 string encodedPassword = Helper.Base64Encode(this.vecchiapassword.Text);
                 if (u != null)
                 {
                     var vecchiaPwd = Helper.Base64Encode(entities.Utente.Where(x => x.Id == u.Id).Select(x => x.Pwd).FirstOrDefault());
-                    if (vecchiaPwd!= encodedPassword)
+                    if (vecchiaPwd != encodedPassword)
                     {
                         this.divError.Visible = true;
                         this.lblError.Visible = true;
@@ -62,6 +62,12 @@
                 }
             }
         }
+
+        protected void annulla_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Ebbrezza.aspx?cat=2");
+        }
+
     }
 }
 
