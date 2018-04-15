@@ -46,12 +46,20 @@
         {
             using (ComandoEntities entities = new ComandoEntities())
             {
-                new Veicolo();
-                object[] keyValues = new object[] { idveicolo };
+                Veicolo veicolo = entities.Veicolo.Find(idveicolo);
+                this.custode = veicolo.Custode;
+                if (custode == null)
+                    custode = new Custode();
+
                 this.custode.Ditta = this.txtDitta.Text;
                 this.custode.Indirizzo = this.txtIndirizzo.Text;
                 this.custode.Comune = this.txtComune.Text;
-                entities.Veicolo.Find(keyValues).Custode = this.custode;
+
+                if (custode.Id == 0)
+                {
+                    entities.Custode.Add(custode);
+                    veicolo.Custode = custode;
+                }
                 entities.SaveChanges();
             }
         }

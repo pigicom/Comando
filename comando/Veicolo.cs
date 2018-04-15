@@ -32,9 +32,9 @@ namespace comando
         public Nullable<long> Id_Custode { get; set; }
     
         public virtual Custode Custode { get; set; }
-        public virtual Proprietario Proprietario { get; set; }
         public virtual TipoVeicolo TipoVeicolo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Verbale> Verbale { get; set; }
+        public virtual Proprietario Proprietario { get; set; }
     }
 }

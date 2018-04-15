@@ -13,7 +13,6 @@
                   <td class="auto-style5"><%--  <asp:RequiredFieldValidator  runat="server" CssClass="error" ID="reqNome" ErrorMessage="Campo Obbligatorio" ControlToValidate="txtNome" Display="Dynamic"></asp:RequiredFieldValidator></td>--%>
                       <asp:DropDownList ID="ddlCategoria" runat="server" Width="240px">
                           <asp:ListItem Text="PATENTE A1" Value="PATENTE A1"></asp:ListItem>
-                          <asp:ListItem Text="PATENTE A1" Value="PATENTE A1"></asp:ListItem>
                           <asp:ListItem Text="PATENTE A2" Value="PATENTE A2"></asp:ListItem>
                           <asp:ListItem Text="PATENTE AM" Value="PATENTE AM"></asp:ListItem>
                           <asp:ListItem Text="PATENTE B" Value="PATENTE B"></asp:ListItem>

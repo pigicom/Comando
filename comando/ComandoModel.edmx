@@ -198,6 +198,7 @@
           <Property Name="Descrizione" Type="nchar" MaxLength="70" />
           <Property Name="IDPadre" Type="bigint" />
           <Property Name="Pagina" Type="nvarchar" MaxLength="200" />
+          <Property Name="Sotto" Type="int" />
         </EntityType>
         <EntityType Name="Comuni">
           <Key>
@@ -299,7 +300,6 @@
           <Property Name="Numero" Type="nchar" MaxLength="40" />
           <Property Name="RilasciataDa" Type="nchar" MaxLength="100" />
           <Property Name="Data" Type="datetime" />
-          <Property Name="Intestatario_Id" Type="bigint" />
         </EntityType>
         <EntityType Name="Profiles">
           <Key>
@@ -322,6 +322,7 @@
           <Property Name="DataNascita" Type="datetime" />
           <Property Name="CittaResidenza" Type="nchar" MaxLength="100" />
           <Property Name="IndirizzoResidenza" Type="nchar" MaxLength="500" />
+          <Property Name="PatenteId" Type="bigint" />
         </EntityType>
         <EntityType Name="Province">
           <Key>
@@ -390,11 +391,10 @@
           <Property Name="CivicoResidenza" Type="nchar" MaxLength="20" />
           <Property Name="CapResidenza" Type="nchar" MaxLength="10" />
           <Property Name="CF" Type="nchar" MaxLength="20" />
-          <Property Name="DocumentoTipo" Type="nvarchar" MaxLength="200" />
-          <Property Name="DocumentoNumero" Type="nvarchar" MaxLength="200" />
           <Property Name="Sesso" Type="nchar" MaxLength="1" />
           <Property Name="CIttaDomicilio" Type="nvarchar" MaxLength="100" />
           <Property Name="IndirizzoDomicilio" Type="nvarchar" MaxLength="500" />
+          <Property Name="PatenteId" Type="bigint" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -710,18 +710,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Patente_Trasgressore">
-          <End Role="Trasgressore" Type="Self.Trasgressore" Multiplicity="0..1" />
-          <End Role="Patente" Type="Self.Patente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Trasgressore">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Patente">
-              <PropertyRef Name="Intestatario_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ProfileEntity_User">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Profiles" Type="Self.Profiles" Multiplicity="0..1" />
@@ -731,6 +719,18 @@
             </Principal>
             <Dependent Role="Profiles">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proprietario_Patente">
+          <End Role="Patente" Type="Self.Patente" Multiplicity="0..1" />
+          <End Role="Proprietario" Type="Self.Proprietario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Proprietario">
+              <PropertyRef Name="PatenteId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -755,6 +755,18 @@
             </Principal>
             <Dependent Role="TipologiaAnagrafica1">
               <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trasgressore_Patente">
+          <End Role="Patente" Type="Self.Patente" Multiplicity="0..1" />
+          <End Role="Trasgressore" Type="Self.Trasgressore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Trasgressore">
+              <PropertyRef Name="PatenteId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1042,13 +1054,13 @@
             <End Role="UsersOpenAuthData" EntitySet="UsersOpenAuthData" />
             <End Role="UsersOpenAuthAccounts" EntitySet="UsersOpenAuthAccounts" />
           </AssociationSet>
-          <AssociationSet Name="FK_Patente_Trasgressore" Association="Self.FK_Patente_Trasgressore">
-            <End Role="Trasgressore" EntitySet="Trasgressore" />
-            <End Role="Patente" EntitySet="Patente" />
-          </AssociationSet>
           <AssociationSet Name="FK_ProfileEntity_User" Association="Self.FK_ProfileEntity_User">
             <End Role="Users" EntitySet="Users" />
             <End Role="Profiles" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proprietario_Patente" Association="Self.FK_Proprietario_Patente">
+            <End Role="Patente" EntitySet="Patente" />
+            <End Role="Proprietario" EntitySet="Proprietario" />
           </AssociationSet>
           <AssociationSet Name="FK_RoleEntity_Application" Association="Self.FK_RoleEntity_Application">
             <End Role="Applications" EntitySet="Applications" />
@@ -1057,6 +1069,10 @@
           <AssociationSet Name="FK_TipologiaAnagrafica_TipologiaAnagrafica" Association="Self.FK_TipologiaAnagrafica_TipologiaAnagrafica">
             <End Role="TipologiaAnagrafica" EntitySet="TipologiaAnagrafica" />
             <End Role="TipologiaAnagrafica1" EntitySet="TipologiaAnagrafica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trasgressore_Patente" Association="Self.FK_Trasgressore_Patente">
+            <End Role="Patente" EntitySet="Patente" />
+            <End Role="Trasgressore" EntitySet="Trasgressore" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Application" Association="Self.FK_User_Application">
             <End Role="Applications" EntitySet="Applications" />
@@ -1323,6 +1339,7 @@
           <Property Name="IDPadre" Type="Int64" />
           <Property Name="Pagina" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Verbale" Relationship="Self.FK_Verbale_CategoriaVerbale" FromRole="CategoriaVerbale" ToRole="Verbale" />
+          <Property Name="Sotto" Type="Int32" />
         </EntityType>
         <EntityType Name="Comuni">
           <Key>
@@ -1420,18 +1437,6 @@
           <NavigationProperty Name="Applications" Relationship="Self.FK_MembershipEntity_Application" FromRole="Memberships" ToRole="Applications" />
           <NavigationProperty Name="Users" Relationship="Self.FK_MembershipEntity_User" FromRole="Memberships" ToRole="Users" />
         </EntityType>
-        <EntityType Name="Patente">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Categoria" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Numero" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
-          <Property Name="RilasciataDa" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="Data" Type="DateTime" Precision="3" />
-          <Property Name="Intestatario_Id" Type="Int64" />
-          <NavigationProperty Name="Trasgressore" Relationship="Self.FK_Patente_Trasgressore" FromRole="Patente" ToRole="Trasgressore" />
-        </EntityType>
         <EntityType Name="Profiles">
           <Key>
             <PropertyRef Name="UserId" />
@@ -1442,19 +1447,6 @@
           <Property Name="PropertyValueBinary" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Users" Relationship="Self.FK_ProfileEntity_User" FromRole="Profiles" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="Proprietario">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="Cognome" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="CittaNascita" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="DataNascita" Type="DateTime" Precision="3" />
-          <Property Name="CittaResidenza" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="IndirizzoResidenza" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Veicolo" Relationship="Self.FK_VeicoloProprietario" FromRole="Proprietario" ToRole="Veicolo" />
         </EntityType>
         <EntityType Name="Province">
           <Key>
@@ -1511,30 +1503,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descrizione" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Veicolo" Relationship="Self.FK_Veicolo_TipoVeicolo" FromRole="TipoVeicolo" ToRole="Veicolo" />
-        </EntityType>
-        <EntityType Name="Trasgressore">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="Cognome" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="DataNascita" Type="DateTime" Precision="3" />
-          <Property Name="CittaNascita" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="StatoNascita" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="CapNascita" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="CittaResidenza" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="ViaResidenza" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="CivicoResidenza" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="CapResidenza" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="CF" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="DocumentoTipo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DocumentoNumero" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Sesso" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
-          <Property Name="CIttaDomicilio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IndirizzoDomicilio" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Patente" Relationship="Self.FK_Patente_Trasgressore" FromRole="Trasgressore" ToRole="Patente" />
-          <NavigationProperty Name="Verbale" Relationship="Self.FK_Verbale_Trasgressore" FromRole="Trasgressore" ToRole="Verbale" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -1600,9 +1568,9 @@
           <Property Name="Id_Proprietario" Type="Int64" />
           <Property Name="Id_Custode" Type="Int64" />
           <NavigationProperty Name="Custode" Relationship="Self.FK_Veicolo_Custode" FromRole="Veicolo" ToRole="Custode" />
-          <NavigationProperty Name="Proprietario" Relationship="Self.FK_VeicoloProprietario" FromRole="Veicolo" ToRole="Proprietario" />
           <NavigationProperty Name="TipoVeicolo" Relationship="Self.FK_Veicolo_TipoVeicolo" FromRole="Veicolo" ToRole="TipoVeicolo" />
           <NavigationProperty Name="Verbale" Relationship="Self.FK_Verbale_Veicolo" FromRole="Veicolo" ToRole="Verbale" />
+          <NavigationProperty Name="Proprietario" Relationship="ComandoModel.FK_VeicoloProprietario" FromRole="Veicolo" ToRole="Proprietario" />
         </EntityType>
         <EntityType Name="Verbale">
           <Key>
@@ -1630,12 +1598,12 @@
           <Property Name="Veicolo_Id" Type="Int64" />
           <NavigationProperty Name="Avvocato" Relationship="Self.FK_Verbale_Avvocato" FromRole="Verbale" ToRole="Avvocato" />
           <NavigationProperty Name="CategoriaVerbale" Relationship="Self.FK_Verbale_CategoriaVerbale" FromRole="Verbale" ToRole="CategoriaVerbale" />
-          <NavigationProperty Name="Trasgressore" Relationship="Self.FK_Verbale_Trasgressore" FromRole="Verbale" ToRole="Trasgressore" />
           <NavigationProperty Name="Utente" Relationship="Self.FK_Verbale_Utente" FromRole="Verbale" ToRole="Utente" />
           <NavigationProperty Name="Veicolo" Relationship="Self.FK_Verbale_Veicolo" FromRole="Verbale" ToRole="Veicolo" />
           <NavigationProperty Name="Violazione" Relationship="Self.FK_VerbaleViolazione" FromRole="Verbale" ToRole="Violazione" />
           <NavigationProperty Name="Agente" Relationship="ComandoModel.FK_Verbale_Agente1" FromRole="Verbale" ToRole="Agente" />
           <NavigationProperty Name="Agente1" Relationship="ComandoModel.FK_Verbale_Agente2" FromRole="Verbale" ToRole="Agente" />
+          <NavigationProperty Name="Trasgressore" Relationship="ComandoModel.FK_Verbale_Trasgressore" FromRole="Verbale" ToRole="Trasgressore" />
           </EntityType>
         <EntityType Name="VerbaleElezioneDomicilio">
           <Key>
@@ -1896,18 +1864,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Patente_Trasgressore">
-          <End Role="Trasgressore" Type="Self.Trasgressore" Multiplicity="0..1" />
-          <End Role="Patente" Type="Self.Patente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Trasgressore">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Patente">
-              <PropertyRef Name="Intestatario_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ProfileEntity_User">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Profiles" Type="Self.Profiles" Multiplicity="0..1" />
@@ -1917,18 +1873,6 @@
             </Principal>
             <Dependent Role="Profiles">
               <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VeicoloProprietario">
-          <End Role="Proprietario" Type="Self.Proprietario" Multiplicity="0..1" />
-          <End Role="Veicolo" Type="Self.Veicolo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proprietario">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Veicolo">
-              <PropertyRef Name="Id_Proprietario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1953,18 +1897,6 @@
             </Principal>
             <Dependent Role="Veicolo">
               <PropertyRef Name="TipoVeicolo_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Verbale_Trasgressore">
-          <End Role="Trasgressore" Type="Self.Trasgressore" Multiplicity="0..1" />
-          <End Role="Verbale" Type="Self.Verbale" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Trasgressore">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Verbale">
-              <PropertyRef Name="Trasgressore_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2051,16 +1983,13 @@
           <EntitySet Name="DocumentoWord" EntityType="Self.DocumentoWord" />
           <EntitySet Name="ListaComuni" EntityType="Self.ListaComuni" />
           <EntitySet Name="Memberships" EntityType="Self.Memberships" />
-          <EntitySet Name="Patente" EntityType="Self.Patente" />
           <EntitySet Name="Profiles" EntityType="Self.Profiles" />
-          <EntitySet Name="Proprietario" EntityType="Self.Proprietario" />
           <EntitySet Name="Province" EntityType="Self.Province" />
           <EntitySet Name="Regioni" EntityType="Self.Regioni" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="Stati" EntityType="Self.Stati" />
           <EntitySet Name="TipologiaAnagrafica" EntityType="Self.TipologiaAnagrafica" />
           <EntitySet Name="TipoVeicolo" EntityType="Self.TipoVeicolo" />
-          <EntitySet Name="Trasgressore" EntityType="Self.Trasgressore" />
           <EntitySet Name="Users" EntityType="Self.Users" />
           <EntitySet Name="UsersOpenAuthAccounts" EntityType="Self.UsersOpenAuthAccounts" />
           <EntitySet Name="UsersOpenAuthData" EntityType="Self.UsersOpenAuthData" />
@@ -2141,17 +2070,9 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Memberships" EntitySet="Memberships" />
           </AssociationSet>
-          <AssociationSet Name="FK_Patente_Trasgressore" Association="Self.FK_Patente_Trasgressore">
-            <End Role="Trasgressore" EntitySet="Trasgressore" />
-            <End Role="Patente" EntitySet="Patente" />
-          </AssociationSet>
           <AssociationSet Name="FK_ProfileEntity_User" Association="Self.FK_ProfileEntity_User">
             <End Role="Users" EntitySet="Users" />
             <End Role="Profiles" EntitySet="Profiles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VeicoloProprietario" Association="Self.FK_VeicoloProprietario">
-            <End Role="Proprietario" EntitySet="Proprietario" />
-            <End Role="Veicolo" EntitySet="Veicolo" />
           </AssociationSet>
           <AssociationSet Name="FK_TipologiaAnagrafica_TipologiaAnagrafica" Association="Self.FK_TipologiaAnagrafica_TipologiaAnagrafica">
             <End Role="TipologiaAnagrafica" EntitySet="TipologiaAnagrafica" />
@@ -2160,10 +2081,6 @@
           <AssociationSet Name="FK_Veicolo_TipoVeicolo" Association="Self.FK_Veicolo_TipoVeicolo">
             <End Role="TipoVeicolo" EntitySet="TipoVeicolo" />
             <End Role="Veicolo" EntitySet="Veicolo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Verbale_Trasgressore" Association="Self.FK_Verbale_Trasgressore">
-            <End Role="Trasgressore" EntitySet="Trasgressore" />
-            <End Role="Verbale" EntitySet="Verbale" />
           </AssociationSet>
           <AssociationSet Name="FK_OpenAuthUserData_Accounts" Association="Self.FK_OpenAuthUserData_Accounts">
             <End Role="UsersOpenAuthData" EntitySet="UsersOpenAuthData" />
@@ -2196,6 +2113,25 @@
           </AssociationSet>
           <AssociationSet Name="FK_Verbale_Agente2" Association="ComandoModel.FK_Verbale_Agente2">
             <End Role="Agente" EntitySet="Agente" />
+            <End Role="Verbale" EntitySet="Verbale" />
+          </AssociationSet>
+          <EntitySet Name="Patente" EntityType="ComandoModel.Patente" />
+          <EntitySet Name="Proprietario" EntityType="ComandoModel.Proprietario" />
+          <EntitySet Name="Trasgressore" EntityType="ComandoModel.Trasgressore" />
+          <AssociationSet Name="FK_Proprietario_Patente" Association="ComandoModel.FK_Proprietario_Patente">
+            <End Role="Patente" EntitySet="Patente" />
+            <End Role="Proprietario" EntitySet="Proprietario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trasgressore_Patente" Association="ComandoModel.FK_Trasgressore_Patente">
+            <End Role="Patente" EntitySet="Patente" />
+            <End Role="Trasgressore" EntitySet="Trasgressore" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VeicoloProprietario" Association="ComandoModel.FK_VeicoloProprietario">
+            <End Role="Proprietario" EntitySet="Proprietario" />
+            <End Role="Veicolo" EntitySet="Veicolo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Verbale_Trasgressore" Association="ComandoModel.FK_Verbale_Trasgressore">
+            <End Role="Trasgressore" EntitySet="Trasgressore" />
             <End Role="Verbale" EntitySet="Verbale" />
           </AssociationSet>
           </EntityContainer>
@@ -2232,6 +2168,104 @@
             </Principal>
             <Dependent Role="Verbale">
               <PropertyRef Name="Agente2_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Patente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Categoria" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Numero" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+          <Property Name="RilasciataDa" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Data" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Proprietario" Relationship="ComandoModel.FK_Proprietario_Patente" FromRole="Patente" ToRole="Proprietario" />
+          <NavigationProperty Name="Trasgressore" Relationship="ComandoModel.FK_Trasgressore_Patente" FromRole="Patente" ToRole="Trasgressore" />
+        </EntityType>
+        <EntityType Name="Proprietario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Cognome" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="CittaNascita" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="DataNascita" Type="DateTime" Precision="3" />
+          <Property Name="CittaResidenza" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="IndirizzoResidenza" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+          <Property Name="PatenteId" Type="Int64" />
+          <NavigationProperty Name="Patente" Relationship="ComandoModel.FK_Proprietario_Patente" FromRole="Proprietario" ToRole="Patente" />
+          <NavigationProperty Name="Veicolo" Relationship="ComandoModel.FK_VeicoloProprietario" FromRole="Proprietario" ToRole="Veicolo" />
+        </EntityType>
+        <EntityType Name="Trasgressore">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Cognome" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="DataNascita" Type="DateTime" Precision="3" />
+          <Property Name="CittaNascita" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="StatoNascita" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="CapNascita" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CittaResidenza" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="ViaResidenza" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="CivicoResidenza" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="CapResidenza" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CF" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Sesso" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="CIttaDomicilio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IndirizzoDomicilio" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PatenteId" Type="Int64" />
+          <NavigationProperty Name="Patente" Relationship="ComandoModel.FK_Trasgressore_Patente" FromRole="Trasgressore" ToRole="Patente" />
+          <NavigationProperty Name="Verbale" Relationship="ComandoModel.FK_Verbale_Trasgressore" FromRole="Trasgressore" ToRole="Verbale" />
+        </EntityType>
+        <Association Name="FK_Proprietario_Patente">
+          <End Type="ComandoModel.Patente" Role="Patente" Multiplicity="0..1" />
+          <End Type="ComandoModel.Proprietario" Role="Proprietario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Proprietario">
+              <PropertyRef Name="PatenteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trasgressore_Patente">
+          <End Type="ComandoModel.Patente" Role="Patente" Multiplicity="0..1" />
+          <End Type="ComandoModel.Trasgressore" Role="Trasgressore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Trasgressore">
+              <PropertyRef Name="PatenteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VeicoloProprietario">
+          <End Type="ComandoModel.Proprietario" Role="Proprietario" Multiplicity="0..1" />
+          <End Type="ComandoModel.Veicolo" Role="Veicolo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proprietario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Veicolo">
+              <PropertyRef Name="Id_Proprietario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Verbale_Trasgressore">
+          <End Type="ComandoModel.Trasgressore" Role="Trasgressore" Multiplicity="0..1" />
+          <End Type="ComandoModel.Verbale" Role="Verbale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trasgressore">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Verbale">
+              <PropertyRef Name="Trasgressore_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2423,6 +2457,7 @@
           <EntitySetMapping Name="CategoriaVerbale">
             <EntityTypeMapping TypeName="ComandoModel.CategoriaVerbale">
               <MappingFragment StoreEntitySet="CategoriaVerbale">
+                <ScalarProperty Name="Sotto" ColumnName="Sotto" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
                 <ScalarProperty Name="IDPadre" ColumnName="IDPadre" />
@@ -2529,18 +2564,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Patente">
-            <EntityTypeMapping TypeName="ComandoModel.Patente">
-              <MappingFragment StoreEntitySet="Patente">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
-                <ScalarProperty Name="Numero" ColumnName="Numero" />
-                <ScalarProperty Name="RilasciataDa" ColumnName="RilasciataDa" />
-                <ScalarProperty Name="Data" ColumnName="Data" />
-                <ScalarProperty Name="Intestatario_Id" ColumnName="Intestatario_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Profiles">
             <EntityTypeMapping TypeName="ComandoModel.Profiles">
               <MappingFragment StoreEntitySet="Profiles">
@@ -2549,19 +2572,6 @@
                 <ScalarProperty Name="PropertyValueStrings" ColumnName="PropertyValueStrings" />
                 <ScalarProperty Name="PropertyValueBinary" ColumnName="PropertyValueBinary" />
                 <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Proprietario">
-            <EntityTypeMapping TypeName="ComandoModel.Proprietario">
-              <MappingFragment StoreEntitySet="Proprietario">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="Cognome" ColumnName="Cognome" />
-                <ScalarProperty Name="CittaNascita" ColumnName="CittaNascita" />
-                <ScalarProperty Name="DataNascita" ColumnName="DataNascita" />
-                <ScalarProperty Name="CittaResidenza" ColumnName="CittaResidenza" />
-                <ScalarProperty Name="IndirizzoResidenza" ColumnName="IndirizzoResidenza" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2619,29 +2629,6 @@
               <MappingFragment StoreEntitySet="TipoVeicolo">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Trasgressore">
-            <EntityTypeMapping TypeName="ComandoModel.Trasgressore">
-              <MappingFragment StoreEntitySet="Trasgressore">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="Cognome" ColumnName="Cognome" />
-                <ScalarProperty Name="DataNascita" ColumnName="DataNascita" />
-                <ScalarProperty Name="CittaNascita" ColumnName="CittaNascita" />
-                <ScalarProperty Name="StatoNascita" ColumnName="StatoNascita" />
-                <ScalarProperty Name="CapNascita" ColumnName="CapNascita" />
-                <ScalarProperty Name="CittaResidenza" ColumnName="CittaResidenza" />
-                <ScalarProperty Name="ViaResidenza" ColumnName="ViaResidenza" />
-                <ScalarProperty Name="CivicoResidenza" ColumnName="CivicoResidenza" />
-                <ScalarProperty Name="CapResidenza" ColumnName="CapResidenza" />
-                <ScalarProperty Name="CF" ColumnName="CF" />
-                <ScalarProperty Name="DocumentoTipo" ColumnName="DocumentoTipo" />
-                <ScalarProperty Name="DocumentoNumero" ColumnName="DocumentoNumero" />
-                <ScalarProperty Name="Sesso" ColumnName="Sesso" />
-                <ScalarProperty Name="CIttaDomicilio" ColumnName="CIttaDomicilio" />
-                <ScalarProperty Name="IndirizzoDomicilio" ColumnName="IndirizzoDomicilio" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2793,6 +2780,53 @@
               <MappingFragment StoreEntitySet="Agente">
                 <ScalarProperty Name="PoliziaGiudiziaria" ColumnName="PoliziaGiudiziaria" />
                 <ScalarProperty Name="Grado" ColumnName="Grado" />
+                <ScalarProperty Name="Cognome" ColumnName="Cognome" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patente">
+            <EntityTypeMapping TypeName="ComandoModel.Patente">
+              <MappingFragment StoreEntitySet="Patente">
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="RilasciataDa" ColumnName="RilasciataDa" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proprietario">
+            <EntityTypeMapping TypeName="ComandoModel.Proprietario">
+              <MappingFragment StoreEntitySet="Proprietario">
+                <ScalarProperty Name="PatenteId" ColumnName="PatenteId" />
+                <ScalarProperty Name="IndirizzoResidenza" ColumnName="IndirizzoResidenza" />
+                <ScalarProperty Name="CittaResidenza" ColumnName="CittaResidenza" />
+                <ScalarProperty Name="DataNascita" ColumnName="DataNascita" />
+                <ScalarProperty Name="CittaNascita" ColumnName="CittaNascita" />
+                <ScalarProperty Name="Cognome" ColumnName="Cognome" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trasgressore">
+            <EntityTypeMapping TypeName="ComandoModel.Trasgressore">
+              <MappingFragment StoreEntitySet="Trasgressore">
+                <ScalarProperty Name="PatenteId" ColumnName="PatenteId" />
+                <ScalarProperty Name="IndirizzoDomicilio" ColumnName="IndirizzoDomicilio" />
+                <ScalarProperty Name="CIttaDomicilio" ColumnName="CIttaDomicilio" />
+                <ScalarProperty Name="Sesso" ColumnName="Sesso" />
+                <ScalarProperty Name="CF" ColumnName="CF" />
+                <ScalarProperty Name="CapResidenza" ColumnName="CapResidenza" />
+                <ScalarProperty Name="CivicoResidenza" ColumnName="CivicoResidenza" />
+                <ScalarProperty Name="ViaResidenza" ColumnName="ViaResidenza" />
+                <ScalarProperty Name="CittaResidenza" ColumnName="CittaResidenza" />
+                <ScalarProperty Name="CapNascita" ColumnName="CapNascita" />
+                <ScalarProperty Name="StatoNascita" ColumnName="StatoNascita" />
+                <ScalarProperty Name="CittaNascita" ColumnName="CittaNascita" />
+                <ScalarProperty Name="DataNascita" ColumnName="DataNascita" />
                 <ScalarProperty Name="Cognome" ColumnName="Cognome" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

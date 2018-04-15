@@ -27,7 +27,9 @@ namespace comando
         public Nullable<System.DateTime> DataNascita { get; set; }
         public string CittaResidenza { get; set; }
         public string IndirizzoResidenza { get; set; }
+        public Nullable<long> PatenteId { get; set; }
     
+        public virtual Patente Patente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Veicolo> Veicolo { get; set; }
     }

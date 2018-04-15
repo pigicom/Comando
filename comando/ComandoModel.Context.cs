@@ -47,16 +47,13 @@ namespace comando
         public virtual DbSet<DocumentoWord> DocumentoWord { get; set; }
         public virtual DbSet<ListaComuni> ListaComuni { get; set; }
         public virtual DbSet<Memberships> Memberships { get; set; }
-        public virtual DbSet<Patente> Patente { get; set; }
         public virtual DbSet<Profiles> Profiles { get; set; }
-        public virtual DbSet<Proprietario> Proprietario { get; set; }
         public virtual DbSet<Province> Province { get; set; }
         public virtual DbSet<Regioni> Regioni { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Stati> Stati { get; set; }
         public virtual DbSet<TipologiaAnagrafica> TipologiaAnagrafica { get; set; }
         public virtual DbSet<TipoVeicolo> TipoVeicolo { get; set; }
-        public virtual DbSet<Trasgressore> Trasgressore { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<UsersOpenAuthAccounts> UsersOpenAuthAccounts { get; set; }
         public virtual DbSet<UsersOpenAuthData> UsersOpenAuthData { get; set; }
@@ -66,5 +63,8 @@ namespace comando
         public virtual DbSet<VerbaleElezioneDomicilio> VerbaleElezioneDomicilio { get; set; }
         public virtual DbSet<Violazione> Violazione { get; set; }
         public virtual DbSet<Agente> Agente { get; set; }
+        public virtual DbSet<Patente> Patente { get; set; }
+        public virtual DbSet<Proprietario> Proprietario { get; set; }
+        public virtual DbSet<Trasgressore> Trasgressore { get; set; }
     }
 }

@@ -138,6 +138,7 @@
                 this.ddlA2.DataValueField = "Key";
                 this.ddlA2.DataSource = dictionary;
                 this.ddlA2.DataBind();
+                this.ddlA2.Items.Insert(0, new ListItem("", "0"));
             }
         }
 
@@ -170,12 +171,12 @@
                 if (verbale.DataOraApertura.HasValue)
                 {
                     this.txtDataApertura.Text = verbale.DataOraApertura.Value.ToShortDateString();
-                    this.txtOraApertura.Text = !verbale.DataOraApertura.HasValue ? string.Empty : verbale.DataOraApertura.Value.ToString();
+                    this.txtOraApertura.Text = !verbale.DataOraApertura.HasValue ? string.Empty : verbale.DataOraApertura.Value.ToString("hh:MM");
                 }
                 if (verbale.DataOraChiusura.HasValue)
                 {
                     this.txtDataChiusura.Text = verbale.DataOraChiusura.Value.ToShortDateString();
-                    this.txtOraChiusura.Text = !verbale.DataOraChiusura.HasValue ? string.Empty : verbale.DataOraChiusura.Value.ToString();
+                    this.txtOraChiusura.Text = !verbale.DataOraChiusura.HasValue ? string.Empty : verbale.DataOraChiusura.Value.ToString("hh:MM");
                 }
                 if (verbale.Indirizzo != null)
                 {
@@ -206,15 +207,18 @@
         {
             if (!base.IsPostBack)
             {
-                DateTime now = DateTime.Now;
-                this.txtDataVerbale.Text = now.ToShortDateString();
-                this.txtDataApertura.Text = now.ToShortDateString();
-                this.txtDataChiusura.Text = now.ToShortDateString();
-                this.txtOraApertura.Text = now.Hour.ToString();
-                this.txtOraChiusura.Text = now.Hour.ToString();
-                if (this.ddlA1.Items.Count == 0)
+                if (verbale.Id == 0)
                 {
-                    this.BindDDL();
+                    DateTime now = DateTime.Now;
+                    this.txtDataVerbale.Text = now.ToShortDateString();
+                    this.txtDataApertura.Text = now.ToShortDateString();
+                    this.txtDataChiusura.Text = now.ToShortDateString();
+                    this.txtOraApertura.Text = now.Hour.ToString();
+                    this.txtOraChiusura.Text = now.Hour.ToString();
+                    if (this.ddlA1.Items.Count == 0)
+                    {
+                        this.BindDDL();
+                    }
                 }
             }
             else
@@ -236,7 +240,8 @@
                     long idv = this.verbale.Id;
                     DateTime result = new DateTime();
                     verbale.Agente1_Id = this.agente1.Id;
-                    verbale.Agente2_Id = this.agente2.Id;
+                    if (this.agente2.Id != 0)
+                        verbale.Agente2_Id = this.agente2.Id;
                     verbale.Data = new DateTime?(DateTime.TryParse(this.txtDataVerbale.Text, out result) ? result : DateTime.MinValue);
                     verbale.Indirizzo = this.txtVerbaleIndirizzo.Text;
                     entities.SaveChanges();

@@ -172,7 +172,7 @@
             </tr>
             <tr>
                 <td colspan="4" style="text-align: center">
-                    <input type="button"   value="Leggi Da Archivio" onclick="CaricaTrasgressori()" class="myButton" style="cursor:pointer" />
+                    <%--<input type="button"   value="Leggi Da Archivio" onclick="CaricaTrasgressori()" class="myButton" style="cursor:pointer" />--%>
                     <asp:TextBox ID="txtCapNascita" runat="server" Visible="False" Width="116px" />  
                 </td>
             </tr>

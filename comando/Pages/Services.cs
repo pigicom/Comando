@@ -57,23 +57,16 @@
             }
         }
 
-        //[WebMethod]
-        //public static string GetAgenti()
-        //{
-        //    new JavaScriptSerializer();
-        //    //using (ComandoEntities entities = new ComandoEntities())
-        //    //{
-        //    //    ParameterExpression expression;
-        //    //    entities.Configuration.LazyLoadingEnabled = false;
-        //    //    System.Linq.Expressions.Expression[] arguments = new System.Linq.Expressions.Expression[] { System.Linq.Expressions.Expression.Property(expression = System.Linq.Expressions.Expression.Parameter(typeof(Agente), "x"), (MethodInfo) methodof(Agente.get_Nome)) };
-        //    //    ParameterExpression[] parameters = new ParameterExpression[] { expression };
-        //    //    ParameterExpression[] expressionArray3 = new ParameterExpression[] { expression };
-        //    //    JsonSerializerSettings settings = new JsonSerializerSettings {
-        //    //        PreserveReferencesHandling = PreserveReferencesHandling.Objects
-        //    //    };
-        //    //    return JsonConvert.SerializeObject(entities.Agente.Where<Agente>(System.Linq.Expressions.Expression.Lambda<Func<Agente, bool>>(System.Linq.Expressions.Expression.Equal(System.Linq.Expressions.Expression.Call(null, (MethodInfo) methodof(string.IsNullOrEmpty), arguments), System.Linq.Expressions.Expression.Constant(false, typeof(bool))), parameters)).Select<Agente, Agente>(System.Linq.Expressions.Expression.Lambda<Func<Agente, Agente>>(expression = System.Linq.Expressions.Expression.Parameter(typeof(Agente), "x"), expressionArray3)).ToList<Agente>(), Formatting.None, settings);
-        //    //}
-        //}
+        [WebMethod]
+        public static string GetAgenti()
+        {
+            new JavaScriptSerializer();
+            using (ComandoEntities entities = new ComandoEntities())
+            {
+                entities.Configuration.LazyLoadingEnabled = false;
+                return JsonConvert.SerializeObject(entities.Agente);
+            }
+        }
 
         [WebMethod]
         public static string GetDocFile(string categoria)

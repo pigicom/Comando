@@ -431,6 +431,10 @@
     <Compile Include="Agente.cs">
       <DependentUpon>ComandoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Agenti.asmx.cs">
+      <DependentUpon>Agenti.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Applications.cs">
       <DependentUpon>ComandoModel.tt</DependentUpon>
     </Compile>
@@ -557,22 +561,39 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
-    <Compile Include="Pages\Anagrafiche.cs">
+    <Compile Include="Pages\Anagrafiche.aspx.cs">
+      <DependentUpon>Anagrafiche.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\CambioPassword.cs">
+    <Compile Include="Pages\CambioPassword.aspx.cs">
+      <DependentUpon>CambioPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Ebbrezza.cs">
+    <Compile Include="Pages\Ebbrezza.aspx.cs">
+      <DependentUpon>Ebbrezza.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Polizia.cs">
+    <Compile Include="Pages\Polizia.aspx.cs">
+      <DependentUpon>Polizia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Regitstrati.cs">
+    <Compile Include="Pages\Registrati.aspx.cs">
+      <DependentUpon>Registrati.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\Services.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Sives.aspx.cs">
+      <DependentUpon>Sives.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Stranieri.aspx.cs">
+      <DependentUpon>Stranieri.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Veicoli.aspx.cs">
+      <DependentUpon>Veicoli.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Patente.cs">
@@ -610,28 +631,36 @@
     <Compile Include="Trasgressore.cs">
       <DependentUpon>ComandoModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\ControlAgente.cs">
+    <Compile Include="UserControl\ControlAgente.ascx.cs">
+      <DependentUpon>ControlAgente.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserControl\ControlAttore.cs">
+    <Compile Include="UserControl\ControlAttore.ascx.cs">
+      <DependentUpon>ControlAttore.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserControl\ControlAvvocato.cs">
+    <Compile Include="UserControl\ControlAvvocato.ascx.cs">
+      <DependentUpon>ControlAvvocato.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserControl\ControlCustode.cs">
+    <Compile Include="UserControl\ControlCustode.ascx.cs">
+      <DependentUpon>ControlCustode.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserControl\ControlPatente.cs">
+    <Compile Include="UserControl\ControlPatente.ascx.cs">
+      <DependentUpon>ControlPatente.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserControl\ControlProprietario.cs">
+    <Compile Include="UserControl\ControlProprietario.ascx.cs">
+      <DependentUpon>ControlProprietario.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserControl\ControlTrasgressore.cs">
+    <Compile Include="UserControl\ControlTrasgressore.ascx.cs">
+      <DependentUpon>ControlTrasgressore.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserControl\ControlVeicolo.cs">
+    <Compile Include="UserControl\ControlVeicolo.ascx.cs">
+      <DependentUpon>ControlVeicolo.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserControl\Menu.cs">

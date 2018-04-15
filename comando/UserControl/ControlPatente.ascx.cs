@@ -22,7 +22,7 @@
             using (ComandoEntities entities = new ComandoEntities())
             {
 
-                this.patente = entities.Patente.Where(x => x.Trasgressore == tra).FirstOrDefault();
+                this.patente = entities.Patente.Where(x => x.Id == tra.PatenteId).FirstOrDefault();
             }
             if (this.patente != null)
             {
@@ -41,7 +41,7 @@
             using (ComandoEntities entities = new ComandoEntities())
             {
 
-                this.patente = entities.Patente.Where(x => x.Trasgressore.Id == tra.Id).FirstOrDefault();
+                this.patente = entities.Patente.Where(x => x.Id == tra.PatenteId).FirstOrDefault();
             }
             if (this.patente != null)
             {
@@ -64,26 +64,27 @@
             }
         }
 
-        public void SaveData(long idverbale, bool trasgressore)
+        public Patente SaveData(long idverbale, bool tra)
         {
             using (ComandoEntities entities = new ComandoEntities())
             {
-                Trasgressore trasgressore2 = null;
-                Proprietario proprietario = null;
-                Trasgressore PropietarioTrasgressore = null;
+                Attore PropietarioTrasgressore = null;
 
-                if (trasgressore)
+                if (tra)
                 {
                     object[] keyValues = new object[] { idverbale };
-                    PropietarioTrasgressore = entities.Verbale.Find(keyValues).Trasgressore;
+                    PropietarioTrasgressore = (Trasgressore)entities.Verbale.Find(keyValues).Trasgressore;
                 }
                 else
                 {
                     object[] objArray2 = new object[] { idverbale };
-                    PropietarioTrasgressore = entities.Verbale.Find(objArray2).Veicolo.Proprietario;
+                    PropietarioTrasgressore = (Proprietario)entities.Verbale.Find(idverbale).Veicolo.Proprietario;
                 }
 
-                this.patente = PropietarioTrasgressore.Patente.FirstOrDefault();
+                if (tra)
+                    this.patente = entities.Verbale.Find(idverbale).Trasgressore.Patente;
+                else
+                    this.patente = entities.Verbale.Find(idverbale).Veicolo.Proprietario.Patente;
                 if (this.patente == null)
                     this.patente = new Patente();
 
@@ -96,6 +97,13 @@
                 }
                 this.patente.Numero = this.txtNumero.Text;
                 this.patente.RilasciataDa = this.txtRialsciataDa.Text;
+                if (this.patente.Id == 0)
+                    entities.Patente.Add(this.patente);
+
+                if (tra)
+                    ((Trasgressore)PropietarioTrasgressore).Patente = patente;
+                else
+                    ((Proprietario)PropietarioTrasgressore).Patente = patente;
                 try
                 {
                     entities.SaveChanges();
@@ -105,6 +113,7 @@
                     Console.Write(exception1.Message);
                 }
             }
+            return this.patente;
         }
     }
 }

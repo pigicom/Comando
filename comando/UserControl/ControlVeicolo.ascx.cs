@@ -56,13 +56,17 @@
                 this.veicolo = item.Veicolo;
                 if (veicolo == null)
                     veicolo = new Veicolo();
-                
                 this.veicolo.colore = this.txtColore.Text;
                 this.veicolo.marca = this.txtMarca.Text;
                 this.veicolo.modello = this.txtModello.Text;
                 this.veicolo.targa = this.txtTarga.Text;
                 this.veicolo.telaio = this.txtTelaio.Text;
                 this.veicolo.TipoVeicolo_Id = int.Parse(this.ddlTipoVeicolo.SelectedValue);
+                
+                if (veicolo.Id == 0)
+                    entities.Veicolo.Add(veicolo);
+                if (item.Veicolo==null)
+                    item.Veicolo = veicolo;
                 entities.SaveChanges();
                 return this.veicolo;
             }

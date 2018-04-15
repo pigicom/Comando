@@ -28,7 +28,7 @@
              }
          );
 
-         if ( <%=sotto%>==2 ||  <%=sotto%>==4)
+       if ( <%=sotto%>==2 ||  <%=sotto%>==4)
              $('h3').last().remove();
      });
  </script>

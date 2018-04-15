@@ -14,13 +14,22 @@ namespace comando
     
     public partial class Patente
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Patente()
+        {
+            this.Proprietario = new HashSet<Proprietario>();
+            this.Trasgressore = new HashSet<Trasgressore>();
+        }
+    
         public long Id { get; set; }
         public string Categoria { get; set; }
         public string Numero { get; set; }
         public string RilasciataDa { get; set; }
         public Nullable<System.DateTime> Data { get; set; }
-        public Nullable<long> Intestatario_Id { get; set; }
     
-        public virtual Trasgressore Trasgressore { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Proprietario> Proprietario { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Trasgressore> Trasgressore { get; set; }
     }
 }

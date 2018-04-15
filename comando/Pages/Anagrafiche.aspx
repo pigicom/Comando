@@ -39,11 +39,8 @@
 </head>
 
 <body style="background-image: url('/Comando/images/polizialocale_bn2.png');padding-top:8px" >
-    <table style="width:100%; align-items:center; margin-left: 0px ; background-color:#3498db; border:2px solid #e1e1e1"">
+    <table style="width:100%;  font-family:Verdana; align-items:center; margin-left: 0px ; background-color:#3498db; border:2px solid #e1e1e1"">
             <tr>
-                <td style="vertical-align: top">
-                    <div class="voce"><a href="/Comando/Pages/Domicilio.aspx?cat=1" style="text-decoration: none; color: white;">Elezione Domicilio Stranieri</a></div>
-                </td>
                 <td style="vertical-align: top">
                     <div class="voce"><a href="/Comando/Pages/Ebbrezza.aspx?cat=2" style="text-decoration: none; color: white;">Guida In Stato Di Ebbrezza</a></div>
                 </td>
@@ -118,7 +115,7 @@
         $.ajax({
             type: "POST",
             async: true,
-            url: "Services.aspx/GetAgenti",
+            url: "../NewPages/Services.aspx/GetAgenti",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (source) {
@@ -143,6 +140,7 @@
                     beforeShowForm: function (formID) {
                         alert()
                     },
+
                 });
 
 
@@ -209,27 +207,27 @@
                 },
 
                  {
-                     url: window.location.origin + "/Comando/agenti.asmx/DeleteAgente",
+                                   url: window.location.origin + "/Comando/agenti.asmx/DeleteAgente",
                      reloadAfterSubmit: true, checkOnSubmit: true, checkOnUpdate: true, closeOnEscape: true,
-                     beforeShowForm: function (formID) {
-                         var selectedRowId = $('#jqGridAgenti').jqGrid('getGridParam', 'selrow'),
-                         cellValue = $('#jqGridAgenti').jqGrid('getCell', selectedRowId, 'Id'); 
-                         $('#sData').hide();
-                         $('#Act_Buttons').prepend('<a id="MyData" class="fm-button ui-state-default ui-corner-all fm-button-icon-left">Ok<span class="ui-icon ui-icon-close"></span></a>');
-                         $('#MyData').click(function () {
-                             $.ajax({
-                                 type: "GET",
-                                 url: window.location.origin + "/Comando/agenti.asmx/DeleteAgente?Id=" + selectedRowId,
-                                 dataType: "json",
-                                 contentType: "application/json; charset=utf-8",
-                                 success: function (msg) {
-                                     location.reload();
-                                 },
-                                 error: function (jqXHR, textStatus, errorThrown) {
-                                     alert("Chiamata fallita, si prega di riprovare...");
-                                 }
-                             });
-                         });
+                        beforeShowForm: function (formID) {
+                                         var selectedRowId = $('#jqGridAgenti').jqGrid('getGridParam', 'selrow'),
+                                         cellValue = $('#jqGridAgenti').jqGrid('getCell', selectedRowId, 'Id'); 
+                                         $('#sData').hide();
+                                         $('#Act_Buttons').prepend('<a id="MyData" class="fm-button ui-state-default ui-corner-all fm-button-icon-left">Ok<span class="ui-icon ui-icon-close"></span></a>');
+                                         $('#MyData').click(function () {
+                                             $.ajax({
+                                                 type: "GET",
+                                                 url: window.location.origin + "/Comando/agenti.asmx/DeleteAgente?Id=" + selectedRowId,
+                                                 dataType: "json",
+                                                 contentType: "application/json; charset=utf-8",
+                                                 success: function (msg) {
+                                                     location.reload();
+                                                 },
+                                                 error: function (jqXHR, textStatus, errorThrown) {
+                                                     alert("Chiamata fallita, si prega di riprovare...");
+                                                 }
+                                             });
+                                         });
                      }
                  }
                 );

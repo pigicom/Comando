@@ -36,6 +36,7 @@
             this.txtIndirizzoStudio.Text = avvocato.IndirizzoStudio;
             this.txtNome.Text = avvocato.Nome;
             this.txtTelefonoStudio.Text = avvocato.TelefonoStudio;
+            this.txtFaxStudio.Text = avvocato.FaxStudio;
             this.txtCittaStudio.Text = avvocato.CittaStudio;
             this.AvvocatoId.Value = avvocato.Id.ToString();
             bool? assegnato =  avvocato.Assegnato;
@@ -79,6 +80,7 @@
                 this.avvocato.IndirizzoStudio = this.txtIndirizzoStudio.Text;
                 this.avvocato.Nome = this.txtNome.Text;
                 this.avvocato.TelefonoStudio = this.txtTelefonoStudio.Text;
+                this.avvocato.FaxStudio = this.txtFaxStudio.Text;
                 int num = 1;
                 if (this.ddlAssegnato.SelectedValue.ToString() == num.ToString())
                 {

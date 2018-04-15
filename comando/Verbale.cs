@@ -43,12 +43,12 @@ namespace comando
     
         public virtual Avvocato Avvocato { get; set; }
         public virtual CategoriaVerbale CategoriaVerbale { get; set; }
-        public virtual Trasgressore Trasgressore { get; set; }
         public virtual Utente Utente { get; set; }
         public virtual Veicolo Veicolo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Violazione> Violazione { get; set; }
         public virtual Agente Agente { get; set; }
         public virtual Agente Agente1 { get; set; }
+        public virtual Trasgressore Trasgressore { get; set; }
     }
 }

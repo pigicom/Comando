@@ -11,19 +11,25 @@
     using Comando.UserControl;
     using comando;
     using System.Configuration;
+    using Comando;
 
-    public class Polizia : ComandoPage
+    public class Sives : ComandoPage
     {
         private Agente agente1 = new Agente();
         private Agente agente2 = new Agente();
         private Avvocato avvocato = new Avvocato();
-        protected Comando.UserControl.ControlAgente ControlAgente;
-        protected Comando.UserControl.ControlAvvocato ControlAvvocato;
+        protected ControlAgente ControlAgente;
+        protected ControlCustode ControlCustode1;
         protected Comando.UserControl.ControlPatente ControlPatente;
-        protected Comando.UserControl.ControlTrasgressore ControlTrasgressore;
+        protected ControlPatente ControlPatenteProprietario;
+        protected ControlProprietario ControlProprietario;
+        protected ControlTrasgressore ControlTrasgressore;
+        protected ControlVeicolo ControlVeicolo;
+        private Custode custode = new Custode();
         protected Comando.UserControl.Menu Menu;
         private Patente patente = new Patente();
         private string pathPrefix = (ConfigurationManager.AppSettings["PathTemplates"] + @"\POLIZIA GIUDIZIARIA\");
+        public string sotto = string.Empty;
         private Trasgressore trasgressore = new Trasgressore();
         private Veicolo veicolo = new Veicolo();
         private Verbale verbale = new Verbale();
@@ -36,23 +42,25 @@
             long current = verbaleid;
             using (ComandoEntities entities = new ComandoEntities())
             {
-               
-                ParameterExpression expression=null;
-                ParameterExpression[] parameters = new ParameterExpression[] { expression };
+                this.trasgressore = this.verbale.Trasgressore;
                 this.verbale = entities.Verbale.Find(verbaleid);
                 this.violazione = entities.Violazione.Find(verbale.Violazione_Id);
-                this.trasgressore = this.verbale.Trasgressore;
-                if (this.verbale.Agente!=null )
+                if (this.verbale.Agente != null)
                 {
                     this.agente1 = this.verbale.Agente;
                 }
-                if (this.verbale.Agente1!=null)
+                if (this.verbale.Agente1 != null)
                 {
                     this.agente2 = this.verbale.Agente1;
                 }
                 this.avvocato = this.verbale.Avvocato;
-                this.patente = this.trasgressore.Patente.FirstOrDefault<Patente>();
-                return Helper.RiempiCampi(this.verbale, this.agente1, this.agente2, this.violazione, this.trasgressore, this.patente, null, null, this.avvocato, null, null);
+                this.patente = this.trasgressore.Patente;
+                if (this.veicolo.Id_Custode.HasValue)
+                {
+                    object[] objArray2 = new object[] { this.veicolo.Id_Custode };
+                    this.custode = entities.Custode.Find(objArray2);
+                }
+                return Helper.RiempiCampi(this.verbale, this.agente1, this.agente2, this.violazione, this.trasgressore, this.patente, null, this.veicolo, this.avvocato, this.veicolo.Proprietario, this.custode);
             }
         }
 
@@ -68,12 +76,12 @@
                 using (new ComandoEntities())
                 {
                     Helper.CloseAllProcess();
-                    Application word = (Application) Activator.CreateInstance(Marshal.GetTypeFromCLSID(new Guid("000209FF-0000-0000-C000-000000000046")));
+                    Application word = (Application)Activator.CreateInstance(Marshal.GetTypeFromCLSID(new Guid("000209FF-0000-0000-C000-000000000046")));
                     using (IEnumerator<string> enumerator = list2.GetEnumerator())
                     {
                         while (enumerator.MoveNext())
                         {
-                            item = Helper.FillDocument(enumerator.Current, this.CreaDettaglio((long) num), word);
+                            item = Helper.FillDocument(enumerator.Current, this.CreaDettaglio((long)num), word);
                             file.Add(item);
                         }
                     }
@@ -92,15 +100,13 @@
             {
                 using (ComandoEntities entities = new ComandoEntities())
                 {
-
-
                     Verbale Verbale = entities.Verbale.Find(v.Id);
-                    this.violazione = entities.Violazione.Find(v.Violazione_Id);
-                    if (Verbale.Agente!=null)
+                    this.violazione = Verbale.Violazione.FirstOrDefault();
+                    if (Verbale.Agente != null)
                     {
                         this.ControlAgente.agente1 = Verbale.Agente;
                     }
-                    if (Verbale.Agente1!=null)
+                    if (Verbale.Agente1 != null)
                     {
                         this.ControlAgente.agente2 = Verbale.Agente1;
                     }
@@ -117,9 +123,21 @@
                     {
                         this.ControlPatente.LoadData(Verbale.Trasgressore);
                     }
-                    if (Verbale.Avvocato != null)
+                    if (((Verbale.Veicolo != null) && (Verbale.Veicolo.Proprietario != null)) && (Verbale.Veicolo.Proprietario.Patente != null))
                     {
-                        this.ControlAvvocato.LoadData(Verbale.Avvocato);
+                        this.ControlPatenteProprietario.LoadData(Verbale.Veicolo.Proprietario);
+                    }
+                    if (Verbale.Veicolo != null)
+                    {
+                        this.ControlVeicolo.LoadData(Verbale.Veicolo);
+                        if (Verbale.Veicolo.Proprietario != null)
+                        {
+                            this.ControlProprietario.LoadData(Verbale.Veicolo.Proprietario);
+                        }
+                        if (Verbale.Veicolo.Custode != null)
+                        {
+                            this.ControlCustode1.LoadData(Verbale.Veicolo);
+                        }
                     }
                 }
             }
@@ -127,11 +145,12 @@
 
         public void New(object sender, EventArgs e)
         {
-            base.Response.Redirect("Polizia.aspx?sotto=&cat=3");
+            base.Response.Redirect("Sives.aspx?sotto=" + base.Request.QueryString["sotto"].Trim() + "&cat=4");
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.sotto = base.Request.QueryString["sotto"];
             if (!base.IsPostBack)
             {
                 this.ViewState["categoriaverbale"] = base.Request.QueryString["cat"].ToString();
@@ -146,28 +165,47 @@
                     }
                 }
             }
-            ((ComandoPage)this) .Title = Helper.GetCategoryDescription(int.Parse(this.ViewState["categoriaverbale"].ToString()));
+            ((ComandoPage)this).Title = Helper.GetCategoryDescription(int.Parse(this.ViewState["categoriaverbale"].ToString()),Int32.Parse(sotto));
+            ((Label)(this.Master.FindControl("lblCategory"))).Text = Helper.GetCategoryDescription(int.Parse(this.ViewState["categoriaverbale"].ToString()), Int32.Parse(sotto));
             base.BindPossibiliVerbali(3);
             this.Menu.Create += new EventHandler(this.Create);
             this.Menu.Save += new EventHandler(this.Save);
             this.Menu.Search += new EventHandler(this.Search);
             this.Menu.New += new EventHandler(this.New);
+            int num = 2;
+            if (base.Request.QueryString["sotto"] != num.ToString())
+            {
+                num = 4;
+                if (base.Request.QueryString["sotto"] != num.ToString())
+                {
+                    return;
+                }
+            }
+            this.ControlCustode1.Visible = false;
         }
 
         public void Save(object sender, EventArgs e)
         {
+            using (ComandoEntities  entities = new ComandoEntities())
+            {
                 if (this.ViewState["idverbale"] == null)
-                 this.ViewState["idverbale"] = this.ControlAgente.AddNew();
-
+                    this.ViewState["idverbale"] = this.ControlAgente.AddNew();
                 int num = int.Parse(this.ViewState["idverbale"].ToString());
-                this.ControlAgente.SaveData((long)num);
-                this.ControlTrasgressore.SaveData((long)num);
-                this.ControlPatente.SaveData((long)num, true);
-                if (!string.IsNullOrEmpty(((TextBox)this.ControlAvvocato.FindControl("txtNome")).Text) || !string.IsNullOrEmpty(((TextBox)this.ControlAvvocato.FindControl("txtCognome")).Text))
-                {
-                    this.ControlAvvocato.SaveData((long)num);
-                }
-             
+                object[] keyValues = new object[] { num };
+                this.verbale = entities.Verbale.Find(keyValues);
+                this.ControlAgente.SaveData((long) num);
+                this.ControlTrasgressore.SaveData((long) num);
+                this.ControlPatente.SaveData((long) num, true);
+                this.ControlVeicolo.SaveData((long) num);
+                this.ControlProprietario.SaveData((long) num);
+                this.ControlPatenteProprietario.SaveData((long)num, false);
+                Veicolo veicolo = verbale.Veicolo;
+                if (veicolo != null)
+                   this.ControlCustode1.SaveData(veicolo.Id);
+                 
+                entities.SaveChanges();
+            }
+            this.Page.ClientScript.RegisterStartupScript(base.GetType(), "save", "<script>alert('Salvataggio Effettuato')</script>");
         }
 
         public void Search(object sender, EventArgs e)

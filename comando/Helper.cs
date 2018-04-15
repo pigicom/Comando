@@ -103,11 +103,15 @@
             return destFileName;
         }
 
-        public static string GetCategoryDescription(int currentid)
+        public static string GetCategoryDescription(int currentid,int? sotto)
         {
+            currentid--;
             using (ComandoEntities entities = new ComandoEntities())
             {
-                return entities.CategoriaVerbale.Find(currentid).Descrizione;
+               if (sotto.HasValue)
+                return entities.CategoriaVerbale.Where(x => x.IDPadre == currentid  && x.Sotto==sotto).Select(y => y.Descrizione).FirstOrDefault();
+               else
+                return entities.CategoriaVerbale.Where(x => x.IDPadre == currentid).Select(y=>y.Descrizione).FirstOrDefault();
             }
         }
 
@@ -224,21 +228,27 @@
                     domicilio.Fields.Add("cittadomiciliotrasg", trasgressore.CIttaDomicilio);
                     domicilio.Fields.Add("sessotrasgr", trasgressore.Sesso);
                     domicilio.Fields.Add("nazionalitatrasgr", trasgressore.StatoNascita);
-                    if (trasgressore.Patente.Count > 0)
+                    if (trasgressore.Patente!=null)
                     {
-                        domicilio.Fields.Add("tipopatentetrasg", trasgressore.Patente.First<Patente>().Categoria);
-                        domicilio.Fields.Add("numeropatentetrasg", trasgressore.Patente.First<Patente>().Numero);
-                        domicilio.Fields.Add("patenterilasciatada", trasgressore.Patente.First<Patente>().RilasciataDa);
-                        if (trasgressore.Patente.First<Patente>().Data.HasValue)
+                        domicilio.Fields.Add("tipopatentetrasg", trasgressore.Patente.Categoria);
+                        domicilio.Fields.Add("numeropatentetrasg", trasgressore.Patente.Numero);
+                        domicilio.Fields.Add("patenterilasciatada", trasgressore.Patente.RilasciataDa);
+                        if (trasgressore.Patente.Data.HasValue)
                         {
-                            domicilio.Fields.Add("datarilasciopatente", trasgressore.Patente.First<Patente>().Data.Value.ToShortDateString());
+                            domicilio.Fields.Add("datarilasciopatente", trasgressore.Patente.Data.Value.ToShortDateString());
                         }
                     }
-                    if (!string.IsNullOrEmpty(trasgressore.DocumentoTipo))
+                    //if (!string.IsNullOrEmpty(trasgressore.DocumentoTipo))
+                    //{
+                    //    domicilio.Fields.Add("tipodocumento", trasgressore.DocumentoTipo);
+                    //    domicilio.Fields.Add("numerodocumento", trasgressore.DocumentoNumero);
+                    //}
+                    if ((trasgressore.Patente!=null))
                     {
-                        domicilio.Fields.Add("tipodocumento", trasgressore.DocumentoTipo);
-                        domicilio.Fields.Add("numerodocumento", trasgressore.DocumentoNumero);
+                        domicilio.Fields.Add("tipodocumento", trasgressore.Patente.Categoria);
+                        domicilio.Fields.Add("numerodocumento", trasgressore.Patente.Numero);
                     }
+
                 }
                 if (violazione != null)
                 {

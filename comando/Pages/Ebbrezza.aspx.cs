@@ -11,6 +11,7 @@
     using Comando;
     using comando;
     using System.Configuration;
+    using System.Web.UI.WebControls;
 
     public class Ebbrezza : ComandoPage
     {
@@ -37,6 +38,7 @@
             using (ComandoEntities entities = new ComandoEntities())
             {
                 this.violazione = entities.Violazione.Where(x => x.Verbale_Id == verbaleid).FirstOrDefault();
+                this.verbale = this.violazione.Verbale;
                 this.trasgressore = this.verbale.Trasgressore;
                 this.veicolo = this.verbale.Veicolo;
                 if (this.verbale.Agente1!=null)
@@ -141,7 +143,8 @@
                     }
                 }
             }
-            ((ComandoPage)this).Title = Helper.GetCategoryDescription(int.Parse(this.ViewState["categoriaverbale"].ToString()));
+            ((ComandoPage)this).Title = Helper.GetCategoryDescription(int.Parse(this.ViewState["categoriaverbale"].ToString()),null);
+            ((Label)(this.Master.FindControl("lblCategory"))).Text= Helper.GetCategoryDescription(int.Parse(this.ViewState["categoriaverbale"].ToString()),null);
             base.BindPossibiliVerbali(2);
             this.Menu.Create += new EventHandler(this.Create);
             this.Menu.Save += new EventHandler(this.Save);

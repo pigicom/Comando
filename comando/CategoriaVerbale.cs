@@ -24,6 +24,7 @@ namespace comando
         public string Descrizione { get; set; }
         public Nullable<long> IDPadre { get; set; }
         public string Pagina { get; set; }
+        public Nullable<int> Sotto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Verbale> Verbale { get; set; }

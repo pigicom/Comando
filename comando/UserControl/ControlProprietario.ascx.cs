@@ -50,8 +50,8 @@
                 Verbale verbale = entities.Verbale.Find(idverbale);
 
                 if (verbale.Veicolo != null)
-
                     proprietario = verbale.Veicolo.Proprietario;
+
                 if (proprietario == null)
                     proprietario = new Proprietario();
                 
@@ -67,6 +67,14 @@
                 }
                 this.proprietario.IndirizzoResidenza = this.txtIndirizzoResidenza.Text.Trim();
                 this.proprietario.CittaResidenza = this.txtCittaResidenza.Text.Trim();
+
+                if (proprietario.Veicolo.Count == 0)
+                    proprietario.Veicolo.Add(verbale.Veicolo);
+
+                if (verbale.Veicolo.Proprietario==null)
+                 verbale.Veicolo.Proprietario = proprietario;
+
+
                 entities.SaveChanges();
                 return this.proprietario;
             }

@@ -17,7 +17,6 @@ namespace comando
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Trasgressore()
         {
-            this.Patente = new HashSet<Patente>();
             this.Verbale = new HashSet<Verbale>();
         }
     
@@ -33,14 +32,12 @@ namespace comando
         public string CivicoResidenza { get; set; }
         public string CapResidenza { get; set; }
         public string CF { get; set; }
-        public string DocumentoTipo { get; set; }
-        public string DocumentoNumero { get; set; }
         public string Sesso { get; set; }
         public string CIttaDomicilio { get; set; }
         public string IndirizzoDomicilio { get; set; }
+        public Nullable<long> PatenteId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Patente> Patente { get; set; }
+        public virtual Patente Patente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Verbale> Verbale { get; set; }
     }
