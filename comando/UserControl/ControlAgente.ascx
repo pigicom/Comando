@@ -18,64 +18,57 @@
     }
     
     </script>
-        <asp:Panel ID="Panel1" Height="284px" runat="server"  >
-      &nbsp;<img alt="agente" class="icon" src="../images/vigile.jpg" /><asp:HiddenField ID="VerbaleDomicilioId" runat="server" />
-      &nbsp;<fieldset>
-         <legend>Verbale</legend>
+        <asp:Panel ID="Panel1" Height="254px" runat="server"  >
+        
        <table style="width:100%;">
-         <tr>
-             <td>
-                 Data*</td><td >
-                 <asp:TextBox ID="txtDataVerbale"  runat="server" cssclass="data"  width="80px"/>
-             </td>
-
+        <tr>
+            <td><img alt="agente" class="icon" src="../images/vigile.jpg" /><asp:HiddenField ID="VerbaleDomicilioId" runat="server" /></td>
+            
+         <td>
+             <fieldset style="margin-top:-10px">
+         <legend>Verbale</legend>
+         <table style="width:100%">
+          <tr>
+             <td>Data*</td>
+             <td><asp:TextBox ID="txtDataVerbale"  runat="server" cssclass="data" /></td>
              <td>Data Apertura</td>
-             <td>
-                 <asp:TextBox ID="txtDataApertura" runat="server" cssclass="data" />
-             </td>
+             <td><asp:TextBox ID="txtDataApertura" runat="server" cssclass="data" /></td>
              <td class="auto-style3">Ora Apertura HH:mm</td>
-             <td>
-                 <asp:TextBox ID="txtOraApertura"  onblur="AggiungiMinuti(this)" runat="server" Width="100px"></asp:TextBox>
-             </td>
-             
+             <td><asp:TextBox ID="txtOraApertura"  onblur="AggiungiMinuti(this)" runat="server" Width="100px"></asp:TextBox></td>
          </tr>
-           <tr>
-               <td colspan="2">&nbsp;</td>
-               <td>Data Chiusura</td>
-               <td>
-                   <asp:TextBox ID="txtDataChiusura" runat="server"  cssclass="data" />
-               </td>
-               <td class="auto-style3">Ora Chiusura HH:mm</td>
-               <td>
-                   <asp:TextBox ID="txtOraChiusura" Width="100px" runat="server" onblur="AggiungiMinuti(this)"></asp:TextBox>
-               </td>
-           </tr>
-           <tr>
-               <td colspan="2" style="text-align: right">&nbsp;&nbsp;&nbsp;&nbsp; </td>
-               <td>
-                   Indirizzo</td>
-               <td colspan="2">
-                   <asp:TextBox ID="txtVerbaleIndirizzo" runat="server" Width="100%" />
-               </td>
-               <td>&nbsp;</td>
-           </tr>
+         <tr>
+             <td colspan="2">&nbsp;</td>
+             <td>Data Chiusura</td>
+             <td><asp:TextBox ID="txtDataChiusura" runat="server"  cssclass="data" /></td>
+             <td class="auto-style3">Ora Chiusura HH:mm</td>
+             <td><asp:TextBox ID="txtOraChiusura" Width="100px" runat="server" onblur="AggiungiMinuti(this)"></asp:TextBox></td>
+         </tr>
+         <tr>
+             <td colspan="2" style="text-align: right">&nbsp;&nbsp;&nbsp;&nbsp; </td>
+             <td>Indirizzo</td>
+             <td colspan="3"><asp:TextBox ID="txtVerbaleIndirizzo" runat="server" Width="99%" /></td>
+         </tr>
+         </table>
+                   </fieldset>
+         </td>
+        </tr>
+        
        </table>
-       </fieldset>
-    <br />
-  
-    <fieldset>
-         <legend>Violazione</legend>
+     
+        <br />
+        <fieldset>
+         <legend style="margin-top:-10px">Violazione</legend>
             <table style="width:100%;">
               <tr>
                <td >Data*&nbsp;</td>
                <td   >
-                   <asp:TextBox ID="txtViolazioneData" runat="server" cssclass="data" Width="80px" />
+                   <asp:TextBox ID="txtViolazioneData" runat="server" cssclass="data" Width="100px" />
                    &nbsp;
                </td>
                   <td >Ora </td>
                   <td >
                       <asp:TextBox ID="txtOra" runat="server"  onblur="AggiungiMinuti(this)" Width="60px" />
-                      <div style="position:absolute;font-size:10px">&nbsp;&nbsp;&nbsp;(hh:mm)</div>
+                      <div style="position:absolute;font-size:10px">&nbsp;&nbsp;&nbsp;hh:mm</div>
                      </td>
                <td >Articolo&nbsp;</td>
                     <td> <asp:TextBox ID="txtArticolo" runat="server" Width="60px" /></td>
@@ -91,9 +84,8 @@
            </tr>
            </table>
         </fieldset>
-
-      <br /> 
-       <fieldset>
+        <br />
+        <fieldset>
           <legend>Agenti Verbalizzanti</legend>
           <table style="width:100%;"> 
               <tr>

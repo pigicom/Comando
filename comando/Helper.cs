@@ -17,6 +17,7 @@
     using System.Text;
     using System.Web.Script.Serialization;
     using comando;
+    using System.Text.RegularExpressions;
 
     public class Helper
     {
@@ -75,31 +76,46 @@
                 Directory.CreateDirectory(ConfigurationManager.AppSettings["PathNuovi"] + b.directory);
             }
             File.Copy(Directory.GetFiles(ConfigurationManager.AppSettings["PathTemplates"], path, SearchOption.AllDirectories).FirstOrDefault<string>(), destFileName, true);
-            word.DisplayAlerts = WdAlertLevel.wdAlertsNone;
-            Document document = (Document) Activator.CreateInstance(Marshal.GetTypeFromCLSID(new Guid("00020906-0000-0000-C000-000000000046")));
-            object fileName = destFileName;
-            document = word.Documents.Open(fileName);
-            document.Activate();
-            var enumerator = document.FormFields.GetEnumerator();
-            
-          //  using (enumerator)
-            {
-                while (enumerator.MoveNext())
+            //word.DisplayAlerts = WdAlertLevel.wdAlertsNone;
+            //Document document = (Document) Activator.CreateInstance(Marshal.GetTypeFromCLSID(new Guid("00020906-0000-0000-C000-000000000046")));
+            //object fileName = destFileName;
+            //document = word.Documents.Open(fileName);
+            //document.Activate();
+            //var enumerator = document.FormFields.GetEnumerator();
+                //  using (enumerator)
                 {
-                    FormField field = (FormField) enumerator.Current;
-                    Console.WriteLine(field.Name);
-                    if (b.Fields.Any<KeyValuePair<string, string>>(x => x.Key == field.Name))
-                    {
-                        field.Range.Text = (from x in b.Fields
-                            where x.Key == field.Name
-                            select x.Value).FirstOrDefault<string>();
-                    }
+                //while (enumerator.MoveNext())
+                //{
+                //    FormField field = (FormField) enumerator.Current;
+                //    Console.WriteLine(field.Name);
+                //    if (b.Fields.Any<KeyValuePair<string, string>>(x => x.Key == field.Name))
+                //    {
+                //        field.Range.Text = (from x in b.Fields
+                //            where x.Key == field.Name
+                //            select x.Value).FirstOrDefault<string>();
+                //    }
+                 //}
                 }
+
+            string fileName = destFileName;
+            var document = File.ReadAllText(fileName);
+            var regExPatter = @"(?<=<%)(.*)(?=%>)";
+            Regex r = new Regex(regExPatter, RegexOptions.IgnoreCase);
+            // Match the regular expression pattern against a text string.
+            var newValue = string.Empty;
+
+            foreach (Match ItemMatch in r.Matches(document))
+            {
+                if (b.Fields.Any<KeyValuePair<string, string>>(x => x.Key == ItemMatch.Value))
+                   {
+                    newValue = (from x in b.Fields where x.Key == ItemMatch.Value select x.Value).FirstOrDefault<string>();
+                   }
+                    document = document.Replace("<%"+ ItemMatch.Value+"%>", newValue);
             }
             (ConfigurationManager.AppSettings["PathNuovi"] + "VerbaleNuovo.doc").Replace("VerbaleNuovo", "VerbaleNuovo" + DateTime.Now.Ticks);
             object obj17 = destFileName;
-            document.SaveAs2(fileName);
-            document.Close();
+            File.WriteAllText(fileName, document);
+            //document.Close();
             return destFileName;
         }
 

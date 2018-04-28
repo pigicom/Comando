@@ -40,7 +40,7 @@
     </table>
 <fieldset>
     <legend>Proprietario</legend>
-    <table>
+    <table style="width:100%">
         <tr>
             <td colspan="2">
             
@@ -52,11 +52,11 @@
         <tr>
             <td>Nome</td>
             <td >
-                <asp:TextBox ID="txtNome" runat="server" Width="300px" />
+                <asp:TextBox ID="txtNome" runat="server" Width="90%" />
             </td>
             <td >Cognome</td>
             <td>
-                <asp:TextBox ID="txtCognome" runat="server" style="margin-bottom: 0px" Width="354px" />
+                <asp:TextBox ID="txtCognome" runat="server" style="margin-bottom: 0px" Width="100%" />
             </td>
         </tr>
         <tr>
@@ -64,7 +64,7 @@
             <td >
                 <asp:TextBox ID="txtDataNascita" runat="server" cssclass="data" />
             </td>
-            <td Width="200px">Città Nascita</td>
+            <td style="width:200px">Città Nascita</td>
             <td>
                 <asp:TextBox ID="txtCittaNascita" runat="server" />
             </td>
@@ -72,18 +72,18 @@
         <tr>
             <td>Città Residenza</td>
             <td >
-                <asp:TextBox ID="txtCittaResidenza" runat="server" Width="241px" />
+                <asp:TextBox ID="txtCittaResidenza" runat="server" Width="90%" />
             </td>
             <td >Indirizzo Residenza</td>
             <td>
-                <asp:TextBox ID="txtIndirizzoResidenza" runat="server" Width="300px" />
+                <asp:TextBox ID="txtIndirizzoResidenza" runat="server" Width="100%" />
             </td>
         </tr>
 
        
 
 
-        <tr>
+        <tr style="height:50px">
             <td colspan="4" style="text-align: center">
             
             <input id="chkCopia" type="button"  value="Copia Dati Del Trasgressore" class="myButton" style="cursor:pointer"/></td>

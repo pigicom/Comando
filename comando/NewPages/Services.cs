@@ -70,7 +70,7 @@
         [WebMethod]
         public static string GetDocFile(string categoria)
         {
-            string[] strArray = (from x in Directory.GetFiles(Path.Combine(ConfigurationManager.AppSettings["PathTemplates"], categoria), "*.doc*", SearchOption.AllDirectories)
+            string[] strArray = (from x in Directory.GetFiles(Path.Combine(ConfigurationManager.AppSettings["PathTemplates"], categoria), "*.rtf*", SearchOption.AllDirectories)
                 where x.ToString().IndexOf("~$") < 0
                 select x).ToArray<string>();
             int index = 0;

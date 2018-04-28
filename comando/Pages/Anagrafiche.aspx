@@ -21,7 +21,7 @@
     <style>
         .voce {
             /*  background-color: black; */ /*#3498db;*/
-            font-family: Calibri;
+            font-family: Verdana;
             font-size: 16px;
             z-index: 99999999;
             width: 200px;
@@ -35,11 +35,27 @@
                 background-color: black; /*#3498db;;*/
             }
             .ui-jqgrid tr.ui-row-ltr td {text-align:left;border-right-width: 1px; border-right-color: inherit; border-right-style: solid;}
+            
+           .ui-jqgrid .ui-jqgrid-htable th div{font-size:16px;height:40px}
+
+        .ui-jqgrid tr.jqgrow {
+            font-family: Verdana;
+            font-size: 14px
+        }
+
+
+            div.centered {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -100px;
+              }
     </style>
 </head>
 
-<body style="background-image: url('/Comando/images/polizialocale_bn2.png');padding-top:8px" >
-    <table style="width:100%;  font-family:Verdana; align-items:center; margin-left: 0px ; background-color:#3498db; border:2px solid #e1e1e1"">
+<body style="padding-top:8px" >
+    <table style="width:100%;  font-family:Verdana; align-items:center;background-color:#3498db;padding:10px;margin-left:10px;margin-right:10px">
             <tr>
                 <td style="vertical-align: top">
                     <div class="voce"><a href="/Comando/Pages/Ebbrezza.aspx?cat=2" style="text-decoration: none; color: white;">Guida In Stato Di Ebbrezza</a></div>
@@ -89,8 +105,8 @@
     <form id="form1" runat="server">
     <div>
         
-        <h3 style="margin-left:10px" >Anagrafiche Agenti</h3>
-    <table style="width:100%;">
+        <h3 style="text-align:center;font-family:Verdana;color:#3498db" >Anagrafiche Agenti</h3>
+    <table style="width:100%;margin-top:40px">
         <tr>
             <td style="width:33%"> </td>
             <td style="text-align:center">
@@ -123,7 +139,7 @@
                     data: JSON.parse(source.d),
                     datatype: "local",
                     contentType: "application/json; charset=utf-8",
-                    colNames: ['Id', 'Nome', 'Congnome', 'Grado'],
+                    colNames: ['Id', 'Nome', 'Cognome', 'Grado'],
                     colModel: [
                                 { label: 'id', name: 'Id', key: true, width: 75, hidden: true },
                                 { label: 'Nome', name: 'Nome', editable: true, edittype: 'text', width: 60 },
@@ -162,6 +178,7 @@
                     url: window.location.origin + "/Comando/agenti.asmx/PutAgente",
                     reloadAfterSubmit: true, checkOnSubmit: true,checkOnUpdate: true, closeOnEscape: true ,
                     beforeShowForm: function (formID) {
+                       
                         var selectedRowId = $('#jqGridAgenti').jqGrid('getGridParam', 'selrow'),
                         cellValue = $('#jqGridAgenti').jqGrid('getCell', selectedRowId, 'Id');
                         $('#sData').hide();
@@ -180,8 +197,14 @@
                                 }
                             });
                         });
+                       
                     },
-                   
+                        
+                    afterShowForm: function (e) {
+                        $($('#TblGrid_jqGridAgenti_2').find("td")[0]).attr("colspan", 4);
+                        $('#editmodjqGridAgenti').css("left", "35%");
+                        $('#editmodjqGridAgenti').css("top", "40%");
+                    }
 
                 },
                 {
@@ -206,7 +229,8 @@
                     }
                 },
 
-                 {
+                    {
+                                   width:400,
                                    url: window.location.origin + "/Comando/agenti.asmx/DeleteAgente",
                      reloadAfterSubmit: true, checkOnSubmit: true, checkOnUpdate: true, closeOnEscape: true,
                         beforeShowForm: function (formID) {
@@ -228,7 +252,8 @@
                                                  }
                                              });
                                          });
-                     }
+                     },
+                        
                  }
                 );
             }
@@ -237,7 +262,7 @@
 </script>
 <script>
     $(document).ready(function () {
-        $('.ui-jqgrid-labels').attr('style', 'height:30px');
-        $('th').attr('style', 'height:30px');
+        $('.ui-jqgrid-labels').attr('style', 'height:40px');
+        $('th').attr('style', 'height:40px');
     })
 </script>

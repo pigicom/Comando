@@ -22,46 +22,35 @@
             <td class="auto-style5">
              <asp:TextBox ID="txtCittaStudio" runat="server" Width="360px" />
             </td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            <td>Telefono Studio</td>
+            <td><asp:TextBox ID="txtTelefonoStudio" runat="server" Width="241px" /></td>
         </tr>
         <tr>
             <td>Indirizzo Studio</td>
             <td class="auto-style5">
                 <asp:TextBox ID="txtIndirizzoStudio" runat="server" Width="460px" />
             </td>
-            <td>Telefono Studio</td>
-            <td>
-                <asp:TextBox ID="txtTelefonoStudio" runat="server" Width="241px" />
-            </td>
+            <td>Cellulare</td>
+            <td> <asp:TextBox ID="txtCellulare" runat="server" Width="241px" /></td>
         </tr>
         <tr>
-            <td  >Fax Studio</td> <td class="auto-style5"><asp:TextBox ID="txtFaxStudio" runat ="server" /></td>
-            <td  >Cellulare</td>
-            <td>
-                <asp:TextBox ID="txtCellulare" runat="server" Width="241px" />
-            </td>
+            <td>Fax Studio</td> <td class="auto-style5"><asp:TextBox ID="txtFaxStudio" runat ="server" /></td>
+            <td>Foro</td>
+            <td> <asp:TextBox ID="txtForo" runat="server" Width="241px" /></td>
         </tr>
         <tr>
             <td  >Email</td> <td ><asp:TextBox ID="txtEmail" runat ="server" Width="467px" />
             </td>
-            <td  >Foro</td>
+            <td  >Assegnato D&#39;ufficio</td>
             <td>
-                <asp:TextBox ID="txtForo" runat="server" Width="241px" />
-            </td>
-        </tr>
-        <tr>
-            <td>Assegnato D&#39;ufficio</td>
-            <td>
-                <asp:DropDownList ID="ddlAssegnato" runat="server">
+               <asp:DropDownList ID="ddlAssegnato" runat="server">
                     <asp:ListItem Value="1">Si</asp:ListItem>
                     <asp:ListItem Value="0">No</asp:ListItem>
                 </asp:DropDownList>
                 <asp:HiddenField ID="AvvocatoId" runat="server" />
             </td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
         </tr>
+        
     </table>
         </fieldset>
  </asp:Panel>

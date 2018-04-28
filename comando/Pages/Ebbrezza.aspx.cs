@@ -64,20 +64,20 @@
                 string item = string.Empty;
                 using (new ComandoEntities())
                 {
-                    Helper.CloseAllProcess();
-                    Application word = (Application) Activator.CreateInstance(Marshal.GetTypeFromCLSID(new Guid("000209FF-0000-0000-C000-000000000046")));
+                    //Helper.CloseAllProcess();
+                    //Application word = (Application) Activator.CreateInstance(Marshal.GetTypeFromCLSID(new Guid("000209FF-0000-0000-C000-000000000046")));
                     using (IEnumerator<string> enumerator = list2.GetEnumerator())
                     {
                         while (enumerator.MoveNext())
                         {
-                            item = Helper.FillDocument(enumerator.Current, this.CreaDettaglio((long) num), word);
+                            item = Helper.FillDocument(enumerator.Current, this.CreaDettaglio((long) num), null);
                             file.Add(item);
                         }
                     }
-                    word.Quit(true);
-                    Marshal.ReleaseComObject(word);
-                    Helper.DownloadFile(this, file, base.GetType());
-                    return;
+                   // word.Quit(true);
+                   //Marshal.ReleaseComObject(word);
+                   Helper.DownloadFile(this, file, base.GetType());
+                   return;
                 }
             }
             this.Page.ClientScript.RegisterStartupScript(base.GetType(), "key", "<script>ShowVerbali()</script>");

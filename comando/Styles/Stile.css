@@ -2,15 +2,16 @@
     
 }
 
-filedset {
+/*filedset {
     width:1050px;
-}
+    padding:8px;
+}*/
 
 .data {
-    width:80px;
+    width:100px;
 }
 .icon {
-  width: 100px;
+        width: 100px;
         height: 100px;
 }
 
@@ -23,16 +24,29 @@ filedset {
     border:none;
 }
 
-input  {
+input {
     font-size: 14px;
+    padding: 3px;
+    border-radius: 5px;
+    border-width:thin;
+    border-color:lightgrey;
+    border-style:solid;
 }
 
+select {
+    font-size: 14px;
+    padding: 3px;
+    border-radius: 5px;
+    border-width: thin;
+    border-color: lightgrey;
+    border-style: solid;
+}
 
 .gridview th {
     font-size: medium;
     font-weight: bold;
     color: white;
-    background-color:#857d7d;
+    background-color: #857d7d;
     border: 1px solid black;
     padding: 8px;
 }
@@ -54,8 +68,8 @@ input  {
 
 .panel {
     border: 1px;
-    height: 380px;
-    width:900px;
+    height: 300px;
+    /*width:900px;*/
 }
 
 .shortpanel {
@@ -211,9 +225,11 @@ border: solid 1px #3498db;
 border-radius: 8px;
 
 }
-legend {
-font-family:Verdana;
-}
+/*legend {
+    font-family: Verdana;
+    margin-bottom: 10px;
+    color: #3498db;
+}*/
 
 
 body {

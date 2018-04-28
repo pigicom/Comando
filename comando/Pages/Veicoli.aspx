@@ -21,7 +21,7 @@
        });
       
      </script>
-       <div id="Page" class="section pagina" style ="margin-left:145px;width :960px;align-content :center;margin-top:10px">
+       <div id="Page" class="section pagina" style ="margin-left:5px;width :960px;margin-top:10px">
         
        
         <h3>Verbale</h3>

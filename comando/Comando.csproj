@@ -142,6 +142,14 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Agenti.asmx" />
+    <Content Include="assets\css\style.css" />
+    <Content Include="assets\img\border-image.png" />
+    <Content Include="assets\img\icons.png" />
+    <Content Include="assets\js\jquery.fileupload.js" />
+    <Content Include="assets\js\jquery.iframe-transport.js" />
+    <Content Include="assets\js\jquery.knob.js" />
+    <Content Include="assets\js\jquery.ui.widget.js" />
+    <Content Include="assets\js\script.js" />
     <Content Include="ComandoModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ComandoModel.edmx</DependentUpon>
@@ -167,6 +175,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="images\polizialocale2.png" />
     <Content Include="index.html" />
     <Content Include="Login.aspx" />
     <Content Include="Modelli\ELEZIONI DI DOMICILIO STRANIERI\albanese.doc" />
@@ -276,6 +285,7 @@
     <Content Include="ComandoModel.edmx.diagram">
       <DependentUpon>ComandoModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Scripts\fine-uploader\LICENSE" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="images\avvocato.jpg" />
     <Content Include="images\bg-black.gif" />
@@ -335,6 +345,70 @@
     <Content Include="Pages\Verbali.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\fine-uploader\continue.gif" />
+    <Content Include="Scripts\fine-uploader\edit.gif" />
+    <Content Include="Scripts\fine-uploader\fine-uploader-gallery.css" />
+    <Content Include="Scripts\fine-uploader\fine-uploader-gallery.min.css" />
+    <Content Include="Scripts\fine-uploader\fine-uploader-new.css" />
+    <Content Include="Scripts\fine-uploader\fine-uploader-new.min.css" />
+    <Content Include="Scripts\fine-uploader\fine-uploader.css" />
+    <Content Include="Scripts\fine-uploader\fine-uploader.js" />
+    <Content Include="Scripts\fine-uploader\fine-uploader.min.css" />
+    <Content Include="Scripts\fine-uploader\fine-uploader.min.js" />
+    <Content Include="Scripts\fine-uploader\iframe.xss.response.js" />
+    <Content Include="Scripts\fine-uploader\loading.gif" />
+    <Content Include="Scripts\fine-uploader\pause.gif" />
+    <Content Include="Scripts\fine-uploader\placeholders\not_available-generic.png" />
+    <Content Include="Scripts\fine-uploader\placeholders\waiting-generic.png" />
+    <Content Include="Scripts\fine-uploader\processing.gif" />
+    <Content Include="Scripts\fine-uploader\retry.gif" />
+    <Content Include="Scripts\fine-uploader\templates\default.html" />
+    <Content Include="Scripts\fine-uploader\templates\gallery.html" />
+    <Content Include="Scripts\fine-uploader\templates\simple-thumbnails.html" />
+    <Content Include="Scripts\fine-uploader\trash.gif" />
+    <Content Include="Scripts\i18n\grid.locale-ar.js" />
+    <Content Include="Scripts\i18n\grid.locale-bg.js" />
+    <Content Include="Scripts\i18n\grid.locale-bg1251.js" />
+    <Content Include="Scripts\i18n\grid.locale-cat.js" />
+    <Content Include="Scripts\i18n\grid.locale-cn.js" />
+    <Content Include="Scripts\i18n\grid.locale-cs.js" />
+    <Content Include="Scripts\i18n\grid.locale-da.js" />
+    <Content Include="Scripts\i18n\grid.locale-de.js" />
+    <Content Include="Scripts\i18n\grid.locale-dk.js" />
+    <Content Include="Scripts\i18n\grid.locale-el.js" />
+    <Content Include="Scripts\i18n\grid.locale-en.js" />
+    <Content Include="Scripts\i18n\grid.locale-es.js" />
+    <Content Include="Scripts\i18n\grid.locale-fa.js" />
+    <Content Include="Scripts\i18n\grid.locale-fi.js" />
+    <Content Include="Scripts\i18n\grid.locale-fr.js" />
+    <Content Include="Scripts\i18n\grid.locale-gl.js" />
+    <Content Include="Scripts\i18n\grid.locale-he.js" />
+    <Content Include="Scripts\i18n\grid.locale-hr.js" />
+    <Content Include="Scripts\i18n\grid.locale-hr1250.js" />
+    <Content Include="Scripts\i18n\grid.locale-hu.js" />
+    <Content Include="Scripts\i18n\grid.locale-id.js" />
+    <Content Include="Scripts\i18n\grid.locale-is.js" />
+    <Content Include="Scripts\i18n\grid.locale-it.js" />
+    <Content Include="Scripts\i18n\grid.locale-ja.js" />
+    <Content Include="Scripts\i18n\grid.locale-kr.js" />
+    <Content Include="Scripts\i18n\grid.locale-lt.js" />
+    <Content Include="Scripts\i18n\grid.locale-mne.js" />
+    <Content Include="Scripts\i18n\grid.locale-nl.js" />
+    <Content Include="Scripts\i18n\grid.locale-no.js" />
+    <Content Include="Scripts\i18n\grid.locale-pl.js" />
+    <Content Include="Scripts\i18n\grid.locale-pt-br.js" />
+    <Content Include="Scripts\i18n\grid.locale-pt.js" />
+    <Content Include="Scripts\i18n\grid.locale-ro.js" />
+    <Content Include="Scripts\i18n\grid.locale-ru.js" />
+    <Content Include="Scripts\i18n\grid.locale-sk.js" />
+    <Content Include="Scripts\i18n\grid.locale-sr-latin.js" />
+    <Content Include="Scripts\i18n\grid.locale-sr.js" />
+    <Content Include="Scripts\i18n\grid.locale-sv.js" />
+    <Content Include="Scripts\i18n\grid.locale-th.js" />
+    <Content Include="Scripts\i18n\grid.locale-tr.js" />
+    <Content Include="Scripts\i18n\grid.locale-tw.js" />
+    <Content Include="Scripts\i18n\grid.locale-ua.js" />
+    <Content Include="Scripts\i18n\grid.locale-vi.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -362,6 +436,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Styles\bootstrap.css" />
+    <Content Include="Styles\bootstrap.min.css" />
     <Content Include="Styles\images\avvocato.jpg" />
     <Content Include="Styles\images\bg-black.gif" />
     <Content Include="Styles\images\bg-black2.gif" />

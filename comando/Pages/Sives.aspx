@@ -33,7 +33,7 @@
      });
  </script>
  
-       <div id="Page" class="section pagina" style ="margin-left:145px;width :960px;align-content :center;">
+       <div id="Page" class="section pagina" style ="margin-left:5px;width :960px;">
             <h3>Dati Verbale</h3>
             <div id ="divAgente" class="panel" >
                 <uc1:ControlAgente runat="server" id="ControlAgente" />
