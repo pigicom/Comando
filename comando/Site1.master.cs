@@ -1,4 +1,5 @@
-﻿using System;
+﻿using comando;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,6 +23,12 @@ namespace Comando
         protected void btnCrea_Click(object sender, EventArgs e)
         {
             ((ComandoPage)this.Page).Create(null, null);
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (((Utente)Session["currentUser"]).Amministratore != true)
+                this.FindControl("anagrafiche").Visible = false;
         }
     }
 }

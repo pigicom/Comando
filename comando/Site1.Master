@@ -18,17 +18,20 @@
     <script src="../Scripts/fine-uploader/fine-uploader.js"></script>
     <link href="../Comando/Scripts/fine-uploader/fine-uploader-gallery.css" rel="stylesheet" />
     <link href="Content/bootstrap.css" rel="stylesheet" />
+<script src="../Scripts/inputmask/js/inputmask.js"></script>
+<script src="../Scripts/inputmask/js/inputmask.extensions.js"></script>
+<script src="../Scripts/inputmask/js/inputmask.numeric.extensions.js"></script>
+<script src="../Scripts/inputmask/js/inputmask.date.extensions.js"></script>
+<script src="../Scripts/inputmask/js/inputmask.phone.extensions.js"></script>
+<script src="../Scripts/inputmask/js/jquery.inputmask.js"></script>
+    <script src="/comando/assets/js/jquery.knob.js"></script>
 
-
-  
-        <script src="/comando/assets/js/jquery.knob.js"></script>
-
-        <!-- jQuery File Upload Dependencies -->
-        <script src="/comando/assets/js/jquery.ui.widget.js"></script>
-        <script src="/comando/assets/js/jquery.iframe-transport.js"></script>
-        <script src="/comando/assets/js/jquery.fileupload.js"></script>
-        <!-- Our main JS file -->
-        <script src="/comando/assets/js/script.js"></script>
+    <!-- jQuery File Upload Dependencies -->
+    <script src="/comando/assets/js/jquery.ui.widget.js"></script>
+    <script src="/comando/assets/js/jquery.iframe-transport.js"></script>
+    <script src="/comando/assets/js/jquery.fileupload.js"></script>
+    <!-- Our main JS file -->
+    <script src="/comando/assets/js/script.js"></script>
 
 
 
@@ -78,7 +81,7 @@
                         <table>
                             <tr>
                                 <td>
-                                    <div class="voce" type="sottovoce"><a style="text-decoration: none; color: white;" href="/Comando/Pages/Sives.aspx?cat=4&sotto=1">Fermo Custode</a></div>
+                                    <div class="voce" type="sottovoce"><a class="w3-right w3-btn" style="text-decoration: none; color: white;" href="/Comando/Pages/Sives.aspx?cat=4&sotto=1">Fermo custode</a></div>
                                 </td>
                             </tr>
                             <tr>
@@ -105,9 +108,7 @@
                 <td style="vertical-align: top">
                     <div class="voce"><a style="text-decoration: none; color: white;" href="/Comando/Pages/Veicoli.aspx?cat=6">Veicoli Provenienza Furtiva</a></div>
                 </td>
-                <td style="vertical-align: top">
-                    <div class="voce"><a style="text-decoration: none; color: white;" href="/Comando/Pages/Anagrafiche.aspx">Gestione Anagrafiche</a></div>
-                </td>
+              
                 <td style="text-align: right"></td>
             </tr>
         </table>
@@ -133,6 +134,15 @@
                     <td colspan="7" style="text-align: right">
                         <asp:LinkButton ID="LinkButton1" CssClass="" Font-Size="Large" runat="server" OnClick="LinkButton1_Click">Log Off</asp:LinkButton>
                     </td>
+                </tr>
+               
+                 <tr style="height: 40px">
+                  
+                 <td colspan="7" style="text-align: right">
+                      <div runat="server" id="anagrafiche">
+                    <div class=""><a style="text-decoration: none; color: #3498db;font-size:large" href="/Comando/Pages/Anagrafiche.aspx">Gestione Anagrafiche</a></div>
+                     </div>
+                          </td>
                 </tr>
             </table>
         </div>
@@ -390,7 +400,7 @@
                             { label: 'Cognome Agente', name: 'AgenteCognome', width: 100 },
                             { label: 'Autore', name: 'Autore', width: 100 },
                         ],
-                        width: 780,
+                        width: 760,
                         height: 350,
                         pager: "#jqGridPagerRicerca",
                         loadComplete: function () {
@@ -400,7 +410,7 @@
                                 $('#jqGridRicerca').jqGrid('setRowData', rowIds[i], false, "normaltext");
                             } //for
                         },//loadComplete
-                        ondblClickRow: function (rowId) {
+                        onSelectRow: function (rowId) {
                             var rowData = jQuery(this).getRowData(rowId);
                             var Id = rowData['Id'];
                             CaricaVerbale(Id)
@@ -477,7 +487,7 @@
 <script>
 function sendFileToServer(formData,status)
 {
-   
+    formData.append("cartella", $('#Select1').val());
     var uploadURL ="../agenti.asmx/UploadFile"; //Upload URL
     var extraData ={}; //Extra Data.
     var jqXHR=$.ajax({
@@ -613,6 +623,10 @@ $(document).on('drop', function (e)
     e.stopPropagation();
     e.preventDefault();
 });
- 
+
+
+    $("input[class^='data']").inputmask("99/99/9999");
+
+
 });
 </script>

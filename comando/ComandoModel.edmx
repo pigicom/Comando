@@ -445,6 +445,7 @@
           <Property Name="Pwd" Type="nchar" MaxLength="50" />
           <Property Name="UltimoAccesso" Type="datetime" />
           <Property Name="Descrizione" Type="nvarchar" MaxLength="50" />
+          <Property Name="Amministratore" Type="bit" />
         </EntityType>
         <EntityType Name="Veicolo">
           <Key>
@@ -1552,6 +1553,7 @@
           <Property Name="UltimoAccesso" Type="DateTime" Precision="3" />
           <Property Name="Descrizione" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Verbale" Relationship="Self.FK_Verbale_Utente" FromRole="Utente" ToRole="Verbale" />
+          <Property Name="Amministratore" Type="Boolean" />
         </EntityType>
         <EntityType Name="Veicolo">
           <Key>
@@ -2667,6 +2669,7 @@
           <EntitySetMapping Name="Utente">
             <EntityTypeMapping TypeName="ComandoModel.Utente">
               <MappingFragment StoreEntitySet="Utente">
+                <ScalarProperty Name="Amministratore" ColumnName="Amministratore" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Pwd" ColumnName="Pwd" />

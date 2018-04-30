@@ -36,7 +36,7 @@
             }
             .ui-jqgrid tr.ui-row-ltr td {text-align:left;border-right-width: 1px; border-right-color: inherit; border-right-style: solid;}
             
-           .ui-jqgrid .ui-jqgrid-htable th div{font-size:16px;height:40px}
+           .ui-jqgrid .ui-jqgrid-htable th div{font-size:16px;height:40px;color:white}
 
         .ui-jqgrid tr.jqgrow {
             font-family: Verdana;
@@ -55,7 +55,7 @@
 </head>
 
 <body style="padding-top:8px" >
-    <table style="width:100%;  font-family:Verdana; align-items:center;background-color:#3498db;padding:10px;margin-left:10px;margin-right:10px">
+    <table style="width:99%;  font-family:Verdana; align-items:center;background-color:#3498db;padding:10px;margin-left:10px;margin-right:10px">
             <tr>
                 <td style="vertical-align: top">
                     <div class="voce"><a href="/Comando/Pages/Ebbrezza.aspx?cat=2" style="text-decoration: none; color: white;">Guida In Stato Di Ebbrezza</a></div>
