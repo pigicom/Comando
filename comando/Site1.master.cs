@@ -27,8 +27,13 @@ namespace Comando
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (((Utente)Session["currentUser"]).Amministratore != true)
-                this.FindControl("anagrafiche").Visible = false;
+            if (Session["currentUser"] == null)
+                Response.Redirect("..\\login.aspx");
+            else
+            {
+                if (((Utente)Session["currentUser"]).Amministratore != true)
+                    this.FindControl("anagrafiche").Visible = false;
+            }
         }
     }
 }

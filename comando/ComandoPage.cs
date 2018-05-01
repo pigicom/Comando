@@ -22,7 +22,9 @@
                 string[] directories = Directory.GetDirectories(path);
                 CheckBoxList child = new CheckBoxList();
                 child.Style.Add("font-family", "Verdana");
-                child.Style.Add("font-size", "11px");
+                child.Style.Add("font-size", "12px");
+                child.Style.Add("color", "black");
+                child.Style.Add("vertical-align", "botton-top");
                 int index = 0;
                 foreach (string str2 in directories)
                 {
