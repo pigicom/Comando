@@ -33,15 +33,15 @@
              <td><asp:TextBox ID="txtDataVerbale"  runat="server" cssclass="data" /></td>
              <td>Data Apertura</td>
              <td><asp:TextBox ID="txtDataApertura" runat="server" cssclass="data" /></td>
-             <td class="auto-style3">Ora Apertura HH:mm</td>
-             <td><asp:TextBox ID="txtOraApertura"  onblur="AggiungiMinuti(this)" runat="server" Width="100px"></asp:TextBox></td>
+             <td >Ora Apertura HH:mm</td>
+             <td><asp:TextBox ID="txtOraApertura" CssClass="ora" onblur="AggiungiMinuti(this)" runat="server"></asp:TextBox></td>
          </tr>
          <tr>
              <td colspan="2">&nbsp;</td>
              <td>Data Chiusura</td>
              <td><asp:TextBox ID="txtDataChiusura" runat="server"  cssclass="data" /></td>
-             <td class="auto-style3">Ora Chiusura HH:mm</td>
-             <td><asp:TextBox ID="txtOraChiusura" Width="100px" runat="server" onblur="AggiungiMinuti(this)"></asp:TextBox></td>
+             <td >Ora Chiusura HH:mm</td>
+             <td><asp:TextBox ID="txtOraChiusura" CssClass="ora" runat="server" onblur="AggiungiMinuti(this)"></asp:TextBox></td>
          </tr>
          <tr>
              <td colspan="2" style="text-align: right">&nbsp;&nbsp;&nbsp;&nbsp; </td>
@@ -67,8 +67,7 @@
                </td>
                   <td >Ora </td>
                   <td >
-                      <asp:TextBox ID="txtOra" runat="server"  onblur="AggiungiMinuti(this)" Width="60px" />
-                      <div style="position:absolute;font-size:10px">&nbsp;&nbsp;&nbsp;hh:mm</div>
+                      <asp:TextBox ID="txtOra" CssClass="ora" runat="server"  onblur="AggiungiMinuti(this)" Width="60px" />
                      </td>
                <td >Articolo&nbsp;</td>
                     <td> <asp:TextBox ID="txtArticolo" runat="server" Width="60px" /></td>
@@ -114,12 +113,10 @@
  </asp:Panel>
 
 <script>
-   function   AggiungiMinuti(e){
-       if ((e.value.indexOf(':') > 0) && (e.value.length<4)) {
-           $(e).val($(e).val() + '00');
+    function AggiungiMinuti(e) {
+        if ((e.value.indexOf(':') > 0) && (isNaN(e.value.substring(3, 5)))) {
+           $(e).val($(e).val().substring(0,2) + ':00');
        }
-       if ((e.value.length < 3)) {
-           $(e).val($(e).val() + ':00');
-       }
+       
     }
 </script>

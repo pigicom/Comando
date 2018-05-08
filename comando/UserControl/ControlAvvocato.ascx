@@ -28,7 +28,7 @@
         <tr>
             <td>Indirizzo Studio</td>
             <td class="auto-style5">
-                <asp:TextBox ID="txtIndirizzoStudio" runat="server" Width="460px" />
+                <asp:TextBox ID="txtIndirizzoStudio" runat="server" Width="360px" />
             </td>
             <td>Cellulare</td>
             <td> <asp:TextBox ID="txtCellulare" runat="server" Width="241px" /></td>
@@ -39,13 +39,13 @@
             <td> <asp:TextBox ID="txtForo" runat="server" Width="241px" /></td>
         </tr>
         <tr>
-            <td  >Email</td> <td ><asp:TextBox ID="txtEmail" runat ="server" Width="467px" />
+            <td  >Email</td> <td ><asp:TextBox ID="txtEmail" runat ="server" Width="360px" />
             </td>
             <td  >Assegnato D&#39;ufficio</td>
             <td>
                <asp:DropDownList ID="ddlAssegnato" runat="server">
                     <asp:ListItem Value="1">Si</asp:ListItem>
-                    <asp:ListItem Value="0">No</asp:ListItem>
+                    <asp:ListItem Value="0" Selected="True">No</asp:ListItem>
                 </asp:DropDownList>
                 <asp:HiddenField ID="AvvocatoId" runat="server" />
             </td>

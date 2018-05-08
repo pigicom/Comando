@@ -64,8 +64,6 @@
                 string item = string.Empty;
                 using (new ComandoEntities())
                 {
-                    //Helper.CloseAllProcess();
-                    //Application word = (Application) Activator.CreateInstance(Marshal.GetTypeFromCLSID(new Guid("000209FF-0000-0000-C000-000000000046")));
                     using (IEnumerator<string> enumerator = list2.GetEnumerator())
                     {
                         while (enumerator.MoveNext())
@@ -74,8 +72,6 @@
                             file.Add(item);
                         }
                     }
-                   // word.Quit(true);
-                   //Marshal.ReleaseComObject(word);
                    Helper.DownloadFile(this, file, base.GetType());
                    return;
                 }

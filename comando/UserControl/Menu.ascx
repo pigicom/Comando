@@ -109,36 +109,36 @@
 
 
 
-<div id="divmenulaterale" style="position: absolute; left: 1050px; top: 200px">
+<div id="divmenulaterale" style="position: absolute; left: 1050px; top: 140px">
     <fieldset>
         <legend>Azioni</legend>
         <table style="width: 100px; align-content: center; padding: 10px">
-            <tr style="align-items: center">
+            <tr style="align-items: center;height:60px">
                 <td style="width: 25%" class="auto-style1">
                     <asp:ImageButton CausesValidation="false" class="button" src="../images/nuovo.png" runat="server" ID="btnNew" OnClientClick="return conferma(this)" OnClick="btnNew_Click" />
                 </td>
             </tr>
-            <tr>
+               <tr style="align-items: center;height:60px">
                 <td style="width: 25%" class="auto-style1">
                     <asp:ImageButton ID="btnSave" CausesValidation="false" class="button" src="../images/salva.png" runat="server" OnClientClick="return conferma(this)" OnClick="btnSave_Click" />
                 </td>
             </tr>
-            <tr>
+              <tr style="align-items: center;height:60px">
                 <td style="width: 25%" class="auto-style1">
                     <asp:ImageButton ID="btnSearch" runat="server" class="button" CausesValidation="false" src="../images/cerca.png" OnClientClick="CaricaRicerca();return false;" OnClick="btnSearch_Click" />
                 </td>
             </tr>
-            <tr>
+               <tr style="align-items: center;height:60px">
                 <td style="width: 25%" class="auto-style1">
                     <asp:ImageButton ID="btnCrea" CausesValidation="false" class="button" runat="server" src="../images/stampa.png" OnClientClick="var r= conferma(this); if (r==true) ShowVerbali();return r" OnClick="btnCrea_Click" />
                 </td>
             </tr>
-            <tr>
+               <tr style="align-items: center;height:60px">
                 <td style="width: 25%" class="auto-style1">
                     <asp:ImageButton ID="ImageButton1" runat="server" class="button" CausesValidation="false" src="../images/cartella.png" OnClientClick="openAttach()" />
                 </td>
             </tr>
-            <tr>
+               <tr style="align-items: center;height:60px">
                 <td style="width: 25%" class="auto-style1">
                     <asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="false" src="../images/carica.png" CssClass="button button-defautl" OnClientClick="openFileUpload();return false;" />
                 </td>
@@ -160,11 +160,14 @@
                 height: 400, width: 600, modal: true,
             buttons: [
                 {
-            text:  "Seleziona",
+                    text: "Sfoglia...",
+                    style: "left:-370px",
+                 
              click: function () {
                         var input = document.createElement('input');
-                        input.type = 'file';
-                        input.click();
+                            input.type = 'file';
+                
+                            input.click();
                       }
          },
         {

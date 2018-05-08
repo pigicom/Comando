@@ -26,7 +26,7 @@
             }
             if (this.patente != null)
             {
-                this.ddlCategoria.Text = this.patente.Categoria;
+                this.ddlCategoria.Text = this.patente.Categoria.Trim();
                 if (this.patente.Data.HasValue)
                 {
                     this.txtDataRilascio.Text = this.patente.Data.Value.ToShortDateString();
@@ -88,7 +88,7 @@
                 if (this.patente == null)
                     this.patente = new Patente();
 
-                patente.Categoria = this.ddlCategoria.SelectedItem.Text;
+                patente.Categoria = this.ddlCategoria.SelectedItem.Text.Trim();
                 DateTime result = new DateTime();
                 patente.Data = null;
                 if (DateTime.TryParse(this.txtDataRilascio.Text, out result))

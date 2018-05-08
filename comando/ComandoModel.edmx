@@ -2178,7 +2178,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Categoria" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Categoria" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="Numero" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
           <Property Name="RilasciataDa" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
           <Property Name="Data" Type="DateTime" Precision="3" />

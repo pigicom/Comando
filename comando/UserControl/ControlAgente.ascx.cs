@@ -79,6 +79,9 @@
                 }
                 this.txtOraApertura.Text = string.IsNullOrEmpty(this.txtOraApertura.Text) ? "00:00" : this.txtOraApertura.Text;
                 this.txtOraChiusura.Text = string.IsNullOrEmpty(this.txtOraChiusura.Text) ? "00:00" : this.txtOraChiusura.Text;
+
+                this.txtOraApertura.Text=this.txtOraApertura.Text.Replace("__", "00");
+                this.txtOraChiusura.Text = this.txtOraChiusura.Text.Replace("__", "00");
                 char[] separator = new char[] { ':' };
                 int hours = short.Parse(this.txtOraApertura.Text.Split(separator)[0].ToString());
                 char[] chArray2 = new char[] { ':' };
@@ -115,7 +118,15 @@
                 entity.Citta = this.txtCittaViolazione.Text;
                 entity.Verbale = verbale;
                 entities.Entry<Violazione>(entity).State = EntityState.Added;
-                entities.SaveChanges();
+                try
+                {
+                    entities.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
                 return verbale.Id;
             }
         }
@@ -171,12 +182,12 @@
                 if (verbale.DataOraApertura.HasValue)
                 {
                     this.txtDataApertura.Text = verbale.DataOraApertura.Value.ToShortDateString();
-                    this.txtOraApertura.Text = !verbale.DataOraApertura.HasValue ? string.Empty : verbale.DataOraApertura.Value.ToString("hh:MM");
+                    this.txtOraApertura.Text = !verbale.DataOraApertura.HasValue ? string.Empty : verbale.DataOraApertura.Value.ToString("hh:mm");
                 }
                 if (verbale.DataOraChiusura.HasValue)
                 {
                     this.txtDataChiusura.Text = verbale.DataOraChiusura.Value.ToShortDateString();
-                    this.txtOraChiusura.Text = !verbale.DataOraChiusura.HasValue ? string.Empty : verbale.DataOraChiusura.Value.ToString("hh:MM");
+                    this.txtOraChiusura.Text = !verbale.DataOraChiusura.HasValue ? string.Empty : verbale.DataOraChiusura.Value.ToString("hh:mm");
                 }
                 if (verbale.Indirizzo != null)
                 {
@@ -243,6 +254,12 @@
                     if (this.agente2.Id != 0)
                         verbale.Agente2_Id = this.agente2.Id;
                     verbale.Data = new DateTime?(DateTime.TryParse(this.txtDataVerbale.Text, out result) ? result : DateTime.MinValue);
+                    verbale.Data = new DateTime(verbale.Data.Value.Year,
+                                                verbale.Data.Value.Month,
+                                                verbale.Data.Value.Day,
+                                                Int32.Parse(this.txtOraApertura.Text.Split(':')[0]),
+                                                Int32.Parse(this.txtOraApertura.Text.Split(':')[1]),
+                                                0);
                     verbale.Indirizzo = this.txtVerbaleIndirizzo.Text;
                     entities.SaveChanges();
                 }

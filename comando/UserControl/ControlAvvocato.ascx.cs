@@ -44,11 +44,13 @@
             if ((assegnato.GetValueOrDefault() == flag) ? assegnato.HasValue : false)
             {
                 num2 = 1;
+                this.ddlAssegnato.ClearSelection();
                 this.ddlAssegnato.Items.FindByValue(num2.ToString()).Selected = true;
             }
             else
             {
                 num2 = 0;
+                this.ddlAssegnato.ClearSelection();
                 this.ddlAssegnato.Items.FindByValue(num2.ToString()).Selected = true;
             }
         }

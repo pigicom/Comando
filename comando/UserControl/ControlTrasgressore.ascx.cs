@@ -48,6 +48,7 @@
             this.txtViaResidenza.Text = trasgressore.ViaResidenza;
             if (trasgressore.Sesso != null)
             {
+                this.ddlSesso.ClearSelection();
                 this.ddlSesso.Items.FindByValue(trasgressore.Sesso).Selected = true;
             }
             this.txtCittaDomicilio.Text = trasgressore.CIttaDomicilio;

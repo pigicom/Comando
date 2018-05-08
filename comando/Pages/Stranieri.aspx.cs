@@ -68,30 +68,22 @@ namespace Comando
             if (this.ViewState["idverbale"] != null && stringList.Count > 0)
             {
                 int num = int.Parse(this.ViewState["idverbale"].ToString());
-                string empty = string.Empty;
+                string item = string.Empty;
                 using (new ComandoEntities())
                 {
-                    Helper.CloseAllProcess();
-                    // ISSUE: variable of a compiler-generated type
-                    Application instance = (Application)Activator.CreateInstance(Marshal.GetTypeFromCLSID(new Guid("000209FF-0000-0000-C000-000000000046")));
-                    foreach (string path in (IEnumerable<string>)stringList)
+                    using (IEnumerator<string> enumerator = stringList.GetEnumerator())
                     {
-                        string str = Helper.FillDocument(path, this.CreaDettaglio((long)num), instance);
-                        file.Add(str);
+                        while (enumerator.MoveNext())
+                        {
+                            item = Helper.FillDocument(enumerator.Current, this.CreaDettaglio((long)num), null);
+                            file.Add(item);
+                        }
                     }
-                    // ISSUE: variable of a compiler-generated type
-                    Application application = instance;
-                    object missing1 = Type.Missing;
-                    object missing2 = Type.Missing;
-                    object missing3 = Type.Missing;
-                    // ISSUE: reference to a compiler-generated method
-                    application.Quit(ref missing1, ref missing2, ref missing3);
-                    Marshal.ReleaseComObject((object)instance);
-                    Helper.DownloadFile((ComandoPage)this, file, this.GetType());
+                    Helper.DownloadFile(this, file, base.GetType());
+                    return;
                 }
             }
-            else
-                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "key", "<script>ShowVerbali()</script>");
+             this.Page.ClientScript.RegisterStartupScript(this.GetType(), "key", "<script>ShowVerbali()</script>");
         }
 
         public BaseVerbale CreaDettaglio(long verbaleid)

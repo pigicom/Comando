@@ -42,9 +42,9 @@
             long current = verbaleid;
             using (ComandoEntities entities = new ComandoEntities())
             {
+                this.violazione = entities.Violazione.Where(x => x.Verbale_Id == verbaleid).FirstOrDefault();
+                this.verbale = this.violazione.Verbale;
                 this.trasgressore = this.verbale.Trasgressore;
-                this.verbale = entities.Verbale.Find(verbaleid);
-                this.violazione = entities.Violazione.Find(verbale.Violazione_Id);
                 if (this.verbale.Agente != null)
                 {
                     this.agente1 = this.verbale.Agente;
@@ -60,7 +60,7 @@
                     object[] objArray2 = new object[] { this.veicolo.Id_Custode };
                     this.custode = entities.Custode.Find(objArray2);
                 }
-                return Helper.RiempiCampi(this.verbale, this.agente1, this.agente2, this.violazione, this.trasgressore, this.patente, null, this.veicolo, this.avvocato, this.veicolo.Proprietario, this.custode);
+                return Helper.RiempiCampi(this.verbale, this.agente1, this.agente2, this.violazione, this.trasgressore, this.patente, null, verbale.Veicolo, this.avvocato, this.veicolo.Proprietario, this.custode);
             }
         }
 
@@ -75,18 +75,14 @@
                 string item = string.Empty;
                 using (new ComandoEntities())
                 {
-                    Helper.CloseAllProcess();
-                    Application word = (Application)Activator.CreateInstance(Marshal.GetTypeFromCLSID(new Guid("000209FF-0000-0000-C000-000000000046")));
                     using (IEnumerator<string> enumerator = list2.GetEnumerator())
                     {
                         while (enumerator.MoveNext())
                         {
-                            item = Helper.FillDocument(enumerator.Current, this.CreaDettaglio((long)num), word);
+                            item = Helper.FillDocument(enumerator.Current, this.CreaDettaglio((long)num), null);
                             file.Add(item);
                         }
                     }
-                    word.Quit(true);
-                    Marshal.ReleaseComObject(word);
                     Helper.DownloadFile(this, file, base.GetType());
                     return;
                 }

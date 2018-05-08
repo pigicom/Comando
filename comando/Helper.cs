@@ -18,6 +18,8 @@
     using System.Web.Script.Serialization;
     using comando;
     using System.Text.RegularExpressions;
+    using System.Globalization;
+    using System.Threading;
 
     public class Helper
     {
@@ -194,17 +196,20 @@
 
         public static BaseVerbale RiempiCampi(Verbale verbale, Agente agente1, Agente agente2, Violazione violazione, Trasgressore trasgressore, Patente patente, Documento documento, Veicolo veicolo, Avvocato avvocato, Proprietario proprietario, Custode custode)
         {
+            var culture = new CultureInfo("it-IT");
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
             VerbaleElezioneDomicilio domicilio = new VerbaleElezioneDomicilio();
             using (new ComandoEntities())
             {
                 domicilio.Fields.Add("protocollo", verbale.Protocollo);
-                domicilio.Fields.Add("annoverbale", verbale.Data.Value.Year.ToString());
-                domicilio.Fields.Add("giornoverbale", verbale.Data.Value.Day.ToString());
+                domicilio.Fields.Add("annoverbale", verbale.Data.Value.Year.ToString()?.Trim());
+                domicilio.Fields.Add("giornoverbale", verbale.Data.Value.Day.ToString()?.Trim());
                 char[] separator = new char[] { ' ' };
                 domicilio.Fields.Add("meseverbale", verbale.Data.Value.ToLongDateString().Split(separator)[2].ToString());
                 domicilio.Fields.Add("oraverbale", verbale.DataOraApertura.Value.ToString(@"hh\:mm"));
-                domicilio.Fields.Add("cittaverbale", violazione.Citta.ToString());
-                domicilio.Fields.Add("viaverbale", verbale.Indirizzo.ToString());
+                domicilio.Fields.Add("cittaverbale", violazione.Citta.ToString()?.Trim());
+                domicilio.Fields.Add("viaverbale", verbale.Indirizzo.ToString()?.Trim());
                 string[] textArray1 = new string[5];
                 textArray1[0] = verbale.Data.Value.Day.ToString();
                 textArray1[1] = " ";
@@ -225,78 +230,87 @@
                 str = agente1.Cognome.Trim() + " " + agente1.Nome.Trim();
                 if ((agente2 != null) && (agente2.Id != 0))
                 {
-                    string[] textArray2 = new string[] { str, " , ", agente2.Cognome.Trim(), " ", agente2.Nome.Trim() };
+                    string[] textArray2 = new string[] { str, " , ", agente2.Cognome?.Trim(), " ", agente2.Nome?.Trim() };
                     str = string.Concat(textArray2);
-                    domicilio.Fields.Add("agente2", agente2.Cognome.Trim() + " " + agente2.Nome.Trim());
+                    domicilio.Fields.Add("agente2", agente2.Cognome?.Trim() + " " + agente2.Nome?.Trim());
                 }
                 domicilio.Fields.Add("agenti", str);
-                domicilio.Fields.Add("agente1", agente1.Cognome.Trim() + " " + agente1.Nome.Trim());
+                domicilio.Fields.Add("agente1", agente1.Cognome?.Trim() + " " + agente1.Nome?.Trim());
                 if (trasgressore != null)
                 {
-                    domicilio.Fields.Add("nometrasg", trasgressore.Cognome.Trim() + " " + trasgressore.Nome.Trim());
-                    domicilio.Fields.Add("solonometrasg", trasgressore.Nome.Trim());
-                    domicilio.Fields.Add("solocognometrasg", trasgressore.Cognome.Trim());
-                    domicilio.Fields.Add("luogonascitatrasg", trasgressore.CittaNascita);
-                    domicilio.Fields.Add("datanascitatrasg", trasgressore.DataNascita.Value.ToShortDateString());
-                    domicilio.Fields.Add("cittaresidenzatrasg", trasgressore.CittaResidenza);
-                    domicilio.Fields.Add("viaresidenzatrasg", trasgressore.ViaResidenza);
-                    domicilio.Fields.Add("viadomiciliotrasg", trasgressore.IndirizzoDomicilio);
-                    domicilio.Fields.Add("cittadomiciliotrasg", trasgressore.CIttaDomicilio);
-                    domicilio.Fields.Add("sessotrasgr", trasgressore.Sesso);
-                    domicilio.Fields.Add("nazionalitatrasgr", trasgressore.StatoNascita);
+                    domicilio.Fields.Add("nometrasg", trasgressore.Cognome?.Trim() + " " + trasgressore.Nome?.Trim());
+                    domicilio.Fields.Add("solonometrasg", trasgressore.Nome?.Trim());
+                    domicilio.Fields.Add("solocognometrasg", trasgressore.Cognome?.Trim());
+                    domicilio.Fields.Add("luogonascitatrasg", trasgressore.CittaNascita?.Trim());
+                    domicilio.Fields.Add("datanascitatrasg", trasgressore.DataNascita.Value.ToShortDateString().Trim());
+                    domicilio.Fields.Add("cittaresidenzatrasg", trasgressore.CittaResidenza?.Trim());
+                    domicilio.Fields.Add("viaresidenzatrasg", trasgressore.ViaResidenza?.Trim());
+                    domicilio.Fields.Add("viadomiciliotrasg", trasgressore.IndirizzoDomicilio?.Trim());
+                    domicilio.Fields.Add("cittadomiciliotrasg", trasgressore.CIttaDomicilio?.Trim());
+                    domicilio.Fields.Add("sessotrasgr", trasgressore.Sesso?.Trim());
+                    domicilio.Fields.Add("nazionalitatrasgr", trasgressore.StatoNascita?.Trim());
                     if (trasgressore.Patente!=null)
                     {
-                        domicilio.Fields.Add("tipopatentetrasg", trasgressore.Patente.Categoria);
-                        domicilio.Fields.Add("numeropatentetrasg", trasgressore.Patente.Numero);
-                        domicilio.Fields.Add("patenterilasciatada", trasgressore.Patente.RilasciataDa);
+                        domicilio.Fields.Add("tipopatentetrasg", trasgressore.Patente.Categoria?.Trim());
+                        domicilio.Fields.Add("tipopatentetrasgprefissopatente", "Patente " + trasgressore.Patente.Categoria?.Trim());
+                        domicilio.Fields.Add("numeropatentetrasg", trasgressore.Patente.Numero?.Trim());
+                        domicilio.Fields.Add("patenterilasciatada", trasgressore.Patente.RilasciataDa?.Trim());
                         if (trasgressore.Patente.Data.HasValue)
                         {
-                            domicilio.Fields.Add("datarilasciopatente", trasgressore.Patente.Data.Value.ToShortDateString());
+                            domicilio.Fields.Add("datarilasciopatente", trasgressore.Patente.Data.Value.ToShortDateString()?.Trim());
                         }
                     }
-                    //if (!string.IsNullOrEmpty(trasgressore.DocumentoTipo))
-                    //{
-                    //    domicilio.Fields.Add("tipodocumento", trasgressore.DocumentoTipo);
-                    //    domicilio.Fields.Add("numerodocumento", trasgressore.DocumentoNumero);
-                    //}
                     if ((trasgressore.Patente!=null))
                     {
-                        domicilio.Fields.Add("tipodocumento", trasgressore.Patente.Categoria);
-                        domicilio.Fields.Add("numerodocumento", trasgressore.Patente.Numero);
+                        domicilio.Fields.Add("tipodocumento", trasgressore.Patente.Categoria?.Trim());
+                        domicilio.Fields.Add("numerodocumento", trasgressore.Patente.Numero?.Trim());
                     }
 
                 }
                 if (violazione != null)
                 {
-                    domicilio.Fields.Add("violazionearticolo", violazione.Articolo);
-                    domicilio.Fields.Add("violazionecitta", violazione.Citta);
+                    domicilio.Fields.Add("violazionearticolo", violazione.Articolo?.Trim());
+                    domicilio.Fields.Add("violazionecitta", violazione.Citta?.Trim());
+                    domicilio.Fields.Add("violazioneanno", violazione.Data.Value.Year.ToString());
+                    domicilio.Fields.Add("violazionegiorno", violazione.Data.Value.Day.ToString());
+                    domicilio.Fields.Add("violazionemese", violazione.Data.Value.ToString("MMMM"));
                     if (violazione.Data.HasValue)
                     {
-                        domicilio.Fields.Add("violazionedata", violazione.Data.Value.ToShortDateString());
+                        domicilio.Fields.Add("violazionedata", violazione.Data.Value.ToShortDateString()?.Trim());
                     }
-                    domicilio.Fields.Add("violazionedescrizione", violazione.Descrizione);
-                    domicilio.Fields.Add("violazioneindirizzo", violazione.Indirizzo);
+                    domicilio.Fields.Add("violazionedescrizione", violazione.Descrizione?.Trim());
+                    domicilio.Fields.Add("violazioneindirizzo", violazione.Indirizzo?.Trim());
                     if (violazione.Data.HasValue)
                     {
-                        domicilio.Fields.Add("violazioneora", violazione.Data.Value.ToShortTimeString());
+                        domicilio.Fields.Add("violazioneora", violazione.Data.Value.ToShortTimeString()?.Trim());
                     }
                 }
                 if (veicolo != null)
                 {
-                    domicilio.Fields.Add("marcaveicolo", veicolo.marca);
-                    domicilio.Fields.Add("modelloveicolo", veicolo.modello);
-                    domicilio.Fields.Add("veicolo", veicolo.TipoVeicolo.Descrizione);
-                    domicilio.Fields.Add("tipoemodelloveicolo", veicolo.marca + " " + veicolo.modello);
-                    domicilio.Fields.Add("targaveicolo", veicolo.targa);
-                    domicilio.Fields.Add("telaioveicolo", veicolo.telaio);
-                    domicilio.Fields.Add("coloreveicolo", veicolo.colore);
+                    domicilio.Fields.Add("marcaveicolo", veicolo.marca?.Trim());
+                    domicilio.Fields.Add("modelloveicolo", veicolo.modello?.Trim());
+                    domicilio.Fields.Add("veicolo", veicolo.TipoVeicolo.Descrizione?.Trim());
+                    domicilio.Fields.Add("tipoemodelloveicolo", veicolo.marca?.Trim() + " " + veicolo.modello?.Trim());
+                    domicilio.Fields.Add("targaveicolo", veicolo.targa?.Trim());
+                    domicilio.Fields.Add("telaioveicolo", veicolo.telaio?.Trim());
+                    domicilio.Fields.Add("coloreveicolo", veicolo.colore?.Trim());
                     if (veicolo.Proprietario != null)
                     {
-                        domicilio.Fields.Add("proprietarioveicolo", veicolo.Proprietario.Nome.Trim() + " " + veicolo.Proprietario.Cognome.Trim());
-                        domicilio.Fields.Add("cittanascitapropr", veicolo.Proprietario.CittaNascita);
-                        domicilio.Fields.Add("datanascitapropr", veicolo.Proprietario.DataNascita.Value.ToShortDateString());
-                        domicilio.Fields.Add("cittaresidenzapropr", veicolo.Proprietario.CittaResidenza);
-                        domicilio.Fields.Add("viaresidenzapropr", veicolo.Proprietario.IndirizzoResidenza);
+                        domicilio.Fields.Add("proprietarioveicolo", veicolo.Proprietario.Nome?.Trim() + " " + veicolo.Proprietario.Cognome?.Trim());
+                        domicilio.Fields.Add("cittanascitapropr", veicolo.Proprietario.CittaNascita?.Trim());
+                        domicilio.Fields.Add("datanascitapropr", veicolo.Proprietario.DataNascita.Value.ToShortDateString()?.Trim());
+                        domicilio.Fields.Add("cittaresidenzapropr", veicolo.Proprietario.CittaResidenza?.Trim());
+                        domicilio.Fields.Add("viaresidenzapropr", veicolo.Proprietario.IndirizzoResidenza?.Trim());
+                        if (veicolo.Proprietario.Patente != null)
+                        {
+                            domicilio.Fields.Add("tipopatenteprop", veicolo.Proprietario.Patente.Categoria?.Trim());
+                            domicilio.Fields.Add("numeropatenteprop", veicolo.Proprietario.Patente.Numero?.Trim());
+                            domicilio.Fields.Add("patenteproprilasciatada", veicolo.Proprietario.Patente.RilasciataDa?.Trim());
+                            if (veicolo.Proprietario.Patente.Data.HasValue)
+                            {
+                                domicilio.Fields.Add("datarilasciopatenteprop", veicolo.Proprietario.Patente.Data.Value.ToShortDateString()?.Trim());
+                            }
+                        }
                     }
                 }
                 if (avvocato != null)
@@ -317,34 +331,25 @@
                     else
                     {
                         domicilio.Fields.Add("avvocatoufficionome", avvocato.Cognome + " " + avvocato.Nome);
-                        domicilio.Fields.Add("avvocatoufficiostudiocitta", avvocato.CittaStudio);
-                        domicilio.Fields.Add("avvocatoufficiostudiovia", avvocato.IndirizzoStudio);
-                        domicilio.Fields.Add("avvocatoufficiostudiotel", avvocato.TelefonoStudio);
-                        domicilio.Fields.Add("avvocatoufficiostudiofax", avvocato.TelefonoStudio);
-                        domicilio.Fields.Add("avvocatoufficiocellulare", avvocato.Cellulare);
-                        domicilio.Fields.Add("avvocatoufficioforo", avvocato.Foro);
-                        domicilio.Fields.Add("avvocatoufficioemail", avvocato.Email);
+                        domicilio.Fields.Add("avvocatoufficiostudiocitta", avvocato.CittaStudio?.Trim());
+                        domicilio.Fields.Add("avvocatoufficiostudiovia", avvocato.IndirizzoStudio?.Trim());
+                        domicilio.Fields.Add("avvocatoufficiostudiotel", avvocato.TelefonoStudio?.Trim());
+                        domicilio.Fields.Add("avvocatoufficiostudiofax", avvocato.FaxStudio?.Trim());
+                        domicilio.Fields.Add("avvocatoufficiocellulare", avvocato.Cellulare?.Trim());
+                        domicilio.Fields.Add("avvocatoufficioforo", avvocato.Foro?.Trim());
+                        domicilio.Fields.Add("avvocatoufficioemail", avvocato.Email?.Trim());
                     }
                 }
                 if (custode != null)
                 {
-                    domicilio.Fields.Add("custodeditta", custode.Ditta);
-                    domicilio.Fields.Add("custodecomune", custode.Comune);
-                    domicilio.Fields.Add("custodeindirizzo", custode.Indirizzo);
+                    domicilio.Fields.Add("custodeditta", custode.Ditta?.Trim());
+                    domicilio.Fields.Add("custodecomune", custode.Comune?.Trim());
+                    domicilio.Fields.Add("custodeindirizzo", custode.Indirizzo?.Trim());
                 }
             }
             return domicilio;
         }
-
-        //[Serializable, CompilerGenerated]
-        //private sealed class <>c
-        //{
-        //    public static readonly Helper.<>c <>9 = new Helper.<>c();
-        //    public static Func<KeyValuePair<string, string>, string> <>9__1_2;
-
-        //    internal string <FillDocument>b__1_2(KeyValuePair<string, string> x) => 
-        //        x.Value;
-        //}
+       
     }
 }
 
