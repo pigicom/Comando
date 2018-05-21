@@ -15,7 +15,87 @@
                     <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ComandoConnectionString %>" SelectCommand="SELECT [Id], [Descrizione] FROM [TipoVeicolo]"></asp:SqlDataSource>--%>
                     <td>Marca</td>
                     <td><%--  <asp:TextBox ID="txtMarca" runat="server" Width="241px" />--%><%--  <asp:RequiredFieldValidator CssClass="error" runat="server"   ID="reqCognome" ControlToValidate="txtCognome" Display="Dynamic" ErrorMessage="Campo Obbligatorio"></asp:RequiredFieldValidator>--%>
-                        <asp:TextBox ID="txtMarca" runat="server" Width="241px" />
+                        <asp:TextBox list="browsers" ID="txtMarca" runat="server" Width="241px" />
+                        <datalist id="browsers">
+                            <option>Abarth</option>
+                            <option>Acura</option>
+                            <option>Alfa Romeo</option>
+                            <option>Anhui Jianghuai	</option>
+                            <option>Audi</option>
+                            <option>Beijing</option>
+                            <option>Bentley</option>
+                            <option>BMW</option>
+                            <option>Brilliance</option>
+                            <option>Bugatti</option>
+                            <option>Buick</option>
+                            <option>BYD</option>
+                            <option>Cadillac</option>
+                            <option>Chang'an</option>
+                            <option>Changhe</option>
+                            <option>Chery</option>
+                            <option>Chevrolet</option>
+                            <option>Chongqing Lifan</option>
+                            <option>Chrysler</option>
+                            <option>Citroën</option>
+                            <option>Dacia</option>
+                            <option>Daewoo</option>
+                            <option>Daihatsu</option>
+                            <option>Dodge</option>
+                            <option>Dongfeng</option>
+                            <option>FAW	</option>
+                            <option>Ferrari</option>
+                            <option>FIAT</option>
+                            <option>Ford</option>
+                            <option>Geely</option>
+                            <option>Great Wall Motors</option>
+                            <option>Harbin Hafei</option>
+                            <option>Holden</option>
+                            <option>Honda</option>
+                            <option>Hyundai</option>
+                            <option>Infiniti</option>
+                            <option>Jaguar</option>
+                            <option>Jeep</option>
+                            <option>Kia</option>
+                            <option>Land Rover</option>
+                            <option>Lada</option>
+                            <option>Lamborghini</option>
+                            <option>Lancia</option>
+                            <option>Lexus</option>
+                            <option>Lincoln</option>
+                            <option>Lotus</option>
+                            <option>LUAZ</option>
+                            <option>Lykan</option>
+                            <option>Mahindra</option>
+                            <option>Maruti</option>
+                            <option>Maserati</option>
+                            <option>Mazda</option>
+                            <option>Mercedes-Benz</option>
+                            <option>Mitsubishi</option>
+                            <option>Mini</option>
+                            <option>Nissan</option>
+                            <option>Opel</option>
+                            <option>Peugeot</option>
+                            <option>Porsche</option>
+                            <option>Proton</option>
+                            <option>Renault</option>
+                            <option>Rolls-Royce</option>
+                            <option>Saab</option>
+                            <option>SAIC</option>
+                            <option>Samsung</option>
+                            <option>Smart</option>
+                            <option>SsangYong</option>
+                            <option>Subaru</option>
+                            <option>SEAT</option>
+                            <option>Škoda Auto</option>
+                            <option>Suzuki</option>
+                            <option>Tata</option>
+                            <option>Toyota</option>
+                            <option>UAZ</option>
+                            <option>Vauxhall</option>
+                            <option>Volkswagen</option>
+                            <option>Volvo</option>
+
+                        </datalist>
                     </td>
                 </td>
             </tr>

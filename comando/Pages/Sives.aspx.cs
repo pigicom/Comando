@@ -201,7 +201,9 @@
                  
                 entities.SaveChanges();
             }
-            this.Page.ClientScript.RegisterStartupScript(base.GetType(), "save", "<script>alert('Salvataggio Effettuato')</script>");
+            string s = "<div id = "+ "'alert'" + "style = "+"'display:none'"+" ><p>Salvataggio effettuato!</p></div>";
+            string script = String.Format("<script>$('body').append(\"{0}\");$('#alert').dialog()</script>", s);
+            this.Page.ClientScript.RegisterClientScriptBlock(base.GetType(), "save", script);
         }
 
         public void Search(object sender, EventArgs e)

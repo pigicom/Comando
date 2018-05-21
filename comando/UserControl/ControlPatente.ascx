@@ -12,24 +12,24 @@
                   <td>Tipo Patente(o documento)</td>
                   <td class="auto-style5"><%--  <asp:RequiredFieldValidator  runat="server" CssClass="error" ID="reqNome" ErrorMessage="Campo Obbligatorio" ControlToValidate="txtNome" Display="Dynamic"></asp:RequiredFieldValidator></td>--%>
                       <asp:DropDownList ID="ddlCategoria" runat="server" Width="240px">
-                          <asp:ListItem Text="A1" Value="A1"></asp:ListItem>
-                          <asp:ListItem Text="A2" Value="A2"></asp:ListItem>
-                          <asp:ListItem Text="AM" Value="AM"></asp:ListItem>
-                          <asp:ListItem Text="B" Value="B"></asp:ListItem>
-                          <asp:ListItem Text="B1" Value="B1"></asp:ListItem>
-                          <asp:ListItem Text="BE" Value="BE"></asp:ListItem>
-                          <asp:ListItem Text="C" Value="C"></asp:ListItem>
-                          <asp:ListItem Text="C1" Value="C1"></asp:ListItem>
-                          <asp:ListItem Text="CE" Value="CE"></asp:ListItem>
-                          <asp:ListItem Text="C1E" Value="C1E"></asp:ListItem>
-                          <asp:ListItem Text="D" Value="D"></asp:ListItem>
-                          <asp:ListItem Text="D1" Value="D1"></asp:ListItem>
-                          <asp:ListItem Text="DE" Value="DE"></asp:ListItem>
-                          <asp:ListItem Text="D1E" Value="D1E"></asp:ListItem>
-                          <asp:ListItem Text="KA" Value="KA"></asp:ListItem>
-                          <asp:ListItem Text="KB" Value="KB"></asp:ListItem>
-                          <asp:ListItem Text="KC" Value="KC"></asp:ListItem>
-                          <asp:ListItem Text="PASSAPORTO" Value="PASSAPORTO"></asp:ListItem>
+                          <asp:ListItem Text="PATENTE A1"  Value="PATENTE A1"></asp:ListItem>
+                          <asp:ListItem Text="PATENTE A2"  Value="PATENTE A2"></asp:ListItem>
+                          <asp:ListItem Text="PATENTE AM"  Value="PATENTE AM"></asp:ListItem>
+                          <asp:ListItem Text="PATENTE B"   Value="PATENTE B"></asp:ListItem>
+                          <asp:ListItem Text="PATENTE B1"  Value="PATENTE B1"></asp:ListItem>
+                          <asp:ListItem Text="PATENTE BE"  Value="PATENTE BE"></asp:ListItem>
+                          <asp:ListItem Text="PATENTE C"   Value="PATENTE C"></asp:ListItem>
+                          <asp:ListItem Text="PATENTE C1"  Value="PATENTE C1"></asp:ListItem>
+                          <asp:ListItem Text="PATENTE CE"  Value="PATENTE CE"></asp:ListItem>
+                          <asp:ListItem Text="PATENTE C1E" Value="PATENTE C1E"></asp:ListItem>
+                          <asp:ListItem Text="PATENTE D"   Value="PATENTE D"></asp:ListItem>
+                          <asp:ListItem Text="PATENTE D1"  Value="PATENTE D1"></asp:ListItem>
+                          <asp:ListItem Text="PATENTE DE"  Value="PATENTE DE"></asp:ListItem>
+                          <asp:ListItem Text="PATENTE D1E" Value="PATENTE D1E"></asp:ListItem>
+                          <asp:ListItem Text="PATENTE KA"  Value="PATENTE KA"></asp:ListItem>
+                          <asp:ListItem Text="PATENTE KB"  Value="PATENTE KB"></asp:ListItem>
+                          <asp:ListItem Text="PATENTE KC"  Value="PATENTE KC"></asp:ListItem>
+                          <asp:ListItem Text="PASSAPORTO"  Value="  PASSAPORTO"></asp:ListItem>
                           <asp:ListItem Text="CARTA IDENTITA" Value="CARTA IDENTITA"></asp:ListItem>
                       </asp:DropDownList>
                       <td>Numero</td>

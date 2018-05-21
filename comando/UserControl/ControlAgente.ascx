@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ControlAgente.ascx.cs" Inherits="Comando.UserControl.ControlAgente" %>
 <script>
     $(document).ready(function () {
-
+                 //$('#ContentPlaceHolder1_ControlAgente_txtVerbaleIndirizzo').val('COMANDO DI POLIZIA LOCALE');
         $("#<%=txtOraApertura.ClientID%>").timeMask();
         $("#<%=txtOraChiusura.ClientID%>").timeMask();
         $("#<%=txtOra.ClientID%>").timeMask();

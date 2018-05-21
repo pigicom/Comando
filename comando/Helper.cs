@@ -252,7 +252,7 @@
                     if (trasgressore.Patente!=null)
                     {
                         domicilio.Fields.Add("tipopatentetrasg", trasgressore.Patente.Categoria?.Trim());
-                        domicilio.Fields.Add("tipopatentetrasgprefissopatente", "Patente " + trasgressore.Patente.Categoria?.Trim());
+                        domicilio.Fields.Add("tipopatentetrasgprefissopatente",  trasgressore.Patente.Categoria?.Replace("Patente","").Trim());
                         domicilio.Fields.Add("numeropatentetrasg", trasgressore.Patente.Numero?.Trim());
                         domicilio.Fields.Add("patenterilasciatada", trasgressore.Patente.RilasciataDa?.Trim());
                         if (trasgressore.Patente.Data.HasValue)

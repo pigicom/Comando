@@ -43,13 +43,13 @@
                 this.veicolo = this.verbale.Veicolo;
                 if (this.verbale.Agente1!=null)
                 {
-                    this.agente1 = this.verbale.Agente1;
+                    this.agente1 = this.verbale.Agente;
                 }
                 if (this.verbale.Agente!=null)
                 {
-                    this.agente2 = this.verbale.Agente;
+                    this.agente2 = this.verbale.Agente1;
                 }
-                return Helper.RiempiCampi(this.verbale, this.agente1, this.agente2, this.violazione, this.trasgressore, null, null, this.veicolo, this.avvocato, this.veicolo.Proprietario, null);
+                return Helper.RiempiCampi(this.verbale, this.verbale.Agente,this.verbale.Agente1, this.violazione, this.trasgressore, null, null, this.veicolo, this.avvocato, this.veicolo.Proprietario, null);
             }
         }
 

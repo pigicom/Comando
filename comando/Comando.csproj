@@ -175,7 +175,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="images\polizialocale2.png" />
     <Content Include="index.html" />
     <Content Include="Login.aspx" />
     <Content Include="Modelli\ELEZIONI DI DOMICILIO STRANIERI\albanese.doc" />
@@ -304,6 +303,8 @@
     <Content Include="Scripts\Inputmask\README_numeric.md" />
     <Content Include="Scripts\Inputmask\README_other.md" />
     <Content Include="Scripts\Inputmask\README_phone.md" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\INT01 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="images\avvocato.jpg" />
     <Content Include="images\bg-black.gif" />

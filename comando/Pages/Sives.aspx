@@ -63,10 +63,10 @@
             <div id="divPatenteProprietario" class="shortpanel">
                 <uc1:ControlPatente runat ="server" id="ControlPatenteProprietario"  style="height:250px;"/>
             </div>
-
+          
             <h3>Custode</h3>
             <div id="divCustode" class="shortpanel">
-                <uc1:ControlCustode runat ="server" id="ControlCustode1"  style="height:250px;" />
+                <uc1:ControlCustode   runat ="server" id="ControlCustode1"  style="height:250px;" />
             </div>
          </div>
             <div id="buttons" >

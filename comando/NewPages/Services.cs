@@ -111,16 +111,21 @@
             new JavaScriptSerializer();
             using (ComandoEntities entities = new ComandoEntities())
             {
-                var list = from x in entities.Verbale where x.Category_Id.ToString() == categoria select new {
+                var list = from x in entities.Verbale  join 
+                                a in entities.Agente on x.Agente1_Id equals a.Id join 
+                                t in entities.Trasgressore on x.Trasgressore_Id equals t.Id join
+                                u in entities.Utente on x.Utente_Id equals u.Id
+                                where x.Category_Id.ToString() == categoria select new {
                     Id = x.Id,
                     x.Agente1_Id,
                     x.Agente2_Id,
-                    TrasgressoreNome = x.Trasgressore.Nome,
-                    TrasgressoreCognome = x.Trasgressore.Cognome,
-                    AgenteCognome = x.Agente1.Cognome,
-                    AgenteNome = x.Agente1.Nome,
+                    TrasgressoreNome = t.Nome,
+                    TrasgressoreCognome = t.Cognome,
+                    AgenteCognome = a.Cognome,
+                    AgenteNome = a.Nome,
                     x.Indirizzo,
-                    x.Nome, x.Veicolo_Id, x.Violazione_Id, x.Data, x.DataOraApertura, x.DataOraChiusura, x.Avvocato_Id, Autore = x.Utente.Descrizione };
+                    Autore = u.Login,
+                    x.Nome, x.Veicolo_Id, x.Violazione_Id, x.Data, x.DataOraApertura, x.DataOraChiusura, x.Avvocato_Id};
                JavaScriptSerializer s = new JavaScriptSerializer();
                 return s.Serialize(list);
               //  return JsonConvert.SerializeObject(list, Formatting.None, settings);

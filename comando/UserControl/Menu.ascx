@@ -109,7 +109,7 @@
 
 
 
-<div id="divmenulaterale" style="position: absolute; left: 1050px; top: 140px">
+<div id="divmenulaterale" style="position: absolute; left: 1025px; top: 150px">
     <fieldset>
         <legend>Azioni</legend>
         <table style="width: 100px; align-content: center; padding: 10px">

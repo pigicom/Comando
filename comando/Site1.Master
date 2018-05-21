@@ -113,7 +113,7 @@
                     </td>
                 </tr>
 
-                <tr style="height: 40px">
+                <tr style="height: 30px">
                     <td colspan="1" style="text-align: center;">
                         <asp:Label ID="lblCategory" runat="server" ForeColor="#3498db"   Style="margin-top:20px"  Font-Size="22px"></asp:Label>
                     </td>
@@ -122,13 +122,13 @@
                     </td>
                 </tr>
 
-                <tr style="height: 40px">
+                <tr style="height: 30px">
                     <td colspan="7" style="text-align: right">
                         <asp:LinkButton ID="LinkButton1" CssClass="" Font-Size="16px" runat="server" OnClick="LinkButton1_Click">Log Off</asp:LinkButton>
                     </td>
                 </tr>
 
-                <tr style="height: 40px">
+                <tr style="height: 30px">
 
                     <td colspan="7" style="text-align: right">
                         <div runat="server" id="anagrafiche">
@@ -265,6 +265,9 @@
         </div>
 
     </form>
+
+    
+
     <div id="fine-uploader-gallery"></div>
 
 </body>

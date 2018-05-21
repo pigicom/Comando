@@ -139,7 +139,7 @@
                 Dictionary<int, string> dictionary = new Dictionary<int, string>();
                 foreach (var e in  entities.Agente)
                 {
-                    dictionary.Add(Int32.Parse(e.Id.ToString()), e.Nome);
+                    dictionary.Add(Int32.Parse(e.Id.ToString()), e.Cognome);
                 }
                 this.ddlA1.DataTextField = "Value";
                 this.ddlA1.DataValueField = "Key";

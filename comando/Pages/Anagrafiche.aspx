@@ -26,9 +26,10 @@
             z-index: 99999999;
             width: 200px;
             height: 40px;
-            font-weight: bold;
+            /*font-weight: bold;*/
             text-decoration: none;
             text-align: center;
+            vertical-align:top;
         }
 
             .voce:hover {
@@ -264,5 +265,6 @@
     $(document).ready(function () {
         $('.ui-jqgrid-labels').attr('style', 'height:40px');
         $('th').attr('style', 'height:40px');
+        $('#jqGridPagerAgenti').attr('style','background-color:white');
     })
 </script>
