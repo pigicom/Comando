@@ -26,7 +26,7 @@
             
          <td>
              <fieldset style="margin-top:-10px">
-         <legend>Verbale</legend>
+                <legend>Verbale</legend>
          <table style="width:100%">
           <tr>
              <td>Data*</td>
@@ -55,7 +55,6 @@
         
        </table>
      
-        <br />
         <fieldset>
          <legend style="margin-top:-10px">Violazione</legend>
             <table style="width:100%;">

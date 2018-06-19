@@ -109,9 +109,9 @@
 
 
 
-<div id="divmenulaterale" style="position: absolute; left: 1025px; top: 150px">
+<div id="divmenulaterale" style="position: absolute; left: 1010px; top: 180px">
     <fieldset>
-        <legend>Azioni</legend>
+        <legend style="font-style: italic;">Azioni</legend>
         <table style="width: 100px; align-content: center; padding: 10px">
             <tr style="align-items: center;height:60px">
                 <td style="width: 25%" class="auto-style1">

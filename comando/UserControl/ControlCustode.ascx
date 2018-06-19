@@ -13,7 +13,7 @@
 
 
 <asp:Panel ID="Panel1" runat="server"  >
-      <img alt="carro attrezzi" class="auto-style1" src="../images/carro-attrezzi-con-auto.jpg"  style="width:100px;height:100px" />
+      <img alt="carro attrezzi" class="icon" src="../images/carro-attrezzi-con-auto.jpg"  />
       <br />
       &nbsp;<fieldset>
         <legend>

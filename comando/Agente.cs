@@ -19,6 +19,7 @@ namespace comando
         {
             this.Verbale = new HashSet<Verbale>();
             this.Verbale1 = new HashSet<Verbale>();
+            this.Verbale2 = new HashSet<Verbale>();
         }
     
         public long Id { get; set; }
@@ -31,5 +32,7 @@ namespace comando
         public virtual ICollection<Verbale> Verbale { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Verbale> Verbale1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Verbale> Verbale2 { get; set; }
     }
 }

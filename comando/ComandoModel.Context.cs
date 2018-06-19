@@ -39,7 +39,6 @@ namespace comando
         public virtual DbSet<Attore> Attore { get; set; }
         public virtual DbSet<Avvocato> Avvocato { get; set; }
         public virtual DbSet<CategoriaVerbale> CategoriaVerbale { get; set; }
-        public virtual DbSet<Comuni> Comuni { get; set; }
         public virtual DbSet<Custode> Custode { get; set; }
         public virtual DbSet<documenti_categorie> documenti_categorie { get; set; }
         public virtual DbSet<Documento> Documento { get; set; }
@@ -66,5 +65,6 @@ namespace comando
         public virtual DbSet<Patente> Patente { get; set; }
         public virtual DbSet<Proprietario> Proprietario { get; set; }
         public virtual DbSet<Trasgressore> Trasgressore { get; set; }
+        public virtual DbSet<Comuni> Comuni { get; set; }
     }
 }

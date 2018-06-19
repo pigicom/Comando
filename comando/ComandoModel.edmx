@@ -202,13 +202,17 @@
         </EntityType>
         <EntityType Name="Comuni">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="Istat" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="nome" Type="nchar" MaxLength="200" Nullable="false" />
-          <Property Name="idprovincia" Type="int" Nullable="false" />
-          <Property Name="idregione" Type="int" Nullable="false" />
-          <Property Name="catasto" Type="nvarchar" MaxLength="25" />
+          <Property Name="Istat" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Comune" Type="varchar" MaxLength="250" />
+          <Property Name="Provincia" Type="varchar" MaxLength="50" />
+          <Property Name="Regione" Type="varchar" MaxLength="50" />
+          <Property Name="Prefisso" Type="varchar" MaxLength="50" />
+          <Property Name="CAP" Type="varchar" MaxLength="50" />
+          <Property Name="CodFisco" Type="varchar" MaxLength="50" />
+          <Property Name="Abitanti" Type="varchar" MaxLength="50" />
+          <Property Name="Link" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Custode">
           <Key>
@@ -296,7 +300,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Categoria" Type="nchar" MaxLength="10" />
+          <Property Name="Categoria" Type="nchar" MaxLength="50" />
           <Property Name="Numero" Type="nchar" MaxLength="40" />
           <Property Name="RilasciataDa" Type="nchar" MaxLength="100" />
           <Property Name="Data" Type="datetime" />
@@ -486,6 +490,14 @@
           <Property Name="Trasgressore_Id" Type="bigint" />
           <Property Name="Utente_Id" Type="bigint" />
           <Property Name="Veicolo_Id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="VerbaleAgente">
+          <Key>
+            <PropertyRef Name="Agente_Id" />
+            <PropertyRef Name="Verbale_Id" />
+          </Key>
+          <Property Name="Agente_Id" Type="bigint" Nullable="false" />
+          <Property Name="Verbale_Id" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="VerbaleElezioneDomicilio">
           <Key>
@@ -927,6 +939,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_VerbaleAgente_Agente">
+          <End Role="Agente" Type="Self.Agente" Multiplicity="1" />
+          <End Role="VerbaleAgente" Type="Self.VerbaleAgente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VerbaleAgente">
+              <PropertyRef Name="Agente_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VerbaleAgente_Verbale">
+          <End Role="Verbale" Type="Self.Verbale" Multiplicity="1" />
+          <End Role="VerbaleAgente" Type="Self.VerbaleAgente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Verbale">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VerbaleAgente">
+              <PropertyRef Name="Verbale_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_VerbaleElezioneDomicilioDocumentoWord">
           <End Role="VerbaleElezioneDomicilio" Type="Self.VerbaleElezioneDomicilio" Multiplicity="0..1" />
           <End Role="DocumentoWord" Type="Self.DocumentoWord" Multiplicity="*" />
@@ -993,6 +1029,7 @@
           <EntitySet Name="Utente" EntityType="Self.Utente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Veicolo" EntityType="Self.Veicolo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Verbale" EntityType="Self.Verbale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VerbaleAgente" EntityType="Self.VerbaleAgente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VerbaleElezioneDomicilio" EntityType="Self.VerbaleElezioneDomicilio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Violazione" EntityType="Self.Violazione" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__aspnet_Me__Appli__37FA4C37" Association="Self.FK__aspnet_Me__Appli__37FA4C37">
@@ -1126,6 +1163,14 @@
           <AssociationSet Name="FK_Verbale_Veicolo" Association="Self.FK_Verbale_Veicolo">
             <End Role="Veicolo" EntitySet="Veicolo" />
             <End Role="Verbale" EntitySet="Verbale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VerbaleAgente_Agente" Association="Self.FK_VerbaleAgente_Agente">
+            <End Role="Agente" EntitySet="Agente" />
+            <End Role="VerbaleAgente" EntitySet="VerbaleAgente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VerbaleAgente_Verbale" Association="Self.FK_VerbaleAgente_Verbale">
+            <End Role="Verbale" EntitySet="Verbale" />
+            <End Role="VerbaleAgente" EntitySet="VerbaleAgente" />
           </AssociationSet>
           <AssociationSet Name="FK_VerbaleElezioneDomicilioDocumentoWord" Association="Self.FK_VerbaleElezioneDomicilioDocumentoWord">
             <End Role="VerbaleElezioneDomicilio" EntitySet="VerbaleElezioneDomicilio" />
@@ -1341,16 +1386,6 @@
           <Property Name="Pagina" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Verbale" Relationship="Self.FK_Verbale_CategoriaVerbale" FromRole="CategoriaVerbale" ToRole="Verbale" />
           <Property Name="Sotto" Type="Int32" />
-        </EntityType>
-        <EntityType Name="Comuni">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="nome" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="idprovincia" Type="Int32" Nullable="false" />
-          <Property Name="idregione" Type="Int32" Nullable="false" />
-          <Property Name="catasto" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Custode">
           <Key>
@@ -1606,6 +1641,7 @@
           <NavigationProperty Name="Agente" Relationship="ComandoModel.FK_Verbale_Agente1" FromRole="Verbale" ToRole="Agente" />
           <NavigationProperty Name="Agente1" Relationship="ComandoModel.FK_Verbale_Agente2" FromRole="Verbale" ToRole="Agente" />
           <NavigationProperty Name="Trasgressore" Relationship="ComandoModel.FK_Verbale_Trasgressore" FromRole="Verbale" ToRole="Trasgressore" />
+          <NavigationProperty Name="Agente2" Relationship="ComandoModel.VerbaleAgente" FromRole="Verbale" ToRole="Agente" />
           </EntityType>
         <EntityType Name="VerbaleElezioneDomicilio">
           <Key>
@@ -1977,7 +2013,6 @@
           <EntitySet Name="Attore" EntityType="Self.Attore" />
           <EntitySet Name="Avvocato" EntityType="Self.Avvocato" />
           <EntitySet Name="CategoriaVerbale" EntityType="Self.CategoriaVerbale" />
-          <EntitySet Name="Comuni" EntityType="Self.Comuni" />
           <EntitySet Name="Custode" EntityType="Self.Custode" />
           <EntitySet Name="documenti_categorie" EntityType="Self.documenti_categorie" />
           <EntitySet Name="Documento" EntityType="Self.Documento" />
@@ -2136,6 +2171,11 @@
             <End Role="Trasgressore" EntitySet="Trasgressore" />
             <End Role="Verbale" EntitySet="Verbale" />
           </AssociationSet>
+          <AssociationSet Name="VerbaleAgente" Association="ComandoModel.VerbaleAgente">
+            <End Role="Agente" EntitySet="Agente" />
+            <End Role="Verbale" EntitySet="Verbale" />
+          </AssociationSet>
+          <EntitySet Name="Comuni" EntityType="ComandoModel.Comuni" />
           </EntityContainer>
         <EntityType Name="Agente">
           <Key>
@@ -2148,6 +2188,7 @@
           <Property Name="PoliziaGiudiziaria" Type="Boolean" />
           <NavigationProperty Name="Verbale" Relationship="ComandoModel.FK_Verbale_Agente1" FromRole="Agente" ToRole="Verbale" />
           <NavigationProperty Name="Verbale1" Relationship="ComandoModel.FK_Verbale_Agente2" FromRole="Agente" ToRole="Verbale" />
+          <NavigationProperty Name="Verbale2" Relationship="ComandoModel.VerbaleAgente" FromRole="Agente" ToRole="Verbale" />
         </EntityType>
         <Association Name="FK_Verbale_Agente1">
           <End Type="ComandoModel.Agente" Role="Agente" Multiplicity="0..1" />
@@ -2271,6 +2312,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="VerbaleAgente">
+          <End Type="ComandoModel.Agente" Role="Agente" Multiplicity="*" />
+          <End Type="ComandoModel.Verbale" Role="Verbale" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Comuni">
+          <Key>
+            <PropertyRef Name="Istat" />
+          </Key>
+          <Property Name="Istat" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comune" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Provincia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Regione" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Prefisso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CAP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CodFisco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Abitanti" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Link" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2464,17 +2523,6 @@
                 <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
                 <ScalarProperty Name="IDPadre" ColumnName="IDPadre" />
                 <ScalarProperty Name="Pagina" ColumnName="Pagina" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Comuni">
-            <EntityTypeMapping TypeName="ComandoModel.Comuni">
-              <MappingFragment StoreEntitySet="Comuni">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
-                <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
-                <ScalarProperty Name="idregione" ColumnName="idregione" />
-                <ScalarProperty Name="catasto" ColumnName="catasto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2833,6 +2881,29 @@
                 <ScalarProperty Name="Cognome" ColumnName="Cognome" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="VerbaleAgente" TypeName="ComandoModel.VerbaleAgente" StoreEntitySet="VerbaleAgente">
+            <EndProperty Name="Verbale">
+              <ScalarProperty Name="Id" ColumnName="Verbale_Id" />
+            </EndProperty>
+            <EndProperty Name="Agente">
+              <ScalarProperty Name="Id" ColumnName="Agente_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Comuni">
+            <EntityTypeMapping TypeName="ComandoModel.Comuni">
+              <MappingFragment StoreEntitySet="Comuni">
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Abitanti" ColumnName="Abitanti" />
+                <ScalarProperty Name="CodFisco" ColumnName="CodFisco" />
+                <ScalarProperty Name="CAP" ColumnName="CAP" />
+                <ScalarProperty Name="Prefisso" ColumnName="Prefisso" />
+                <ScalarProperty Name="Regione" ColumnName="Regione" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Comune" ColumnName="Comune" />
+                <ScalarProperty Name="Istat" ColumnName="Istat" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

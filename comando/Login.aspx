@@ -14,7 +14,7 @@
             <br />
             <fieldset style="width:99%;margin-left:5px;margin-right:5px">
                 <legend style="color: #3498db;margin-left:10px">Inserire Cerdenziali<img alt="" style="margin-top:-18px" class="auto-style1" src="images/logoComunale.gif" /></legend>
-                <table style="background-image: url('/Comando/images/polizialocale.png');opacity: 0.9" class="auto-style3">
+                <table style="background-image: url('/Comando/images/polizialocale.png');opacity: 0.9;width:1120px;height:480px " class="auto-style3">
                     <tr>
                         <td style="width: 13%"></td>
                         <td style="text-align: center">
@@ -34,7 +34,7 @@
                                 </tr>
                             </table>
                             <br />
-                            <hr style="width: 50%" />
+                            <hr style="width: 50%;margin-right:100px" />
                         </td>
                         <td style="width: 13%"></td>
                     </tr>

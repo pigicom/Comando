@@ -52,6 +52,7 @@
                     {
                         if (!(entities.Utente.Any(x=>x.Login== this.username.Text)))
                         {
+                            u.Id = (entities.Utente.Max(x => x.Id)) + 1;
                             entities.Utente.Add(u);
                             try
                             {

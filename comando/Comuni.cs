@@ -14,10 +14,14 @@ namespace comando
     
     public partial class Comuni
     {
-        public int Id { get; set; }
-        public string nome { get; set; }
-        public int idprovincia { get; set; }
-        public int idregione { get; set; }
-        public string catasto { get; set; }
+        public string Istat { get; set; }
+        public string Comune { get; set; }
+        public string Provincia { get; set; }
+        public string Regione { get; set; }
+        public string Prefisso { get; set; }
+        public string CAP { get; set; }
+        public string CodFisco { get; set; }
+        public string Abitanti { get; set; }
+        public string Link { get; set; }
     }
 }

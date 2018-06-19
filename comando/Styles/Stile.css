@@ -8,11 +8,11 @@
 }*/
 
 .data {
-    width:100px;
+    width:120px;
 }
 .icon {
-        width: 100px;
-        height: 100px;
+        width: 90px;
+        height: 90px;
 }
 
 .label {
@@ -68,7 +68,7 @@ select {
 
 .panel {
     border: 1px;
-    height: 300px;
+    height: 290px;
     /*width:900px;*/
 }
 
@@ -120,6 +120,8 @@ span {
     display: block;
     position: relative;
     font-family: Verdana;
+    
+    
 }
 
 .quickmenu {
@@ -132,6 +134,10 @@ span {
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
   
+}
+
+input {
+    text-transform: capitalize;
 }
 
 .Grid {background-color: #fff; margin: 5px 0 10px 0; border: solid 1px #525252; border-collapse:collapse; font-family:Calibri; color: #474747;}

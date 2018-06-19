@@ -6,8 +6,7 @@
         height: 50px;
     }
     .auto-style2 {
-        width: 403px;
-        height: 385px;
+      
     }
 </style>
     
@@ -30,7 +29,7 @@
     <table style="width:100%; height: 49px;">
         <tr>
             <td>
-                <img alt="proprietario" class="auto-style2" src="../images/brown-man-icon.png" style="width:100px;height:100px"/></td>
+                <img alt="proprietario" class="icon" src="../images/brown-man-icon.png"/></td>
             <td >
                 &nbsp;</td>
             <td style="width:150px">&nbsp;</td>

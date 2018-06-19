@@ -115,7 +115,7 @@
 
                 <tr style="height: 30px">
                     <td colspan="1" style="text-align: center;">
-                        <asp:Label ID="lblCategory" runat="server" ForeColor="#3498db"   Style="margin-top:20px"  Font-Size="22px"></asp:Label>
+                        <asp:Label ID="lblCategory" runat="server" ForeColor="#3498db"   Style="margin-top:20px"  Font-Size="20px"></asp:Label>
                     </td>
                     <td colspan="6" style="text-align: right; width: 20%">
                         <asp:LinkButton ID="LinkButton2" runat="server" Font-Size="16px" OnClick="LinkButton2_Click">Cambio Password</asp:LinkButton>
@@ -132,7 +132,7 @@
 
                     <td colspan="7" style="text-align: right">
                         <div runat="server" id="anagrafiche">
-                            <div class=""><a style="text-decoration: none; color: #3498db; font-size: large" href="/Comando/Pages/Anagrafiche.aspx">Gestione Anagrafiche</a></div>
+                            <div class=""><a style="text-decoration: none; color: #3498db; font-size: 16px" href="/Comando/Pages/Anagrafiche.aspx">Anagrafiche</a></div>
                         </div>
                     </td>
                 </tr>
@@ -620,6 +620,8 @@
 
         $("input[class^='data']").inputmask("99/99/9999");
         $("input[class='ora']").inputmask("99:99");
+
+        
 
     });
 </script>

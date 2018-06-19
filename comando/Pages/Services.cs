@@ -89,6 +89,15 @@
             };
             return JsonConvert.SerializeObject(strArray, Formatting.None, settings);
         }
+
+        [WebMethod]
+        public static string GetComuni(string startWith)
+        {
+            using (ComandoEntities entities = new ComandoEntities())
+            {
+                return JsonConvert.SerializeObject(entities.Comuni.Where(x => x.Comune.StartsWith(startWith)).ToList());
+            }
+        }
     }
 }
 

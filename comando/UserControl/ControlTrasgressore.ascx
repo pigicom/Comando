@@ -86,25 +86,39 @@
 
 </script>
 
+<style type="text/css">
+    .auto-style1 {
+        width: 100%;
+    }
+    .auto-style2 {
+        text-align: left;
+    }
+</style>
+
 <asp:Panel ID="Panel1" runat="server">
-    &nbsp;<img alt="trasgressore" class="icon" src="../images/uomo.png" /><asp:TextBox ID="txtCF" runat="server" Visible="False" Width="241px" />
-&nbsp;<fieldset>
-        <legend>Dati Del Trasgressore
-        </legend>
-        <table style="width: 100%;">
-            <tr>
-                <td>Nome*<asp:HiddenField ID="TrasgressoreId" runat="server" />
-                </td>
-                <td>
-                    <asp:TextBox ID="txtNome" runat="server" Width="250px" />
-                </td>
-                <td>Cognome*</td>
-                <td>
-                    <asp:TextBox ID="txtCognome" runat="server" Style="margin-bottom: 0px" Width="354px" />
-                </td>
-            </tr>
-            <tr>
-                <%--<td>Documento Riconoscimento</td>
+    &nbsp;<table class="auto-style1">
+        <tr>
+            <td style="vertical-align: top">
+                <img alt="trasgressore" class="icon" src="../images/uomo.png" style="height: 102px; width: 102px" />
+            </td>
+            <td>
+                <fieldset>
+                <legend>Dati Del Trasgressore </legend>
+                <table style="width: 100%;">
+                    <tr>
+                        <td rowspan="7">&nbsp;</td>
+                        <td class="auto-style2">Nome*<asp:HiddenField ID="TrasgressoreId" runat="server" />
+                        </td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="txtNome" runat="server" Width="250px" />
+                        </td>
+                        <td>Cognome*</td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="txtCognome" runat="server" Style="margin-bottom: 0px" Width="354px" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <%--<td>Documento Riconoscimento</td>
                 <td>
                     <asp:DropDownList ID="txtTipoDocumento" runat="server" Width="250px">
                         <asp:ListItem Text="Patente" Value="Patente" Selected="true"></asp:ListItem>
@@ -116,68 +130,78 @@
                 <td>
                     <asp:TextBox ID="txtNumeroDocumento" runat="server" Width="250px"></asp:TextBox>
                 </td>--%>
-            </tr>
-            <tr>
-                <td>Data Nascita</td>
-                <td>
-                    <asp:TextBox ID="txtNascita" runat="server" CssClass="data" />
-                </td>
-                <td>Nazionalita</td>
-                <td>
-                    <asp:TextBox ID="txtStatoNascita" runat="server" />
-                </td>
-            </tr>
-            <tr>
-                <td>Citta Nascita</td>
-                <td>
-                    <asp:TextBox ID="txtCittaNascita1" runat="server" Width="241px" />
-                </td>
-                <td>Sesso</td>
-                <td>
-                    <asp:DropDownList ID="ddlSesso" runat="server">
-                        <asp:ListItem Selected="true" Text="M" Value="M"></asp:ListItem>
-                        <asp:ListItem   Text              ="F" Value="F"></asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-            </tr>
-            <tr>
-                <td>Citta Residenza</td>
-                <td>
-                    <asp:TextBox ID="txtCittaResidenza" runat="server" Width="241px" />
-                </td>
-                <td>&nbsp;</td>
-                <td>
-                    <asp:TextBox ID="txtCAPResidenza" runat="server" Width="119px" Visible="False" />
-                </td>
-            </tr>
-            <tr>
-                <td>Via Residenza</td>
-                <td>
-                    <asp:TextBox ID="txtViaResidenza" runat="server" Width="241px" />
-                </td>
-                <td>Civico</td>
-                <td>
-                    <asp:TextBox ID="txtCivicoResidenza" runat="server" Width="161px" />
-                </td>
-            </tr>
-            <tr>
-                <td>Citta Domicilio</td>
-                <td>
-                    <asp:TextBox ID="txtCittaDomicilio" runat="server" Width="241px" />
-                </td>
-                <td>Indirizzo Domicilio</td>
-                <td>
-                    <asp:TextBox ID="txtViaDomicilio" runat="server" Width="241px" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4" style="text-align: center">
-                    <%--<input type="button"   value="Leggi Da Archivio" onclick="CaricaTrasgressori()" class="myButton" style="cursor:pointer" />--%>
-                    <asp:TextBox ID="txtCapNascita" runat="server" Visible="False" Width="116px" />  
-                </td>
-            </tr>
-        </table>
-    </fieldset>
+                    </tr>
+                    <tr>
+                        <td class="auto-style2">Data Nascita</td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="txtNascita" runat="server" CssClass="data" />
+                        </td>
+                        <td>Nazionalita</td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="txtStatoNascita" runat="server" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style2">Citta Nascita</td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="txtCittaNascita1" runat="server" Width="241px" />
+                        </td>
+                        <td>Sesso</td>
+                        <td class="auto-style2">
+                            <asp:DropDownList ID="ddlSesso" runat="server">
+                                <asp:ListItem Selected="true" Text="M" Value="M"></asp:ListItem>
+                                <asp:ListItem Text="F" Value="F"></asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style2">Citta Residenza</td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="txtCittaResidenza" runat="server" tipo="citta" Width="241px" />
+                        </td>
+                        <td>&nbsp;</td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="txtCAPResidenza" runat="server" Visible="False" Width="119px" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style2">Via Residenza</td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="txtViaResidenza" runat="server" Width="241px" />
+                        </td>
+                        <td>Civico</td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="txtCivicoResidenza" runat="server" Width="161px" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style2">Citta Domicilio</td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="txtCittaDomicilio" runat="server" Width="241px" />
+                        </td>
+                        <td>Indirizzo Domicilio</td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="txtViaDomicilio" runat="server" Width="241px" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="auto-style2"><%--<input type="button"   value="Leggi Da Archivio" onclick="CaricaTrasgressori()" class="myButton" style="cursor:pointer" />--%>
+                            <asp:TextBox ID="txtCapNascita" runat="server" Visible="False" Width="116px" />
+                        </td>
+                    </tr>
+                </table>
+                    </fieldset>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+    <asp:TextBox ID="txtCF" runat="server" Visible="False" Width="241px" />
+&nbsp;
+        
+    
    
 </asp:Panel>
 <br />
